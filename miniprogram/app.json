@@ -1,0 +1,15 @@
+{
+  "pages": [
+    "pages/home/home"
+  ],
+  "window": {
+    "backgroundColor": "#FFFFFF",
+    "backgroundTextStyle": "light",
+    "navigationBarTitleText": "单词天天斗",
+    "navigationStyle": "custom"
+  },
+  "usingComponents": {
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+}
