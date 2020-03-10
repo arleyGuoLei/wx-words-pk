@@ -1,0 +1,20 @@
+<view class="user">
+  <open-data class="user-avatar" type="userAvatarUrl"></open-data>
+  <view class="user-info">
+    <open-data class="user-info__nickname" type="userNickName"></open-data>
+    <view class="user-info__grade">
+      <image class="grade-icon" src="./../../../../images/home-grade.png" />
+      <text class="grade-text">词力值： {{grade}}</text>
+    </view>
+    <view class="user-info__fight-info">
+      <view class="fight-info__pvp">
+        <image class="pvp-icon" src="./../../../../images/home-pvp.png" />
+        <text class="pvp-text">对战：{{pvpNumber}}局</text>
+      </view>
+      <view class="fight-info__win">
+        <image class="win-icon" src="./../../../../images/home-win.png" />
+        <text class="win-text">胜利：{{winNumber}}局</text>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,39 @@
+.wrap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.65);
+  z-index: 999;
+}
+
+.message {
+  width: 500rpx;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 24rpx;
+  margin: 35vh auto 0 auto;
+  overflow: hidden;
+}
+
+.message-icon {
+  width: 112rpx;
+  height: 84rpx;
+  margin: 28rpx auto 0 auto;
+  display: block;
+}
+
+.message-text {
+  width: 350rpx;
+  margin: 44rpx auto;
+  font-size:28rpx;
+  font-weight:500;
+}
+
+.message-close {
+  width: 48rpx;
+  height: 48rpx;
+  display: block;
+  margin: 24rpx auto 0 auto;
+}

@@ -3,6 +3,9 @@ Page({
 
   },
 
+  onSelectBook() {},
+  onTip() {},
+
   onLoad(options) {
 
   },

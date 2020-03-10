@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "book-select": "./../components/book-select/book-select"
+  }
+}

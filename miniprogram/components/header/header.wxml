@@ -1,0 +1,5 @@
+<view class="header" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
+  <view class="content" style="top:{{StatusBar}}px;">
+    <slot name="content"></slot>
+  </view>
+</view>

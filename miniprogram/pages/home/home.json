@@ -1,3 +1,11 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "userinfo": "components/userInfo/userInfo",
+    "bar": "components/bar/bar",
+    "buttons": "components/buttons/buttons",
+    "footer": "components/footer/footer",
+    "home-add-tips": "components/home-add-tips/index"
+  },
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark"
 }

@@ -1,2 +1,13 @@
-<!--miniprogram/pages/home/home.wxml-->
-<text>miniprogram/pages/home/home.wxml</text>
+<header><text slot="content" class="header-title">单词天天斗</text></header>
+
+<image class="bg" src="../../images/home-bg.jpg" />
+
+<userinfo grade="999" pvpNumber="999" winNumber="666" />
+
+<bar tipNumber="999" bookDesc="CET4" bind:onSelectBook="onSelectBook" bind:onTip="onTip" />
+
+<buttons />
+
+<footer />
+
+<home-add-tips />

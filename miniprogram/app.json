@@ -9,6 +9,8 @@
     "navigationStyle": "custom"
   },
   "usingComponents": {
+    "header": "/components/header/header",
+    "message": "/components/message/message"
   },
   "sitemapLocation": "sitemap.json",
   "style": "v2"
