@@ -5,9 +5,11 @@
 <image class="home-sun rotate time-36s" src="./../../images/home-sun.png" />
 <image class="home-setting" src="./../../images/home-setting.png" />
 
-<userinfo grade="999" pvpNumber="999" winNumber="666" />
+<userinfo grade="{{userInfo.grade}}" pvpNumber="{{userInfo.pvpNumber}}" winNumber="{{userInfo.winNumber}}" />
 
-<bar tipNumber="999" bookDesc="CET4" bind:onSelectBook="onSelectBook" bind:onTip="onTip" />
+<bar tipNumber="{{userInfo.tipNumber}}" bookList="{{bookList}}" bookDesc="{{userInfo.bookDesc}}" bind:onSelectBook="onSelectBook" bind:onTip="onTip" />
+
+<book-select id="book-select" bookList="{{bookList}}" bind:onChangeBook="onChangeBook" />
 
 <buttons />
 

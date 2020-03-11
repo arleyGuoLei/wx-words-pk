@@ -4,7 +4,8 @@
     "bar": "components/bar/bar",
     "buttons": "components/buttons/buttons",
     "footer": "components/footer/footer",
-    "home-add-tips": "components/home-add-tips/index"
+    "home-add-tips": "components/home-add-tips/index",
+    "book-select": "components/book-select/book-select"
   },
   "enablePullDownRefresh": true,
   "backgroundTextStyle": "dark"

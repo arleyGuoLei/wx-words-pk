@@ -1,7 +1,8 @@
 <view wx:if="{{show}}" class="wrap animated faster fadeIn" catchtap="hide">
   <view class="wrap-window animated faster slideInUp">
     <scroll-view class="wrap-window__scroll" scroll-y="{{true}}">
-      <view class="book" wx:for="{{bookList}}" wx:key="index" wx:for-index="index" wx:for-item="book">
+      <view class="book" wx:for="{{bookList}}" wx:key="index" wx:for-index="index" wx:for-item="book"
+      data-desc="{{book.desc}}" data-name="{{book.name}}" data-book-id="{{book._id}}" catchtap="onChangeBook">
         <image class="book-img" src="{{book.image}}" />
         <view class="book-info">
           <text class="book-info__title">{{book.title}}</text>

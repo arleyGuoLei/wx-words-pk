@@ -25,3 +25,7 @@
 .time-2s {
   animation-duration: 2s;
 }
+
+.shadow-lg {
+  box-shadow: 0rpx 20rpx 100rpx 0rpx rgba(0, 102, 204, 0.2);
+}

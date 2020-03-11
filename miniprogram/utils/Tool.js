@@ -17,12 +17,18 @@ export default {
       }
     }
   },
-  loading(loadingText = '加载中···', mask = true) {
+  loading(loadingText = '斗斗加载中···', mask = true) {
     const loading = getLoaingObj()
     loading.show(loadingText, mask)
   },
   hideLoading() {
     const loading = getLoaingObj()
     loading.hide()
+  },
+  callCloud(name, data = {}) {
+    return wx.cloud.callFunction({
+      name,
+      data
+    })
   }
 }

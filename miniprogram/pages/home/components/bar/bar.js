@@ -14,7 +14,7 @@ Component({
   },
   methods: {
     onSelectBook() {
-      this.selectComponent('#book-select').show()
+      this.triggerEvent('onSelectBook')
     },
     onTip() {
       this.selectComponent('#message').show()

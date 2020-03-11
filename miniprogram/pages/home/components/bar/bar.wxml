@@ -20,5 +20,3 @@
       <text style="color:#FF9C37;">提示卡</text><text>可在对战时给你提示单词释义哦！ 对战结束分享对战结果至群， 可以获得更多提示卡~ 感谢伙伴们支持~</text>
   </view>
 </message>
-
-<book-select id="book-select" />
