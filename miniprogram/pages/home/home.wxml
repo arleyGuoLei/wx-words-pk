@@ -2,6 +2,9 @@
 
 <image class="bg" src="../../images/home-bg.jpg" />
 
+<image class="home-sun rotate time-36s" src="./../../images/home-sun.png" />
+<image class="home-setting" src="./../../images/home-setting.png" />
+
 <userinfo grade="999" pvpNumber="999" winNumber="666" />
 
 <bar tipNumber="999" bookDesc="CET4" bind:onSelectBook="onSelectBook" bind:onTip="onTip" />
@@ -11,3 +14,5 @@
 <footer />
 
 <home-add-tips />
+
+<loading id="loading"/>

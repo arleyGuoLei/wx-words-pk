@@ -1,0 +1,6 @@
+<view wx:if="{{show}}" class="mask" style="background-color:{{mask?'rgba(255, 255, 255, 0.4)':'transparent'}}">
+  <view class="loading">
+    <image src="./../../images/loading.png" class="loading-icon rotate time-2s" />
+    <text class="loading-text">{{loadingText}}</text>
+  </view>
+</view>

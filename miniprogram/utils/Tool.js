@@ -1,3 +1,8 @@
+function getLoaingObj() {
+  const page = getCurrentPages()
+  return page[page.length - 1].selectComponent('#loading')
+}
+
 export default {
   get store() {
     const store = getApp().store
@@ -11,5 +16,13 @@ export default {
         return store[key]
       }
     }
+  },
+  loading(loadingText = '加载中···', mask = true) {
+    const loading = getLoaingObj()
+    loading.show(loadingText, mask)
+  },
+  hideLoading() {
+    const loading = getLoaingObj()
+    loading.hide()
   }
 }

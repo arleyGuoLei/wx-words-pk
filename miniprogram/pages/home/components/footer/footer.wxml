@@ -3,11 +3,11 @@
     <image class="footer-icon" src="./../../../../images/home-rank.png" />
     <text class="footer-text">排行榜</text>
   </button>
-  <button class="footer-item" hover-class="btn-hover">
+  <button open-type='feedback' class="footer-item" hover-class="btn-hover">
     <image class="footer-icon" src="./../../../../images/home-issue.png" />
     <text class="footer-text">建议反馈</text>
   </button>
-  <button class="footer-item" hover-class="btn-hover">
+  <button class="footer-item" hover-class="btn-hover" catchtap="onZan">
     <image class="footer-icon" src="./../../../../images/home-zan.png" />
     <text class="footer-text">打赏作者</text>
   </button>

@@ -10,8 +10,12 @@
   },
   "usingComponents": {
     "header": "/components/header/header",
-    "message": "/components/message/message"
+    "message": "/components/message/message",
+    "loading": "/components/loading/loading"
   },
   "sitemapLocation": "sitemap.json",
-  "style": "v2"
+  "style": "v2",
+  "navigateToMiniProgramAppIdList": [
+    "wx18a2ac992306a5a4"
+  ]
 }

@@ -14,7 +14,27 @@ page {
 .header-title {
   font-size: 34rpx;
   font-weight: 700;
-  color: rgba(51,51,51,1);
+  color: rgba(51, 51, 51, 1);
   letter-spacing: 8rpx;
   margin-left: 32rpx;
+}
+
+.home-sun {
+  position: absolute;
+  width: 124rpx;
+  height: 124rpx;
+  left: 594rpx;
+  top: 190rpx;
+}
+
+.home-setting {
+  position: absolute;
+  width: 37rpx;
+  height: 36rpx;
+  left: 638rpx;
+  top: 234rpx;
+}
+
+.home-setting:active {
+  transform: scale(1.1);
 }

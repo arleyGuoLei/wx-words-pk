@@ -1,3 +1,5 @@
+import $ from './../../utils/Tool'
+
 Page({
   data: {
 
