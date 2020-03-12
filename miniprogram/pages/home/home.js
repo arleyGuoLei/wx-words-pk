@@ -1,10 +1,45 @@
 import $ from './../../utils/Tool'
-import { userModel, bookModel } from './../../model/index'
+import { userModel, bookModel, wordModel, roomModel } from './../../model/index'
+import { getCombatSubjectNumber, SUBJECT_HAS_OPTIONS_NUMBER } from '../../utils/setting'
+import { formatList } from '../../utils/util'
 
 Page({
   data: {
     userInfo: {},
     bookList: []
+  },
+  /**
+   * 好友对战或随机匹配没有房间的时候，创建单词PK房间
+   * 1. 获取对局单词数目
+   * 2. 生成随机单词
+   * 3. 格式化随机单词，生成单词列表
+   * 4. 创建房间
+   */
+  async createCombatRoom(isFriend = true) {
+    try {
+      $.loading('生成随机词汇中...')
+      const { data: { userInfo: { bookId, bookDesc } } } = this
+      const number = getCombatSubjectNumber()
+      const { list: randomList } = await wordModel.getRandomWords(bookId, number * SUBJECT_HAS_OPTIONS_NUMBER)
+      const wordList = formatList(randomList, SUBJECT_HAS_OPTIONS_NUMBER)
+      $.loading('创建房间中...')
+      const roomId = await roomModel.create(wordList, isFriend, bookDesc)
+      console.log('log => : createCombatRoom -> roomId', roomId) // TODO: go on
+    } catch (error) {
+      $.hideLoading()
+    }
+  },
+  /**
+   * 邀请好友对战
+   */
+  onChallengeFriend() {
+    this.createCombatRoom(true)
+  },
+  /**
+   * 随机匹配
+   */
+  onRandomMatch() {
+
   },
   /**
    * 获取页面服务端数据

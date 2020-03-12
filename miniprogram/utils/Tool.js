@@ -17,6 +17,19 @@ export default {
       }
     }
   },
+  get storage() {
+    return {
+      set: (key, value = '') => {
+        if (key) {
+          return wx.setStorageSync(key, value)
+        }
+      },
+      get: (key) => {
+        console.log('log => : getstorage -> key', key)
+        return wx.getStorageSync(key)
+      }
+    }
+  },
   loading(loadingText = '斗斗加载中···', mask = true) {
     const loading = getLoaingObj()
     loading.show(loadingText, mask)

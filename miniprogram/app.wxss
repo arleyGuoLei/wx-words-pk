@@ -29,3 +29,7 @@
 .shadow-lg {
   box-shadow: 0rpx 20rpx 100rpx 0rpx rgba(0, 102, 204, 0.2);
 }
+
+.touch:active {
+  transform: scale(1.1);
+}

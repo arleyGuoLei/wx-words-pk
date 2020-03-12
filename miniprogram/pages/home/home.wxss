@@ -34,7 +34,3 @@ page {
   left: 638rpx;
   top: 234rpx;
 }
-
-.home-setting:active {
-  transform: scale(1.1);
-}

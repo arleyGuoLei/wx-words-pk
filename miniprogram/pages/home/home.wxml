@@ -3,7 +3,7 @@
 <image class="bg" src="../../images/home-bg.jpg" />
 
 <image class="home-sun rotate time-36s" src="./../../images/home-sun.png" />
-<image class="home-setting" src="./../../images/home-setting.png" />
+<image class="home-setting touch" src="./../../images/home-setting.png" />
 
 <userinfo grade="{{userInfo.grade}}" pvpNumber="{{userInfo.pvpNumber}}" winNumber="{{userInfo.winNumber}}" />
 
@@ -11,7 +11,7 @@
 
 <book-select id="book-select" bookList="{{bookList}}" bind:onChangeBook="onChangeBook" />
 
-<buttons />
+<buttons bind:onChallengeFriend="onChallengeFriend" bind:onRandomMatch="onRandomMatch" />
 
 <footer />
 

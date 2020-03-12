@@ -10,10 +10,13 @@ const doc = {
   avatarUrl: '', // 头像
   infinityGrade: 0, // 词汇挑战最高分数
   nickName: '', // 昵称
-  sex: 0, // 性别
+  gender: 0, // 性别
   bookDesc: '随机', // 选择书的简称，用于当前选择的书的名称显示
   bookId: 'random', // 选择的书的id
-  bookName: '随机所有词汇' // 选择的书的具体书名，用于游戏对战
+  bookName: '随机所有词汇', // 选择的书的具体书名，用于游戏对战
+  country: '',
+  province: '',
+  city: ''
 }
 
 /**
@@ -39,6 +42,14 @@ class UserModel extends Base {
     }
     $.store.set('uid', userInfo._openid)
     return userInfo
+  }
+
+  /**
+   * 更新用户信息 (小程序端更新数据库基础库版本需>=2.9.4)
+   * @param {Object} userInfo 用户信息
+   */
+  updateInfo({ avatarUrl, nickName, gender, country, province, city }) {
+    return this.model.where({ _openid: '{openid}' }).update({ data: { avatarUrl, nickName, gender, country, province, city } })
   }
 }
 

@@ -3,7 +3,7 @@ import $ from './../utils/Tool'
 const collectionName = 'book'
 
 /**
- * 权限: 所有用户可读，仅创建者可写
+ * 权限: 所有用户可读
  */
 class BookModel extends Base {
   constructor() {

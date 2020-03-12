@@ -25,7 +25,7 @@
 	},
 	"appid": "wx51a5362ef159dbcd",
 	"projectname": "wx-words-pk",
-	"libVersion": "2.8.1",
+	"libVersion": "2.9.5",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
 	"cloudfunctionTemplateRoot": "cloudfunctionTemplate",
@@ -45,9 +45,20 @@
 		"game": {
 			"list": []
 		},
+		"gamePlugin": {
+			"current": -1,
+			"list": []
+		},
 		"miniprogram": {
 			"current": 0,
-			"list": []
+			"list": [
+				{
+					"id": -1,
+					"name": "pages/combat/combat",
+					"pathName": "pages/combat/combat",
+					"scene": null
+				}
+			]
 		}
 	}
 }

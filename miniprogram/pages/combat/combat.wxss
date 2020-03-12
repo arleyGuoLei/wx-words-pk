@@ -1,0 +1,39 @@
+page::before,
+page::after {
+  display: block;
+  content: " ";
+  position: fixed;
+  width: 50%;
+  height: 100vh;
+  top: 0;
+  z-index: -1;
+}
+
+page::before {
+  background-color: #f9dbeb;
+  left: 0;
+}
+
+page::after {
+  background-color: #c1eafb;
+  right: 0;
+}
+
+.header {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.go-back {
+  width: 37rpx;
+  height: 38rpx;
+  margin-left: 48rpx;
+}
+
+.header-title {
+  font-size: 34rpx;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+  margin-left: 24rpx;
+}

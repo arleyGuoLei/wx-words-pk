@@ -1,6 +1,7 @@
 {
   "pages": [
-    "pages/home/home"
+    "pages/home/home",
+    "pages/combat/combat"
   ],
   "window": {
     "backgroundColor": "#FFFFFF",

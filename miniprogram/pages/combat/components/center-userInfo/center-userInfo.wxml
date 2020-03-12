@@ -1,0 +1,8 @@
+<view class="wrap">
+  <view class="userinfo" wx:for="{{usersInfo}}" wx:key="index" wx:for-index="index" wx:for-item="user">
+    <image class="userinfo-avatar" src="{{user.avatarUrl}}" />
+    <text class="userinfo-nickname">{{user.nickName}}</text>
+    <text class="userinfo-grade">词力值：{{user.grade}}</text>
+    <text class="userinfo-winRate">斗胜率: {{user.winRate}}%</text>
+  </view>
+</view>

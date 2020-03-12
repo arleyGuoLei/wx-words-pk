@@ -1,6 +1,6 @@
 <view class="btns">
 
-  <button class="btn-oneline shadow-lg" hover-class="btn-hover">
+  <button class="btn-oneline shadow-lg" hover-class="btn-hover" open-type="getUserInfo" bindgetuserinfo="onRandomMatch">
     <image class="btn-oneline__icon" src="./../../../../images/home-btn-random.png" />
     <image class="btn-oneline__tag" src="./../../../../images/home-btn-hot.png" />
     <view class="btn-oneline__text">
@@ -9,7 +9,7 @@
     </view>
   </button>
 
-  <button class="btn-oneline shadow-lg btn-pk animated infinite slow pulse" hover-class="btn-hover">
+  <button class="btn-oneline shadow-lg btn-pk animated infinite slow pulse" hover-class="btn-hover" open-type="getUserInfo" bindgetuserinfo="onChallengeFriend">
     <image class="btn-oneline__icon" src="./../../../../images/home-btn-pk.png" />
     <image class="btn-oneline__tag" src="./../../../../images/home-btn-ai.png" />
     <view class="btn-oneline__text">
@@ -20,7 +20,7 @@
 
   <view class="btn-two-wrap">
 
-    <button class="btn-two shadow-lg" hover-class="btn-hover">
+    <button class="btn-two shadow-lg" hover-class="btn-hover" open-type="getUserInfo" bindgetuserinfo="onChallengeWord">
       <view class="btn-two__text">
         <text class="btn-two__title">词汇挑战</text>
         <text class="btn-two__desc">a wrong, over!</text>
@@ -39,3 +39,9 @@
   </view>
 
 </view>
+
+<message id="authFailMessage">
+  <view slot="content">
+      <text style="color:#FF9C37;">授权失败...</text><text>头像和昵称将用于排行和对战显示，请允许获取授权。</text>
+  </view>
+</message>
