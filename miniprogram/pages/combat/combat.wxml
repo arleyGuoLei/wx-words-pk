@@ -1,8 +1,13 @@
 <header>
   <view slot="content" class="header">
     <image class="go-back touch" src="./../../images/combat-back.png" />
-    <text class="header-title">四级核心词汇 (12词/局)</text>
+    <text wx:if="{{roomInfo.bookName}}" class="header-title">{{roomInfo.bookName}} ({{roomInfo.listLength}}词/局)</text>
+    <text wx:else class="header-title">单词天天斗</text>
   </view>
 </header>
 
-<center-userInfo users="{{users}}"></center-userInfo>
+<center-userInfo wx:if="{{roomInfo.isFriend&&(roomInfo.state==='OK'||roomInfo.state==='READY')}}" users="{{users}}"></center-userInfo>
+<friend-pk-buttons roomState="{{roomInfo.state}}" isHouseOwner="{{roomInfo.isHouseOwner}}" roomId="{{roomInfo.roomId}}"></friend-pk-buttons>
+
+<loading id="loading"/>
+<message id="errorMessage"></message>

@@ -33,3 +33,7 @@
 .touch:active {
   transform: scale(1.1);
 }
+
+.btn-hover {
+  background: rgb(131, 203, 241)!important;
+}

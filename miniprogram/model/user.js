@@ -31,6 +31,10 @@ class UserModel extends Base {
     return this.model.add({ data: { ...doc, createTime: this.date } })
   }
 
+  getUserInfo(openid) {
+    return this.model.where({ _openid: openid }).limit(1).get()
+  }
+
   /**
    * 获取自己的用户信息
    */
@@ -40,7 +44,7 @@ class UserModel extends Base {
       await this.register()
       return (await this.getOwnInfo())
     }
-    $.store.set('uid', userInfo._openid)
+    $.store.set('openid', userInfo._openid)
     return userInfo
   }
 

@@ -25,7 +25,6 @@ export default {
         }
       },
       get: (key) => {
-        console.log('log => : getstorage -> key', key)
         return wx.getStorageSync(key)
       }
     }

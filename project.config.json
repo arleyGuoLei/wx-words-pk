@@ -53,9 +53,17 @@
 			"current": 0,
 			"list": [
 				{
-					"id": -1,
+					"id": 0,
 					"name": "pages/combat/combat",
 					"pathName": "pages/combat/combat",
+					"query": "roomId=1584086852035_0.1497691820030993_33563835",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "好友对战-受邀请用户",
+					"pathName": "pages/combat/combat",
+					"query": "roomId=1584094378325_0.8540458739043832_16837881",
 					"scene": null
 				}
 			]

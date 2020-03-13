@@ -19,10 +19,6 @@
   align-items: center;
 }
 
-.btn-hover {
-  background: rgb(131, 203, 241)!important;
-}
-
 .btn-oneline__icon {
   width: 64rpx;
   height: 64rpx;

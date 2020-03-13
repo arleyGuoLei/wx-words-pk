@@ -4,6 +4,7 @@
   padding: 32rpx 0 36rpx 0;
   display: flex;
   margin-top: 148rpx;
+  height: 456rpx;
 }
 
 .userinfo {
@@ -16,6 +17,7 @@
 .userinfo-avatar {
   width: 165rpx;
   height: 165rpx;
+  border-radius: 50%;
 }
 
 .userinfo-nickname {

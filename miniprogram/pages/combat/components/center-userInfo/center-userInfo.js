@@ -1,3 +1,11 @@
+const defaultUserInfo = {
+  avatarUrl: './../../../../images/combat-default-avatar.png',
+  gender: 0,
+  nickName: '神秘嘉宾',
+  grade: 0,
+  winRate: 0
+}
+
 Component({
   data: {
     usersInfo: []
@@ -5,11 +13,16 @@ Component({
   properties: {
     users: {
       type: Array,
-      value: []
+      value: [],
+      observer([...usersInfo]) {
+        if (usersInfo.length === 1) {
+          usersInfo.push(defaultUserInfo)
+        }
+        this.setData({ usersInfo })
+      }
     }
   },
   methods: {
 
   }
 })
-// ./../../../../images/combat-default-avatar.png

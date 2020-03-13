@@ -18,3 +18,9 @@
 <home-add-tips />
 
 <loading id="loading"/>
+
+<message id="createRoomFail">
+  <view slot="content">
+      <text style="color:#FF9C37;">房间创建失败...</text><text>由于网络或设备原因, 请稍后重试。</text>
+  </view>
+</message>

@@ -1,0 +1,18 @@
+.btn {
+  width: 480rpx !important;
+  height: 80rpx;
+  background: rgba(126, 206, 247, 1);
+  border-radius: 64rpx;
+  color: #ffffff;
+  font-size: 34rpx;
+  font-weight: 500;
+}
+
+.btn-disabled {
+  width: 480rpx !important;
+  height: 80rpx;
+  background: transparent;
+  color: #ffffff;
+  font-size: 34rpx;
+  font-weight: 500;
+}

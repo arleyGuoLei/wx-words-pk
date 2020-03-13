@@ -3,7 +3,8 @@
     <image class="message-icon" src="./../../images/message-logo.png" />
     <view class="message-text">
       <slot name="content"></slot>
+      <text class="show-message-text">{{messageText}}</text>
     </view>
   </view>
-  <image class="message-close" src="./../../images/message-close.png" catchtap="hide"/>
+  <image wx:if="{{showClose}}" class="message-close" src="./../../images/message-close.png" catchtap="hide"/>
 </view>
