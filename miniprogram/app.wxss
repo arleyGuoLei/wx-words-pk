@@ -27,7 +27,7 @@
 }
 
 .shadow-lg {
-  box-shadow: 0rpx 20rpx 100rpx 0rpx rgba(0, 102, 204, 0.2);
+  box-shadow: 0rpx 4rpx 6rpx 0rpx rgba(0, 102, 204, 0.2);
 }
 
 .touch:active {
@@ -36,4 +36,10 @@
 
 .btn-hover {
   background: rgb(131, 203, 241)!important;
+}
+
+.one-line-text {
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
 }

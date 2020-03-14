@@ -2,8 +2,11 @@ import $ from './../../utils/Tool'
 import { userModel } from './../../model/index'
 import { roomStateHandle, centerUserInfoHandle } from './utils'
 import { ROOM_STATE } from '../../model/room'
+import { sleep } from '../../utils/util'
 
 const ROOM_STATE_READY = 'state'
+const LEFT_SELECT = 'left.gradeSum'
+const RIGHT_SELECT = 'right.gradeSum'
 
 async function initRoomInfo(data) {
   $.loading('初始化房间配置...')
@@ -30,7 +33,7 @@ async function initRoomInfo(data) {
   $.hideLoading()
 }
 
-async function onRoomStateChange(updatedFields, doc) {
+async function handleRoomStateChange(updatedFields, doc) {
   const { state } = updatedFields
   console.log('log => : onRoomStateChange -> state', state)
   switch (state) {
@@ -45,12 +48,48 @@ async function onRoomStateChange(updatedFields, doc) {
         const usersCancel = centerUserInfoHandle.call(this, {})
         this.setData({ 'roomInfo.state': state, users: usersCancel })
       }
+      break
+    case ROOM_STATE.IS_PK:
+      this.setData({ 'roomInfo.state': state })
+      break
   }
+}
+
+async function handleOptionSelection(updatedFields, doc) {
+  const { left, right, isNPC } = doc
+  this.setData({
+    left,
+    right
+  }, async () => {
+    const re = /^(left|right)\.grades\.(\d+)\.index$/ // left.grades.1.index
+    let updateIndex = -1
+    for (const key of Object.keys(updatedFields)) {
+      if (re.test(key)) {
+        updateIndex = key.match(re)[2] // 当前选择是的第几个题目的index(选择的是第几题的答案)
+        break
+      }
+    }
+    if (updateIndex !== -1 && typeof left.grades[updateIndex] !== 'undefined' &&
+    typeof right.grades[updateIndex] !== 'undefined') { // 两方的这个题目都选择完了，需要切换下一题
+      this.selectComponent('#combatComponent').changeBtnFace(updateIndex) // 显示对方的选择结果
+      const { data: { listIndex: index, roomInfo: { listLength } } } = this
+      await sleep(1200)
+      if (listLength !== index + 1) { // 题目还没结束，切换下一题
+        // TODO: NPC自动选择下一题初始化
+        this.selectComponent('#combatComponent').init()
+        this.setData({ listIndex: index + 1 })
+      } else {
+        // TODO: 结束游戏
+      }
+    }
+  })
 }
 
 const watchMap = new Map()
 watchMap.set('initRoomInfo', initRoomInfo)
-watchMap.set(`update.${ROOM_STATE_READY}`, onRoomStateChange)
+watchMap.set(`update.${ROOM_STATE_READY}`, handleRoomStateChange)
+watchMap.set(`update.${LEFT_SELECT}`, handleOptionSelection)
+watchMap.set(`update.${RIGHT_SELECT}`, handleOptionSelection)
 
 export async function handleWatch(snapshot) {
   const { type, docs } = snapshot

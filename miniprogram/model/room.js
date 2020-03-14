@@ -46,6 +46,18 @@ class RoomModel extends Base {
     })
   }
 
+  startPK(roomId) {
+    return this.model.where({
+      _id: roomId,
+      'right.openid': this._.neq(''),
+      state: ROOM_STATE.IS_READY
+    }).update({
+      data: {
+        state: ROOM_STATE.IS_PK
+      }
+    })
+  }
+
   async create(list, isFriend, bookDesc, bookName) {
     try {
       const { _id = '' } = await this.model.add({ data: {
@@ -74,6 +86,23 @@ class RoomModel extends Base {
       log.error(error)
       throw error
     }
+  }
+
+  selectOption(roomId, index, score, listIndex, isHouseOwner) {
+    const position = isHouseOwner ? 'left' : 'right'
+    return this.model.doc(roomId).update({
+      data: {
+        [position]: {
+          gradeSum: this._.inc(score),
+          grades: {
+            [listIndex]: {
+              index,
+              score
+            }
+          }
+        }
+      }
+    })
   }
 }
 

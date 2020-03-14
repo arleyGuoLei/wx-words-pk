@@ -6,6 +6,7 @@ import router from './../../utils/router'
  * @param {String} state 房间状态
  */
 export function roomStateHandle(state) {
+  return true // TODO: debug pk
   let errText = ''
   switch (state) {
     case ROOM_STATE.IS_OK:

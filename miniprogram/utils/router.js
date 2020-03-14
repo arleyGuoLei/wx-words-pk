@@ -43,6 +43,10 @@ class Router {
   reLaunch() {
     wx.reLaunch({ url: pages.home })
   }
+
+  toHome() {
+    if (getCurrentPages().length > 1) { this.pop() } else { this.reLaunch() }
+  }
 }
 
 export default new Router()

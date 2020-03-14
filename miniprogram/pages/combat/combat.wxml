@@ -1,13 +1,31 @@
 <header>
   <view slot="content" class="header">
-    <image class="go-back touch" src="./../../images/combat-back.png" />
-    <text wx:if="{{roomInfo.bookName}}" class="header-title">{{roomInfo.bookName}} ({{roomInfo.listLength}}词/局)</text>
+    <image class="go-back touch" catchtap="onBack" src="./../../images/combat-back.png" />
+    <text wx:if="{{(roomInfo.state==='OK'||roomInfo.state==='READY')}}" class="header-title">{{roomInfo.bookName}} ({{roomInfo.listLength}}词/局)</text>
+    <text wx:elif="{{roomInfo.state==='PK'}}" class="header-title">{{roomInfo.bookDesc}} 『 <text class="list-index">{{listIndex+1}}</text> / {{roomInfo.listLength}} 』</text>
     <text wx:else class="header-title">单词天天斗</text>
+
+    <image class="header-bgm-setting" src="./../../images/combat-bgm-setting.png" />
   </view>
 </header>
 
-<center-userInfo wx:if="{{roomInfo.isFriend&&(roomInfo.state==='OK'||roomInfo.state==='READY')}}" users="{{users}}"></center-userInfo>
-<friend-pk-buttons roomState="{{roomInfo.state}}" isHouseOwner="{{roomInfo.isHouseOwner}}" roomId="{{roomInfo.roomId}}"></friend-pk-buttons>
+<block wx:if="{{roomInfo.isFriend&&(roomInfo.state==='OK'||roomInfo.state==='READY')}}">
+  <center-userInfo users="{{users}}" />
+  <friend-pk-buttons roomState="{{roomInfo.state}}" isHouseOwner="{{roomInfo.isHouseOwner}}" roomId="{{roomInfo.roomId}}" />
+</block>
+
+<header-userInfo wx:if="{{roomInfo.state==='PK' || roomInfo.state==='FINISH' || roomInfo.state==='LEAVE'}}" users="{{users}}" />
+
+<combat-place wx:if="{{roomInfo.state==='PK'}}" 
+  id="combatComponent"
+  listIndex="{{listIndex}}" wordObj="{{wordList[listIndex]}}"
+  roomId="{{roomInfo.roomId}}" isHouseOwner="{{roomInfo.isHouseOwner}}"
+  left="{{left}}" right="{{right}}"
+/>
+
+<image wx:if="{{roomInfo.isFriend}}"  class="combat-pk-bg" src="./../../images/combat-pk.png" />
+
+<combat-setting wx:if="{{(roomInfo.state==='OK'||roomInfo.state==='READY')}}"></combat-setting>
 
 <loading id="loading"/>
-<message id="errorMessage"></message>
+<message id="errorMessage" />

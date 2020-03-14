@@ -1,0 +1,14 @@
+<view class="setting">
+  <view class="setting-item">
+    <text class="setting-item__title">对战背景音乐</text>
+    <switch class="setting-item__switch" color="#7ECEF7" checked="{{bgm}}" data-key="bgm" bindchange="onSwitchChange"/>
+  </view>
+  <view class="setting-item">
+    <text class="setting-item__title">播放单词发音</text>
+    <switch class="setting-item__switch" color="#7ECEF7" checked="{{pronunciation}}" data-key="pronunciation" bindchange="onSwitchChange"/>
+  </view>
+  <view class="setting-item">
+    <text class="setting-item__title">错词加入生词</text>
+    <switch class="setting-item__switch" color="#7ECEF7" checked="{{addUserWords}}" data-key="addUserWords" bindchange="onSwitchChange"/>
+  </view>
+</view>

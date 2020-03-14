@@ -1,0 +1,24 @@
+.setting {
+  position: absolute;
+  bottom: 2vh;
+  right: 38rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.setting-item {
+  display: flex;
+  align-items: center;
+  margin-top: 32rpx;
+}
+
+.setting-item__title {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+  margin-right: 28rpx;
+}
+
+.setting-item__switch {
+  zoom: 0.7;
+}

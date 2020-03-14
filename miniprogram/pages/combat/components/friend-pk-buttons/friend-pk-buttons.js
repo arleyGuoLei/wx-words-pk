@@ -21,7 +21,13 @@ Component({
 
   },
   methods: {
-    onStartPk() {},
+    onStartPk: throttle(async function() {
+      $.loading('开始对战...')
+      const { properties: { roomId } } = this
+      const { stats: { updated = 0 } } = await roomModel.startPK(roomId)
+      $.hideLoading()
+      if (updated !== 1) { this.selectComponent('#errorMessage').show('开始失败...请重试') }
+    }, 1500),
     onUserReady: throttle(async function(e) {
       $.loading('正在加入...')
       const { detail: { userInfo } } = e

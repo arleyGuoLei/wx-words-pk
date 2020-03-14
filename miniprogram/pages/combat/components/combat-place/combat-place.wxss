@@ -1,0 +1,135 @@
+.main {
+  /* background: yellow; */
+  position: absolute;
+  bottom: 0;
+  height: 70vh;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.progress-left,
+.progress-right {
+  position: absolute;
+  transform-origin: left top;
+  transform: rotate(-90deg);
+  width: 58vh;
+  bottom: 0;
+  z-index: 99;
+}
+
+.progress-left {
+  left: 16rpx;
+}
+
+.progress-right {
+  left: 698rpx;
+}
+
+.main-word {
+  display: block;
+  text-align: center;
+  font-size: 52rpx;
+  font-weight: 500;
+  color: rgba(255, 92, 30, 1);
+  width: 614rpx;
+  margin: 16vh auto;
+}
+
+.main-options {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  bottom: 2.5vh;
+  left: 0;
+  right: 0;
+  box-sizing: border-box;
+  height: 43vh;
+  overflow-y: scroll;
+  justify-content: space-around;
+  /* background-color: red; */
+}
+
+.btn {
+  width: 600rpx;
+  margin: 0 auto;
+  height: 110rpx;
+  background: rgba(126, 206, 247, 1);
+  border-radius: 55rpx;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.btn:active {
+  background: rgb(114, 181, 218) !important;
+}
+
+.btn-text {
+  display: block;
+  position: absolute;
+  text-align: center;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+  font-size: 28rpx;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  line-height: 110rpx;
+  box-sizing: border-box;
+  padding: 0 72rpx;
+}
+
+.btn-text__sign {
+  color: #fc2a79 !important;
+}
+
+.btn-left, .btn-right {
+  position: absolute;
+  top: 26rpx;
+}
+
+.btn-left {
+  left: 12rpx;
+}
+
+.btn-right {
+  right: 12rpx;
+}
+
+.btn-left__icon,
+.btn-right__icon {
+  height: 58rpx;
+  width: 58rpx;
+}
+
+.grade {
+  display: flex;
+  position: absolute;
+  width: 100%;
+  flex-direction: column;
+  top: 6vh;
+}
+
+.grade-text {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 0 16rpx;
+}
+
+.grade-text__left,
+.grade-text__right {
+  display: inline-block;
+  font-size: 34rpx;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+}
+.grade-text__left {
+  text-align: left;
+}
+.grade-text__right {
+  text-align: right;
+}

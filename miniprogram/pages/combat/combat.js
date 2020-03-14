@@ -2,12 +2,16 @@ import $ from './../../utils/Tool'
 import { userModel, roomModel } from './../../model/index'
 import { handleWatch } from './watcher'
 import { ROOM_STATE } from '../../model/room'
+import router from '../../utils/router'
 
 Page({
   data: {
     users: [],
     roomInfo: {},
-    wordList: []
+    wordList: [],
+    listIndex: 0,
+    left: {},
+    right: {}
   },
 
   onLoad(options) {
@@ -41,8 +45,9 @@ Page({
   onHide() {
 
   },
-  onUnload() {
-    // 1. 对战未开始，如果用户已经准备, 需要取消准备
+  async onUnload() {
+    const { data: { roomInfo: { state = '', roomId = '', isHouseOwner } } } = this
+    if (state === ROOM_STATE.IS_READY && !isHouseOwner) { await roomModel.userCancelReady(roomId) } // 用户已经准备则取消准备
     this.messageListener && this.messageListener.close()
   },
   onShareAppMessage({ from }) {
@@ -60,5 +65,6 @@ Page({
       path: `/pages/home/home`,
       imageUrl: './../../images/share-default-bg.png'
     }
-  }
+  },
+  onBack() { router.toHome() }
 })
