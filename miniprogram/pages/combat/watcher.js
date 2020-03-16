@@ -4,7 +4,7 @@ import { roomStateHandle, centerUserInfoHandle } from './utils'
 import { ROOM_STATE } from '../../model/room'
 import { sleep } from '../../utils/util'
 
-const ROOM_STATE_READY = 'state'
+const ROOM_STATE_SERVER = 'state'
 const LEFT_SELECT = 'left.gradeSum'
 const RIGHT_SELECT = 'right.gradeSum'
 
@@ -52,6 +52,15 @@ async function handleRoomStateChange(updatedFields, doc) {
     case ROOM_STATE.IS_PK:
       this.initTipNumber()
       this.setData({ 'roomInfo.state': state })
+      this.playBgm()
+      break
+    case ROOM_STATE.IS_USER_LEAVE:
+      this.selectComponent('#errorMessage').show('对方逃离, 提前结束对战...', 2000, () => {
+        this.setData({ 'roomInfo.state': ROOM_STATE.IS_FINISH }, () => {
+          this.bgm && this.bgm.pause()
+          this.selectComponent('#combatFinish').calcResultData()
+        })
+      })
       break
   }
 }
@@ -78,10 +87,12 @@ async function handleOptionSelection(updatedFields, doc) {
       await sleep(1200)
       if (listLength !== index + 1) { // 题目还没结束，切换下一题
         // TODO: NPC自动选择下一题初始化
-        this.selectComponent('#combatComponent').init()
-        this.setData({ listIndex: index + 1 })
+        this.setData({ listIndex: index + 1 }, () => {
+          this.selectComponent('#combatComponent').init()
+        })
       } else {
         this.setData({ 'roomInfo.state': ROOM_STATE.IS_FINISH }, () => {
+          this.bgm && this.bgm.pause()
           this.selectComponent('#combatFinish').calcResultData()
         })
       }
@@ -91,7 +102,7 @@ async function handleOptionSelection(updatedFields, doc) {
 
 const watchMap = new Map()
 watchMap.set('initRoomInfo', initRoomInfo)
-watchMap.set(`update.${ROOM_STATE_READY}`, handleRoomStateChange)
+watchMap.set(`update.${ROOM_STATE_SERVER}`, handleRoomStateChange)
 watchMap.set(`update.${LEFT_SELECT}`, handleOptionSelection)
 watchMap.set(`update.${RIGHT_SELECT}`, handleOptionSelection)
 

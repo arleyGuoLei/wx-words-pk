@@ -3,6 +3,9 @@ import { userModel, roomModel } from './../../model/index'
 import { handleWatch } from './watcher'
 import { ROOM_STATE } from '../../model/room'
 import router from '../../utils/router'
+import log from './../../utils/log'
+import { getBgmState, setBgmState } from '../../utils/setting'
+const BGM_URL = 'http://img02.tuke88.com/newpreview_music/09/01/72/5c8a08dc4956424741.mp3'
 
 Page({
   data: {
@@ -13,12 +16,14 @@ Page({
     left: {},
     right: {},
     tipNumber: 0,
-    nextRoomId: ''
+    nextRoomId: '',
+    bgmState: null
   },
 
   onLoad(options) {
     const { roomId } = options
     this.init(roomId)
+    this.initBgm()
   },
   async init(roomId) {
     $.loading('获取房间信息...')
@@ -37,20 +42,25 @@ Page({
     this.messageListener = await roomModel.model.doc(roomId).watch({
       onChange: handleWatch.bind(this),
       onError: e => {
-
+        log.error(e)
+        this.selectComponent('#errorMessage').show('服务器连接异常...', 2000, () => { router.reLaunch() })
       }
     })
   },
   onShow() {
-
+    const { data: { roomInfo: { state = '' }, bgmState } } = this
+    if (state === ROOM_STATE.IS_PK && bgmState) {
+      this.bgm.play()
+    }
   },
   onHide() {
 
   },
   async onUnload() {
+    this.messageListener && this.messageListener.close()
     const { data: { roomInfo: { state = '', roomId = '', isHouseOwner } } } = this
     if (state === ROOM_STATE.IS_READY && !isHouseOwner) { await roomModel.userCancelReady(roomId) } // 用户已经准备则取消准备
-    this.messageListener && this.messageListener.close()
+    if (state === ROOM_STATE.IS_PK) { roomModel.leave(roomId) }
   },
   onShareAppMessage({ from }) {
     const { data: { roomInfo: { isHouseOwner, state, roomId, bookName } } } = this
@@ -72,6 +82,29 @@ Page({
     }
   },
   onBack() { router.toHome() },
+  initBgm() {
+    this.bgm = wx.createInnerAudioContext()
+    this.bgm.loop = true
+    this.bgm.autoplay = false
+    this.bgm.src = BGM_URL
+  },
+  onBgmChange(e) {
+    const { action = 'start' } = e.currentTarget.dataset
+    if (action === 'start') {
+      this.bgm.play()
+      this.setData({ bgmState: true })
+      setBgmState(true)
+    } else if (action === 'pause') {
+      this.bgm.pause()
+      this.setData({ bgmState: false })
+      setBgmState(false)
+    }
+  },
+  playBgm() {
+    const state = getBgmState()
+    if (state) { this.bgm && this.bgm.play() }
+    this.setData({ bgmState: state })
+  },
   /**
    * 对战开始的时候初始化tipNumber数目
    */

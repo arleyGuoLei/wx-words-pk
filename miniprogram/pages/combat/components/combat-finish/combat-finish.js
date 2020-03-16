@@ -43,6 +43,9 @@ Component({
     }
   },
   methods: {
+    onWaitRoom: throttle(function() {
+      this.selectComponent('#errorMessage').show('请等待对方创房')
+    }, 1000),
     onCreateRoom: throttle(function() {
       // TODO:IS_NPC的处理
       const { properties: { roomId, isHouseOwner } } = this

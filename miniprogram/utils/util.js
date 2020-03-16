@@ -66,6 +66,11 @@ export function playAudio(src) {
   })
 }
 
+export function playPronunciation(word) {
+  const src = `https://dict.youdao.com/dictvoice?audio=${word}`
+  playAudio(src)
+}
+
 export function px2Rpx(px) {
   const windowWidth = $.store.get('windowWidth') // windowWidth * x = 750
   return Math.round((750 / windowWidth) * px)

@@ -4,8 +4,8 @@
     <text wx:if="{{(roomInfo.state==='OK'||roomInfo.state==='READY')}}" class="header-title">{{roomInfo.bookName}} ({{roomInfo.listLength}}词/局)</text>
     <text wx:elif="{{roomInfo.state==='PK'}}" class="header-title">{{roomInfo.bookDesc}} 『 <text class="list-index">{{listIndex+1}}</text> / {{roomInfo.listLength}} 』</text>
     <text wx:else class="header-title">单词天天斗</text>
-
-    <image class="header-bgm-setting" src="./../../images/combat-bgm-setting.png" />
+    <image bindtap="onBgmChange" hidden="{{!(roomInfo.state==='PK')}}" data-action="pause" wx:if="{{bgmState}}" class="header-bgm-setting" src="./../../images/combat-bgm-open.png" />
+    <image bindtap="onBgmChange" hidden="{{!(roomInfo.state==='PK')}}" data-action="start" wx:else class="header-bgm-setting" src="./../../images/combat-bgm-close.png" />
   </view>
 </header>
 

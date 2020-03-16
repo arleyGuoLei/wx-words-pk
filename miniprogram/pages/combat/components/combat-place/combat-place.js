@@ -1,6 +1,7 @@
-import { throttle, playAudio, px2Rpx } from '../../../../utils/util'
+import { throttle, playAudio, px2Rpx, playPronunciation } from '../../../../utils/util'
 import { roomModel, userModel, userWordModel } from '../../../../model/index'
 import $ from './../../../../utils/Tool'
+import { getPronunciationState } from '../../../../utils/setting'
 const CORRECT_AUDIO = 'audios/correct.mp3'
 const WRONG_AUDIO = 'audios/wrong.mp3'
 const COUNTDOWN_DEFAULT = 10
@@ -149,6 +150,8 @@ Component({
       this.countdownTimer && clearInterval(this.countdownTimer)
       this.countdownTimer = null
       this.countdown()
+      const { properties: { wordObj: { word } } } = this
+      getPronunciationState() && playPronunciation(word)
     },
     getScore() {
       const score = Math.floor((10700 - (Date.now() - this._startTime)) / 100)

@@ -1,7 +1,7 @@
 <view class="finish-wrap" style="top:{{top}}rpx;">
-  <image wx:if="{{!resultData.selfWin}}" class="result-img" mode="widthFix"
+  <image wx:if="{{!resultData.selfWin}}" class="result-img" style="height: 136rpx;"
     src="./../../../../images/combat-finish-fail.png" />
-  <image wx:else class="result-img" mode="widthFix" src="./../../../../images/combat-finish-win.png" />
+  <image wx:else class="result-img" style="height: 157rpx;" src="./../../../../images/combat-finish-win.png" />
   <view class="result-bar">
     <view class="result-left">
       <text class="result-left__grade">{{resultData.left.gradeSum}}</text>
@@ -28,7 +28,7 @@
 
   <button wx:if="{{isHouseOwner || nextRoomId!==''}}" hover-class="btn-hover" class="btn bg-theme shadow-lg result-btn"
     catchtap="onCreateRoom">再来一局</button>
-  <button wx:else hover-class="btn-hover" class="btn bg-theme shadow-lg result-btn" style="background: #d7dae1;"
+  <button wx:else class="btn bg-theme shadow-lg result-btn" style="background: #d7dae1;"
     catchtap="onWaitRoom">等待好友创房</button>
   <button hover-class="btn-hover" class="btn bg-theme shadow-lg result-btn" open-type="share">分享到群聊</button>
   <view class="result-tip">
@@ -36,3 +36,5 @@
     <text class="result-tip__text">分享可获得提示卡*1</text>
   </view>
 </view>
+
+<message id="errorMessage" />

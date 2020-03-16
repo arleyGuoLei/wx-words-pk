@@ -60,10 +60,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 1,
 					"name": "对战测试",
 					"pathName": "pages/combat/combat",
-					"query": "roomId=1584346943339_0.40080673470790096_33558657",
+					"query": "roomId=1584354396612_0.47469749754151347_33598429",
 					"scene": null
 				}
 			]

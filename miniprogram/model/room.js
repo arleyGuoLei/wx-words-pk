@@ -118,6 +118,17 @@ class RoomModel extends Base {
       }
     })
   }
+
+  leave(roomId) {
+    return this.model.where({
+      _id: roomId,
+      state: ROOM_STATE.IS_PK
+    }).update({
+      data: {
+        state: ROOM_STATE.IS_USER_LEAVE
+      }
+    })
+  }
 }
 
 export default new RoomModel()

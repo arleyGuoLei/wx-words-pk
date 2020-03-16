@@ -20,7 +20,7 @@
 }
 
 .result-img {
-  width: 160rpx;
+  width: 157rpx;
   display: block;
   margin: 0 auto;
 }
