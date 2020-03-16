@@ -1,3 +1,5 @@
+import $ from './Tool'
+
 export function throttle(fn, gapTime = 500) {
   let _lastTime = null
   return function() {
@@ -52,4 +54,24 @@ export const formatList = (list, len) => {
 
 export function sleep(time = 2000) {
   return new Promise((resolve) => { setTimeout(() => { resolve() }, time) })
+}
+
+export function playAudio(src) {
+  const innerAudioContext = wx.createInnerAudioContext()
+  innerAudioContext.autoplay = true
+  innerAudioContext.src = src
+  innerAudioContext.onError((res) => {
+    console.log(res.errMsg)
+    console.log(res.errCode)
+  })
+}
+
+export function px2Rpx(px) {
+  const windowWidth = $.store.get('windowWidth') // windowWidth * x = 750
+  return Math.round((750 / windowWidth) * px)
+}
+
+export function rpx2Px(rpx) {
+  const windowWidth = $.store.get('windowWidth')
+  return Math.round((rpx / 750) * windowWidth)
 }

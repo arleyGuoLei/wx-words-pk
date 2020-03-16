@@ -1,5 +1,14 @@
 @import './miniprogram_npm/wxapp-animate/animate.wxss';
 
+page {
+  --theme-color: #7ECEF7;
+}
+
+.bg-theme {
+  background-color: var(--theme-color);
+  color: #ffffff;
+}
+
 @keyframes rotate {
   from {
     transform-origin: center;

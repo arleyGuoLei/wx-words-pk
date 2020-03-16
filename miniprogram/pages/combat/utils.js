@@ -29,7 +29,7 @@ export function roomStateHandle(state) {
 
 export function centerUserInfoHandle(userInfo) {
   const { data: { users } } = this
-  const { avatarUrl, gender, nickName, grade, winNumber, pvpNumber } = userInfo
+  const { avatarUrl, gender, nickName, grade, winNumber, pvpNumber, tipNumber = 0 } = userInfo
   if (users.length === 0) {
     const newInfo = []
     newInfo.push({
@@ -37,7 +37,8 @@ export function centerUserInfoHandle(userInfo) {
       gender,
       nickName,
       grade,
-      winRate: pvpNumber === 0 ? 0 : ((winNumber / pvpNumber) * 100).toFixed(2)
+      winRate: pvpNumber === 0 ? 0 : ((winNumber / pvpNumber) * 100).toFixed(2),
+      tipNumber
     })
     return newInfo
   } else if (users.length === 1) {
@@ -47,7 +48,8 @@ export function centerUserInfoHandle(userInfo) {
       gender,
       nickName,
       grade,
-      winRate: pvpNumber === 0 ? 0 : ((winNumber / pvpNumber) * 100).toFixed(2)
+      winRate: pvpNumber === 0 ? 0 : ((winNumber / pvpNumber) * 100).toFixed(2),
+      tipNumber
     })
     return newInfo
   } else if (users.length === 2) {

@@ -11,7 +11,9 @@ Page({
     wordList: [],
     listIndex: 0,
     left: {},
-    right: {}
+    right: {},
+    tipNumber: 0,
+    nextRoomId: ''
   },
 
   onLoad(options) {
@@ -59,12 +61,31 @@ Page({
         imageUrl: './../../images/share-pk-bg.png'
       }
     }
-
+    if (from === 'button' && state === ROOM_STATE.IS_FINISH && !this._shared) {
+      userModel.changeTipNumber(1)
+      this._shared = true
+    }
     return {
       title: `❤ 来一起学习吧，轻松掌握【四六级/考研】必考单词 ~ 👏👏`,
       path: `/pages/home/home`,
       imageUrl: './../../images/share-default-bg.png'
     }
   },
-  onBack() { router.toHome() }
+  onBack() { router.toHome() },
+  /**
+   * 对战开始的时候初始化tipNumber数目
+   */
+  initTipNumber() {
+    const { data: { roomInfo: { isHouseOwner }, users } } = this
+    const index = isHouseOwner ? 0 : 1
+    if (typeof users[index] !== 'undefined') {
+      this.setData({ tipNumber: users[index].tipNumber })
+    } else {
+      this.setData({ tipNumber: 0 })
+    }
+  },
+  useTip() {
+    const { data: { tipNumber } } = this
+    this.setData({ tipNumber: tipNumber - 1 })
+  }
 })

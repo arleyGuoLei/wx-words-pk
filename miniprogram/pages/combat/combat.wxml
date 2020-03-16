@@ -21,11 +21,19 @@
   listIndex="{{listIndex}}" wordObj="{{wordList[listIndex]}}"
   roomId="{{roomInfo.roomId}}" isHouseOwner="{{roomInfo.isHouseOwner}}"
   left="{{left}}" right="{{right}}"
+  listLength="{{roomInfo.listLength}}" tipNumber="{{tipNumber}}"
+  bind:useTip="useTip"
 />
 
-<image wx:if="{{roomInfo.isFriend}}"  class="combat-pk-bg" src="./../../images/combat-pk.png" />
+<combat-finish wx:if="{{roomInfo.state==='FINISH'}}" id="combatFinish"
+  roomId="{{roomInfo.roomId}}"  wordList="{{wordList}}" isHouseOwner="{{roomInfo.isHouseOwner}}"
+  left="{{left}}" right="{{right}}" nextRoomId="{{nextRoomId}}"
+/>
+
+<image wx:if="{{roomInfo.isFriend&&roomInfo.state!=='FINISH'}}"  class="combat-pk-bg" src="./../../images/combat-pk.png" />
 
 <combat-setting wx:if="{{(roomInfo.state==='OK'||roomInfo.state==='READY')}}"></combat-setting>
 
 <loading id="loading"/>
 <message id="errorMessage" />
+

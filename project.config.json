@@ -50,20 +50,20 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": -1,
 			"list": [
 				{
 					"id": 0,
 					"name": "pages/combat/combat",
 					"pathName": "pages/combat/combat",
-					"query": "roomId=1584158993309_0.12813357688815352_33586365",
+					"query": "roomId=1584267234936_0.9635153034150079_33597445",
 					"scene": null
 				},
 				{
-					"id": 1,
-					"name": "好友对战-受邀请用户",
+					"id": -1,
+					"name": "对战测试",
 					"pathName": "pages/combat/combat",
-					"query": "roomId=1584159036710_0.972962260665178_16804142",
+					"query": "roomId=1584346943339_0.40080673470790096_33558657",
 					"scene": null
 				}
 			]

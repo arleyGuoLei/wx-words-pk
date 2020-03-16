@@ -55,6 +55,38 @@ class UserModel extends Base {
   updateInfo({ avatarUrl, nickName, gender, country, province, city }) {
     return this.model.where({ _openid: '{openid}' }).update({ data: { avatarUrl, nickName, gender, country, province, city } })
   }
+
+  /**
+   * 改变用户的提示卡数量
+   * @param {Number} number 数量，可正可负
+   */
+  changeTipNumber(number) {
+    const num = number < 5 ? number : 1 // 最多一次性增加5个tipNumber
+    return this.model.where({
+      _openid: '{openid}'
+    }).update({
+      data: {
+        tipNumber: this._.inc(num)
+      }
+    })
+  }
+
+  finishCombat(obj) {
+    const { grade, winNumber, answerTrue, listSum } = obj
+    return this.model
+      .where({
+        _openid: '{openid}'
+      })
+      .update({
+        data: {
+          answerSum: this._.inc(listSum),
+          answerTrue: this._.inc(answerTrue),
+          grade: this._.inc(grade),
+          pvpNumber: this._.inc(1),
+          winNumber: this._.inc(winNumber)
+        }
+      })
+  }
 }
 
 export default new UserModel()

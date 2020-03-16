@@ -50,6 +50,7 @@ async function handleRoomStateChange(updatedFields, doc) {
       }
       break
     case ROOM_STATE.IS_PK:
+      this.initTipNumber()
       this.setData({ 'roomInfo.state': state })
       break
   }
@@ -61,6 +62,7 @@ async function handleOptionSelection(updatedFields, doc) {
     left,
     right
   }, async () => {
+    this.selectComponent('#combatComponent').getProcessGrade()
     const re = /^(left|right)\.grades\.(\d+)\.index$/ // left.grades.1.index
     let updateIndex = -1
     for (const key of Object.keys(updatedFields)) {
@@ -79,7 +81,9 @@ async function handleOptionSelection(updatedFields, doc) {
         this.selectComponent('#combatComponent').init()
         this.setData({ listIndex: index + 1 })
       } else {
-        // TODO: 结束游戏
+        this.setData({ 'roomInfo.state': ROOM_STATE.IS_FINISH }, () => {
+          this.selectComponent('#combatFinish').calcResultData()
+        })
       }
     }
   })

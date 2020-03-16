@@ -104,6 +104,20 @@ class RoomModel extends Base {
       }
     })
   }
+
+  /**
+   * 结束房间的对战
+   */
+  finish(roomId) {
+    return this.model.where({
+      _id: roomId,
+      state: ROOM_STATE.IS_PK
+    }).update({
+      data: {
+        state: ROOM_STATE.IS_FINISH
+      }
+    })
+  }
 }
 
 export default new RoomModel()

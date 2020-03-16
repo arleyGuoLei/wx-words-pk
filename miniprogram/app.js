@@ -2,9 +2,10 @@ App({
   initUiGlobal() {
     wx.getSystemInfo({
       success: e => {
-        const { statusBarHeight: StatusBar, screenHeight } = e
+        const { statusBarHeight: StatusBar, screenHeight, windowWidth } = e
         this.store.StatusBar = StatusBar
         this.store.screenHeight = screenHeight
+        this.store.windowWidth = windowWidth
         const capsule = wx.getMenuButtonBoundingClientRect()
         if (capsule) {
           this.store.Custom = capsule
@@ -33,6 +34,7 @@ App({
     Custom: null,
     CustomBar: null,
     screenHeight: null,
+    windowWidth: null,
     env: ''
   }
 })
