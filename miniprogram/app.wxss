@@ -21,6 +21,24 @@ page {
   }
 }
 
+@keyframes rotate-reverse {
+  from {
+    transform-origin: center;
+    transform: rotate(0);
+  }
+
+  to {
+    transform-origin: center;
+    transform: rotate(-360deg);
+  }
+}
+
+.rotate-reverse {
+  animation-name: rotate-reverse;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
 .rotate {
   animation-name: rotate;
   animation-iteration-count: infinite;

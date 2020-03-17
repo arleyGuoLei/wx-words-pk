@@ -41,8 +41,20 @@ Page({
   /**
    * 随机匹配
    */
-  onRandomMatch() {
-
+  async onRandomMatch() {
+    try {
+      $.loading('查找房间...')
+      const { data: { userInfo: { bookDesc } } } = this
+      const { data } = await roomModel.searchRoom(bookDesc)
+      if (data.length === 0) {
+        throw new Error('没有满足条件的房间')
+      }
+      const roomId = data[0]._id
+      $.hideLoading()
+      router.push('combat', { roomId })
+    } catch (error) {
+      this.createCombatRoom(false)
+    }
   },
   /**
    * 获取页面服务端数据

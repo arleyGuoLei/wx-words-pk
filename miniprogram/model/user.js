@@ -87,6 +87,17 @@ class UserModel extends Base {
         }
       })
   }
+
+  getNPCUser() {
+    return this.model.aggregate()
+      .match({
+        _openid: this._.neq($.store.get('openid')),
+        nickName: this._.neq(''),
+        avatarUrl: this._.neq('')
+      })
+      .sample({ size: 1 })
+      .end()
+  }
 }
 
 export default new UserModel()

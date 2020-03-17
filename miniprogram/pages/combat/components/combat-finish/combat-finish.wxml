@@ -1,4 +1,4 @@
-<view class="finish-wrap" style="top:{{top}}rpx;">
+<view class="finish-wrap" style="top:{{top}}rpx;" hidden="{{!resultData}}">
   <image wx:if="{{!resultData.selfWin}}" class="result-img" style="height: 136rpx;"
     src="./../../../../images/combat-finish-fail.png" />
   <image wx:else class="result-img" style="height: 157rpx;" src="./../../../../images/combat-finish-win.png" />
@@ -29,7 +29,7 @@
   <button wx:if="{{isHouseOwner || nextRoomId!==''}}" hover-class="btn-hover" class="btn bg-theme shadow-lg result-btn"
     catchtap="onCreateRoom">再来一局</button>
   <button wx:else class="btn bg-theme shadow-lg result-btn" style="background: #d7dae1;"
-    catchtap="onWaitRoom">等待好友创房</button>
+    catchtap="onWaitRoom">等待对方创房</button>
   <button hover-class="btn-hover" class="btn bg-theme shadow-lg result-btn" open-type="share">分享到群聊</button>
   <view class="result-tip">
     <image class="result-tip__icon" src="./../../../../images/combat-tip.png" />

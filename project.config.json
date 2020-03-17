@@ -51,22 +51,7 @@
 		},
 		"miniprogram": {
 			"current": -1,
-			"list": [
-				{
-					"id": 0,
-					"name": "pages/combat/combat",
-					"pathName": "pages/combat/combat",
-					"query": "roomId=1584267234936_0.9635153034150079_33597445",
-					"scene": null
-				},
-				{
-					"id": 1,
-					"name": "对战测试",
-					"pathName": "pages/combat/combat",
-					"query": "roomId=1584354396612_0.47469749754151347_33598429",
-					"scene": null
-				}
-			]
+			"list": []
 		}
 	}
 }

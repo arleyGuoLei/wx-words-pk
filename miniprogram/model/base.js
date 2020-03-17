@@ -15,4 +15,12 @@ export default class {
   get date() {
     return wx.cloud.database({ env: this.env }).serverDate()
   }
+
+  /**
+   * 取服务器偏移量后的时间
+   * @param {Number} offset 时间偏移，单位为ms 可+可-
+   */
+  serverDate(offset = 0) {
+    return wx.cloud.database({ env: this.env }).serverDate({ offset })
+  }
 }

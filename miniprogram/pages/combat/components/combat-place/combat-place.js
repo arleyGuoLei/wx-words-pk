@@ -5,6 +5,8 @@ import { getPronunciationState } from '../../../../utils/setting'
 const CORRECT_AUDIO = 'audios/correct.mp3'
 const WRONG_AUDIO = 'audios/wrong.mp3'
 const COUNTDOWN_DEFAULT = 10
+const WRONG_CUT_SCORE = -10 // 选择错误扣的分数
+
 Component({
   options: {
     addGlobalClass: true
@@ -33,6 +35,10 @@ Component({
     },
     tipNumber: {
       type: Number
+    },
+    isNpcCombat: {
+      type: Boolean,
+      value: false
     }
   },
   data: {
@@ -57,12 +63,26 @@ Component({
       this.init(false)
       wx.vibrateLong()
       this.initCountdownTop()
+      this.playWordPronunciation()
     },
     detached() {
       this.countdownTimer && clearInterval(this.countdownTimer)
     }
   },
   methods: {
+    npcSelect: throttle(async function() {
+      if (!this._npcSelect) {
+        this._npcTimer && clearTimeout(this._npcTimer)
+        this._npcTimer = null
+        const { properties: { roomId, listIndex, wordObj: { correctIndex } } } = this
+        const index = (Math.random() > 0.85) ? (3 - correctIndex) : correctIndex // 8x%的概率正确, 其他选择错误答案(3-correctIndex)
+        const cutScore = Math.floor(Math.random() * 5) // 随机减掉0~5的分数
+        const baseScore = this.getScore()
+        const score = index === correctIndex ? (baseScore > 10 ? (baseScore - cutScore) : baseScore) : WRONG_CUT_SCORE
+        const { stats: { updated = 0 } } = await await roomModel.selectOption(roomId, index, score, listIndex, false)
+        if (updated === 1) { this._npcSelect = true }
+      }
+    }, 1200),
     initCountdownTop() {
       const headerHeight = px2Rpx($.store.get('CustomBar'))
       this.setData({ countdownTop: headerHeight + 46 })
@@ -150,24 +170,23 @@ Component({
       this.countdownTimer && clearInterval(this.countdownTimer)
       this.countdownTimer = null
       this.countdown()
+    },
+    playWordPronunciation() {
       const { properties: { wordObj: { word } } } = this
       getPronunciationState() && playPronunciation(word)
     },
     getScore() {
-      const score = Math.floor((10700 - (Date.now() - this._startTime)) / 100)
-      if (typeof score === 'number') {
-        if (score >= 100) { return 100 }
-        if (score <= 0) { return 0 }
-        return score
-      }
-      return 0
+      const score = Math.floor(((COUNTDOWN_DEFAULT * 1000 + 1000) - (Date.now() - this._startTime)) / 100)
+      if (score >= 100) { return 100 }
+      if (score <= 1) { return 1 }
+      return score
     },
     onSelectOption: throttle(async function(e) {
       if (!this._isSelected) {
         const { currentTarget: { dataset: { index, byTip = false } } } = e
         this.setData({ showAnswer: true, selectIndex: index })
-        const { properties: { roomId, isHouseOwner, listIndex, wordObj: { correctIndex, wordId } } } = this
-        let score = -10
+        const { properties: { roomId, isHouseOwner, listIndex, isNpcCombat, wordObj: { correctIndex, wordId } } } = this
+        let score = WRONG_CUT_SCORE
         const key = isHouseOwner ? 'leftResult' : 'rightResult' // 用于显示选项上的√或×
         if (correctIndex === index) {
           playAudio(CORRECT_AUDIO)
@@ -188,6 +207,7 @@ Component({
         if (updated === 1) { this._isSelected = true } else {
           this.setData({ showAnswer: false, selectIndex: -1 })
         }
+        isNpcCombat && this.npcSelect()
       } else {
         wx.showToast({
           title: '此题已选, 不要点击太快哦',

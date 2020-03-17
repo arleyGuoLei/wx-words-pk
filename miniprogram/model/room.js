@@ -19,14 +19,14 @@ class RoomModel extends Base {
     super(collectionName)
   }
 
-  userReady(roomId, isNPC = false) {
+  userReady(roomId, isNPC = false, openid = $.store.get('openid')) {
     return this.model.where({
       _id: roomId,
       'right.openid': '',
       state: ROOM_STATE.IS_OK
     }).update({
       data: {
-        right: { openid: $.store.get('openid') },
+        right: { openid },
         state: ROOM_STATE.IS_READY,
         isNPC
       }
@@ -126,6 +126,46 @@ class RoomModel extends Base {
     }).update({
       data: {
         state: ROOM_STATE.IS_USER_LEAVE
+      }
+    })
+  }
+
+  remove(roomId) {
+    return this.model.where({
+      _id: roomId,
+      _openid: '{openid}',
+      state: ROOM_STATE.IS_OK
+    }).remove()
+  }
+
+  /**
+   * 搜索随机匹配房间
+   * 2mins之内创建的房间
+   */
+  searchRoom(bookDesc) {
+    return this.model.where({
+      bookDesc,
+      isFriend: false,
+      'right.openid': '',
+      'left.openid': this._.neq($.store.get('openid')),
+      state: ROOM_STATE.IS_OK,
+      createTime: this._.gt(this.serverDate(-2 * 60 * 1000)) // 创建时间要>2分钟之前
+    }).limit(1).field({ _id: true }).get()
+  }
+
+  /**
+   * 再来一局
+   * @param {String} roomId 当前房间id
+   * @param {String} nextRoomId 下一局房间的id
+   */
+  updateNextRoomId(roomId, nextRoomId) {
+    return this.model.where({
+      _id: roomId,
+      state: ROOM_STATE.IS_FINISH,
+      nextRoomId: ''
+    }).update({
+      data: {
+        nextRoomId
       }
     })
   }

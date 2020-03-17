@@ -6,7 +6,7 @@ import router from './../../utils/router'
  * @param {String} state 房间状态
  */
 export function roomStateHandle(state) {
-  return true // TODO: debug pk
+  // return true // TODO: debug pk
   let errText = ''
   switch (state) {
     case ROOM_STATE.IS_OK:
@@ -29,7 +29,7 @@ export function roomStateHandle(state) {
 
 export function centerUserInfoHandle(userInfo) {
   const { data: { users } } = this
-  const { avatarUrl, gender, nickName, grade, winNumber, pvpNumber, tipNumber = 0 } = userInfo
+  const { avatarUrl, gender, nickName, grade, winNumber, pvpNumber, tipNumber = 0, bookDesc, bookId, bookName } = userInfo
   if (users.length === 0) {
     const newInfo = []
     newInfo.push({
@@ -38,7 +38,10 @@ export function centerUserInfoHandle(userInfo) {
       nickName,
       grade,
       winRate: pvpNumber === 0 ? 0 : ((winNumber / pvpNumber) * 100).toFixed(2),
-      tipNumber
+      tipNumber,
+      bookDesc,
+      bookId,
+      bookName
     })
     return newInfo
   } else if (users.length === 1) {
@@ -49,7 +52,10 @@ export function centerUserInfoHandle(userInfo) {
       nickName,
       grade,
       winRate: pvpNumber === 0 ? 0 : ((winNumber / pvpNumber) * 100).toFixed(2),
-      tipNumber
+      tipNumber,
+      bookDesc,
+      bookId,
+      bookName
     })
     return newInfo
   } else if (users.length === 2) {

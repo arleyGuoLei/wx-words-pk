@@ -1,6 +1,8 @@
-import { throttle, px2Rpx } from '../../../../utils/util'
-import { roomModel, userModel } from '../../../../model/index'
+import { throttle, px2Rpx, formatList } from '../../../../utils/util'
+import { roomModel, userModel, wordModel } from '../../../../model/index'
 import $ from './../../../../utils/Tool'
+import { getCombatSubjectNumber, SUBJECT_HAS_OPTIONS_NUMBER } from '../../../../utils/setting'
+import router from '../../../../utils/router'
 
 const resultObjTemplate = { // 对战结束后的对战模板
   grade: 0, // 词力值增加量
@@ -31,11 +33,18 @@ Component({
     },
     nextRoomId: {
       type: String
+    },
+    isNpcCombat: {
+      type: Boolean,
+      value: false
+    },
+    houseOwnerInfo: {
+      type: Object
     }
   },
   data: {
     top: 0,
-    resultData: {}
+    resultData: null
   },
   lifetimes: {
     attached() {
@@ -46,11 +55,23 @@ Component({
     onWaitRoom: throttle(function() {
       this.selectComponent('#errorMessage').show('请等待对方创房')
     }, 1000),
-    onCreateRoom: throttle(function() {
-      // TODO:IS_NPC的处理
-      const { properties: { roomId, isHouseOwner } } = this
+    onCreateRoom: throttle(async function() {
+      const { properties: { roomId, isHouseOwner, isNpcCombat, nextRoomId } } = this
       if (isHouseOwner) {
-
+        $.loading('生成随机词汇中...')
+        const { properties: { houseOwnerInfo: { bookId, bookDesc, bookName } } } = this
+        const number = getCombatSubjectNumber()
+        const { list: randomList } = await wordModel.getRandomWords(bookId, number * SUBJECT_HAS_OPTIONS_NUMBER)
+        const wordList = formatList(randomList, SUBJECT_HAS_OPTIONS_NUMBER)
+        $.loading('创建房间中...')
+        const nextRoomId = await roomModel.create(wordList, !isNpcCombat, bookDesc, bookName)
+        await roomModel.updateNextRoomId(roomId, nextRoomId)
+        $.hideLoading()
+        router.redirectTo('combat', { roomId: nextRoomId })
+      } else {
+        if (nextRoomId !== '') {
+          router.redirectTo('combat', { roomId: nextRoomId })
+        }
       }
     }, 1000),
     initTop() {

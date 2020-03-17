@@ -14,20 +14,24 @@
   <friend-pk-buttons roomState="{{roomInfo.state}}" isHouseOwner="{{roomInfo.isHouseOwner}}" roomId="{{roomInfo.roomId}}" />
 </block>
 
+<random-matching wx:if="{{!roomInfo.isFriend&&(roomInfo.state==='OK'||roomInfo.state==='READY')}}"
+  roomState="{{roomInfo.state}}" roomId="{{roomInfo.roomId}}"/>
+
 <header-userInfo wx:if="{{roomInfo.state==='PK' || roomInfo.state==='FINISH' || roomInfo.state==='LEAVE'}}" users="{{users}}" />
 
 <combat-place wx:if="{{roomInfo.state==='PK'}}" 
   id="combatComponent"
   listIndex="{{listIndex}}" wordObj="{{wordList[listIndex]}}"
   roomId="{{roomInfo.roomId}}" isHouseOwner="{{roomInfo.isHouseOwner}}"
-  left="{{left}}" right="{{right}}"
+  left="{{left}}" right="{{right}}" isNpcCombat="{{roomInfo.isNPC}}"
   listLength="{{roomInfo.listLength}}" tipNumber="{{tipNumber}}"
   bind:useTip="useTip"
 />
 
 <combat-finish wx:if="{{roomInfo.state==='FINISH'}}" id="combatFinish"
   roomId="{{roomInfo.roomId}}"  wordList="{{wordList}}" isHouseOwner="{{roomInfo.isHouseOwner}}"
-  left="{{left}}" right="{{right}}" nextRoomId="{{nextRoomId}}"
+  left="{{left}}" right="{{right}}" nextRoomId="{{nextRoomId}}" isNpcCombat="{{roomInfo.isNPC}}"
+  houseOwnerInfo="{{users[0]}}"
 />
 
 <image wx:if="{{roomInfo.isFriend&&roomInfo.state!=='FINISH'}}"  class="combat-pk-bg" src="./../../images/combat-pk.png" />
