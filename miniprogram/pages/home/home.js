@@ -81,7 +81,7 @@ Page({
     const { data: { userInfo: { bookId: oldBookId } } } = this
     if (oldBookId !== bookId) {
       $.loading('正在改变单词书...')
-      const bookList = await bookModel.changeBook(bookId, oldBookId)
+      const bookList = await bookModel.changeBook(bookId, oldBookId, name, desc)
       this.setData({
         'userInfo.bookId': bookId,
         'userInfo.bookName': name,

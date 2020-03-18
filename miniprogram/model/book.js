@@ -15,9 +15,9 @@ class BookModel extends Base {
     return data
   }
 
-  async changeBook(bookId, oldBookId) {
+  async changeBook(bookId, oldBookId, bookName, bookDesc) {
     if (bookId !== oldBookId) {
-      const { result: bookList } = await $.callCloud('model_book_changeBook', { bookId, oldBookId })
+      const { result: bookList } = await $.callCloud('model_book_changeBook', { bookId, oldBookId, bookName, bookDesc })
       return bookList
     }
   }

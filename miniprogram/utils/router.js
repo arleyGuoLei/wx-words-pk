@@ -1,6 +1,7 @@
 const pages = {
   home: '/pages/home/home',
-  combat: '/pages/combat/combat'
+  combat: '/pages/combat/combat',
+  wordChallenge: '/pages/wordChallenge/wordChallenge'
 }
 
 function to(page, data) {

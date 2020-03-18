@@ -98,6 +98,28 @@ class UserModel extends Base {
       .sample({ size: 1 })
       .end()
   }
+
+  /**
+   * 获取分数在词汇挑战中的排名
+   */
+  async getWordChallengeRankByScore(score) {
+    const { total: number } = await this.model.where({ infinityGrade: this._.gte(score) }).count()
+    return number + 1
+  }
+
+  updateWordChallengeScore(score) {
+    return this.model
+      .where({
+        _openid: '{openid}',
+        infinityGrade: this._.lt(score)
+      })
+      .update({
+        data: {
+          infinityGrade: score,
+          grade: this._.inc(Math.floor(score / 100))
+        }
+      })
+  }
 }
 
 export default new UserModel()

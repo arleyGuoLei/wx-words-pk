@@ -1,5 +1,6 @@
 import { userModel } from './../../../../model/index'
 import { throttle } from './../../../../utils/util'
+import router from '../../../../utils/router'
 Component({
   options: {
     addGlobalClass: true
@@ -22,6 +23,9 @@ Component({
       } else {
         this.selectComponent('#authFailMessage').show()
       }
+    }, 1000),
+    onChallengeWord: throttle(async function() {
+      router.push('wordChallenge')
     }, 1000)
   }
 })

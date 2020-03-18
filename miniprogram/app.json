@@ -1,7 +1,8 @@
 {
   "pages": [
     "pages/home/home",
-    "pages/combat/combat"
+    "pages/combat/combat",
+    "pages/wordChallenge/wordChallenge"
   ],
   "window": {
     "backgroundColor": "#FFFFFF",
