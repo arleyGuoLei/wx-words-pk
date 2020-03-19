@@ -3,7 +3,8 @@ const pages = {
   combat: '/pages/combat/combat',
   wordChallenge: '/pages/wordChallenge/wordChallenge',
   userWords: '/pages/userWords/userWords',
-  ranking: '/pages/ranking/ranking'
+  ranking: '/pages/ranking/ranking',
+  setting: '/pages/setting/setting'
 }
 
 function to(page, data) {

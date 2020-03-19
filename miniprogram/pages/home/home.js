@@ -107,5 +107,8 @@ Page({
       path: `/pages/home/home`,
       imageUrl: './../../images/share-default-bg.png'
     }
+  },
+  onToSetting() {
+    router.push('setting')
   }
 })

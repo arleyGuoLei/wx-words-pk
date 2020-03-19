@@ -18,7 +18,7 @@ App({
   },
   initEnv() {
     const envVersion = __wxConfig.envVersion
-    const env = envVersion === 'develop' ? 'dev-lkupx' : 'dev-lkupx' // 'prod-words-pk' // ['develop', 'trial', 'release']
+    const env = envVersion === 'develop' ? 'dev-lkupx' : 'prod-words-pk' // 'prod-words-pk' // ['develop', 'trial', 'release']
     wx.cloud.init({
       env,
       traceUser: true

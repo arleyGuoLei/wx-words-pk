@@ -1,0 +1,56 @@
+<header>
+  <view slot="content" class="header">
+    <image src="./../../images/combat-back.png" class="back" catchtap="onTapBack"/>
+    <text class="title">偏好设置</text>
+  </view>
+</header>
+
+<view class="card shadow-lg">
+  <view class="card-item" catchtap="onSelect" data-type="combatSubjectNumber">
+    <button class="card-item__title" hover-class="none">单局对战单词数目</button>
+    <text class="card-item__desc">{{combatSubjectNumber}}</text>
+    <image class="card-item__icon" src="./../../images/setting-right.png" />
+  </view>
+  <view class="card-item" catchtap="onSelect" data-type="bgmState">
+    <button class="card-item__title" hover-class="none">游戏背景音乐</button>
+    <text class="card-item__desc">{{bgmState}}</text>
+    <image class="card-item__icon" src="./../../images/setting-right.png" />
+  </view>
+  <view class="card-item" catchtap="onSelect" data-type="pronunciationState">
+    <button class="card-item__title" hover-class="none">默认播放单词发音</button>
+    <text class="card-item__desc">{{pronunciationState}}</text>
+    <image class="card-item__icon" src="./../../images/setting-right.png" />
+  </view>
+  <view class="card-item" catchtap="onSelect" data-type="isAddUserWords">
+    <button class="card-item__title" hover-class="none">加入错词到错题本</button>
+    <text class="card-item__desc">{{isAddUserWords}}</text>
+    <image class="card-item__icon" src="./../../images/setting-right.png" />
+  </view>
+</view>
+
+<view class="card shadow-lg">
+  <view class="card-item" catchtap="onClearUserWords">
+    <button class="card-item__title" hover-class="none">清空生词本数据</button>
+  </view>
+</view>
+
+<view class="card shadow-lg">
+  <view class="card-item" catchtap="onSelectCombatNumber">
+    <button open-type='feedback' class="card-item__title" hover-class="none">建议反馈/提交BUG</button>
+  </view>
+  <view class="card-item" catchtap="onSelectCombatNumber">
+    <button catchtap="onZan" class="card-item__title" hover-class="none">请作者吃 🍭🍭🍭</button>
+  </view>
+</view>
+
+<view class="card shadow-lg">
+  <text class="card-title">作者的其他作品, 欢迎体验 ~</text>
+  <view class="card-item" catchtap="onSelectCombatNumber">
+    <button catchtap="onTo1password" class="card-item__title" hover-class="none">有本密码 (记密码必备)</button>
+  </view>
+  <view class="card-item" catchtap="onSelectCombatNumber">
+    <button catchtap="onToxiaJueDing" class="card-item__title" hover-class="none">下决定 (转盘作弊模式, 了解一下)</button>
+  </view>
+</view>
+
+<loading id="loading"/>

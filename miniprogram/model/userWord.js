@@ -28,6 +28,10 @@ class UserWordModel extends Base {
       wordId
     }).remove()
   }
+
+  deleteAll() {
+    return $.callCloud('model_userWords_clear')
+  }
 }
 
 export default new UserWordModel()

@@ -74,7 +74,7 @@ Page({
       }
     }
     if (from === 'button' && state === ROOM_STATE.IS_FINISH && !this._shared) {
-      userModel.changeTipNumber(1)
+      userModel.changeTipNumber(5)
       this._shared = true
     }
     return {

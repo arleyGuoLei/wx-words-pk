@@ -33,7 +33,7 @@
   <button hover-class="btn-hover" class="btn bg-theme shadow-lg result-btn" open-type="share">分享到群聊</button>
   <view class="result-tip">
     <image class="result-tip__icon" src="./../../../../images/combat-tip.png" />
-    <text class="result-tip__text">分享可获得提示卡*1</text>
+    <text class="result-tip__text">分享可获得提示卡*5</text>
   </view>
 </view>
 

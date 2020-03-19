@@ -3,7 +3,7 @@
 <image class="bg" src="../../images/home-bg.jpg" />
 
 <image class="home-sun rotate time-36s" src="./../../images/home-sun.png" />
-<image class="home-setting touch" src="./../../images/home-setting.png" />
+<image class="home-setting touch" catchtap="onToSetting" src="./../../images/home-setting.png" />
 
 <userinfo grade="{{userInfo.grade}}" pvpNumber="{{userInfo.pvpNumber}}" winNumber="{{userInfo.winNumber}}" />
 
