@@ -21,6 +21,13 @@ class UserWordModel extends Base {
       })
     }
   }
+
+  delete(wordId) {
+    return this.model.where({
+      _openid: '{openid}',
+      wordId
+    }).remove()
+  }
 }
 
 export default new UserWordModel()

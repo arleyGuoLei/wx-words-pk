@@ -1,7 +1,9 @@
 const pages = {
   home: '/pages/home/home',
   combat: '/pages/combat/combat',
-  wordChallenge: '/pages/wordChallenge/wordChallenge'
+  wordChallenge: '/pages/wordChallenge/wordChallenge',
+  userWords: '/pages/userWords/userWords',
+  ranking: '/pages/ranking/ranking'
 }
 
 function to(page, data) {

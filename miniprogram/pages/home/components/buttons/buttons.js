@@ -26,6 +26,9 @@ Component({
     }, 1000),
     onChallengeWord: throttle(async function() {
       router.push('wordChallenge')
+    }, 1000),
+    onToUserWords: throttle(function() {
+      router.push('userWords')
     }, 1000)
   }
 })

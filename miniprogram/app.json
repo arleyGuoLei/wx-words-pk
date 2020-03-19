@@ -2,7 +2,9 @@
   "pages": [
     "pages/home/home",
     "pages/combat/combat",
-    "pages/wordChallenge/wordChallenge"
+    "pages/wordChallenge/wordChallenge",
+    "pages/ranking/ranking",
+    "pages/userWords/userWords"
   ],
   "window": {
     "backgroundColor": "#FFFFFF",

@@ -1,5 +1,5 @@
 <view class="footer">
-  <button class="footer-item" hover-class="btn-hover" style="width:144rpx;">
+  <button class="footer-item" catchtap="onToRanking" hover-class="btn-hover" style="width:144rpx;">
     <image class="footer-icon" src="./../../../../images/home-rank.png" />
     <text class="footer-text">排行榜</text>
   </button>

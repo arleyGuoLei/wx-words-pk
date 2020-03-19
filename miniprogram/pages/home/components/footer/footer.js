@@ -1,3 +1,5 @@
+import router from '../../../../utils/router'
+
 Component({
   methods: {
     onZan() {
@@ -6,6 +8,9 @@ Component({
         path: 'pages/apps/largess/detail?id=k%2BiHXlLOuLA%3D',
         extraData: {}
       })
+    },
+    onToRanking() {
+      router.push('ranking')
     }
   }
 })

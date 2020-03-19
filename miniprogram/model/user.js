@@ -120,6 +120,38 @@ class UserModel extends Base {
         }
       })
   }
+
+  async getGradeRank() {
+    const { data: list } = await this.model.where({
+      avatarUrl: this._.neq('')
+    }).orderBy('grade', 'desc').limit(20).field({
+      avatarUrl: true,
+      nickName: true,
+      grade: true
+    }).get()
+    let myInfo = {}
+    const { data: userinfo } = await this.getUserInfo($.store.get('openid'))
+    const data = userinfo[0]
+    const { total: number } = await this.model.where({ grade: this._.gte(data.grade) }).count()
+    myInfo = { ...data, number }
+    return { list, myInfo }
+  }
+
+  async getWordChallengeRank() {
+    const { data: list } = await this.model.where({
+      avatarUrl: this._.neq('')
+    }).orderBy('infinityGrade', 'desc').limit(20).field({
+      avatarUrl: true,
+      nickName: true,
+      infinityGrade: true
+    }).get()
+    let myInfo = {}
+    const { data: userinfo } = await this.getUserInfo($.store.get('openid'))
+    const data = userinfo[0]
+    const { total: number } = await this.model.where({ infinityGrade: this._.gte(data.infinityGrade) }).count()
+    myInfo = { ...data, number, grade: data.infinityGrade }
+    return { list: list.map(item => { return { ...item, grade: item.infinityGrade } }), myInfo }
+  }
 }
 
 export default new UserModel()

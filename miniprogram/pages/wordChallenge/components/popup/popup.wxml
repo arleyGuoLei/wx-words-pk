@@ -14,5 +14,5 @@
       <text class="show-message-desc" wx:if="{{type==='again'}}">继续学习，挑战自我和运气 ~</text>
     </view>
   </view>
-  <image class="message-close touch" src="./../../../../images/combat-back.png" catchtap="onHome"/>
+  <image class="message-close touch" src="./../../../../images/message-close.png" catchtap="onHome"/>
 </view>

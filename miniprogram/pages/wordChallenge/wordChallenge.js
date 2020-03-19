@@ -148,7 +148,7 @@ Page({
       this.setData({ [key]: 'wrong', [selectIndex]: index, gameOpportunity: gameOpportunity - 1 }, async () => {
         const rank = await userModel.getWordChallengeRankByScore(score)
         this.setData({ rank })
-        if (gameOpportunity === 0) { userModel.updateWordChallengeScore(score) }
+        userModel.updateWordChallengeScore(score)
       })
       getIsAddUserWords() && userWordModel.insert(wordList[listIndex].wordId)
       await sleep(700)
