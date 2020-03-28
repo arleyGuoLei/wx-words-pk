@@ -101,6 +101,13 @@ Page({
       extraData: {}
     })
   },
+  onToMiao() {
+    wx.navigateToMiniProgram({
+      appId: 'wxdc2965647d28ea5c',
+      path: 'pages/home/home',
+      extraData: {}
+    })
+  },
   onTapBack() {
     router.toHome()
   }

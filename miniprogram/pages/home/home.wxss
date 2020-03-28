@@ -80,3 +80,10 @@ page {
     right: -90rpx;
   }
 }
+
+.ad-wrap {
+  width: 600rpx;
+  min-width: 340px;
+  margin: 24rpx auto 0 auto;
+  max-width: 100%;
+}

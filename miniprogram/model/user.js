@@ -16,7 +16,12 @@ const doc = {
   bookName: '随机所有词汇', // 选择的书的具体书名，用于游戏对战
   country: '',
   province: '',
-  city: ''
+  city: '',
+  signDate: '0000-00',
+  todayPvpNumber: 0,
+  todayWinNumber: 0,
+  signSumNumber: 0,
+  lastSignDate: '0000-00'
 }
 
 /**

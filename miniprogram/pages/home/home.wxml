@@ -15,6 +15,10 @@
 
 <footer />
 
+<view class="ad-wrap" hidden="{{!signHide}}">
+  <ad unit-id="adunit-d7b89a99b53393c5" ad-type="grid" grid-opacity="0.8" grid-count="5" ad-theme="white"></ad>
+</view>
+
 <home-add-tips />
 
 <loading id="loading"/>

@@ -51,6 +51,9 @@
   <view class="card-item" catchtap="onSelectCombatNumber">
     <button catchtap="onToxiaJueDing" class="card-item__title" hover-class="none">下决定 (转盘作弊模式, 了解一下)</button>
   </view>
+  <view class="card-item" catchtap="onSelectCombatNumber">
+    <button catchtap="onToMiao" class="card-item__title" hover-class="none">大学喵题库 (网课搜题助手)</button>
+  </view>
 </view>
 
 <loading id="loading"/>
