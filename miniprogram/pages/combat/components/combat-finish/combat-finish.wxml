@@ -27,13 +27,22 @@
   </scroll-view>
 
   <button wx:if="{{isHouseOwner || nextRoomId!==''}}" hover-class="btn-hover" class="btn bg-theme shadow-lg result-btn"
-    catchtap="onCreateRoom">再来一局</button>
+    catchtap="onCreateRoom">
+    <image hidden="{{!videoAdState || !isHouseOwner}}" class="result-btn__icon" src="./../../../../images/combat-video-ad.png" />
+    <text>再来一局</text>
+  </button>
   <button wx:else class="btn bg-theme shadow-lg result-btn" style="background: #d7dae1;"
     catchtap="onWaitRoom">等待对方创房</button>
   <button hover-class="btn-hover" class="btn bg-theme shadow-lg result-btn" open-type="share">分享到群聊</button>
   <view class="result-tip">
     <image class="result-tip__icon" src="./../../../../images/combat-tip.png" />
-    <text class="result-tip__text">分享可获得提示卡*5</text>
+    <text class="result-tip__text">分享可获得提示卡 * 5</text>
+  </view>
+  <view class="result-tip">
+    <text class="result-tip__text">房主浏览AD可快速再来一局</text>
+  </view>
+  <view class="ad-wrap" hidden="{{!adState}}">
+    <ad unit-id="adunit-0bd99b605fea039d" ad-type="grid" grid-opacity="0.8" grid-count="5" ad-theme="white"></ad>
   </view>
 </view>
 

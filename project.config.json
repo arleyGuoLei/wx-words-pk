@@ -63,6 +63,27 @@
 					"id": -1,
 					"name": "pages/ranking/ranking",
 					"pathName": "pages/ranking/ranking",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/setting/setting",
+					"pathName": "pages/setting/setting",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/userWords/userWords",
+					"pathName": "pages/userWords/userWords",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/ranking/ranking",
+					"pathName": "pages/ranking/ranking",
 					"scene": null
 				}
 			]

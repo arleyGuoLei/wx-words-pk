@@ -17,6 +17,7 @@
 
 <message id="message">
   <view slot="content">
-      <text style="color:#FF9C37;">提示卡</text><text>可在对战时给你提示单词释义哦！ 对战结束分享对战结果至群， 可以获得更多提示卡~ 感谢伙伴们支持~</text>
+    <text style="color:#FF9C37;">提示卡</text><text>可在对战时给你提示单词释义哦！ 对战结束分享对战结果至群， 可以获得更多提示卡~ 感谢伙伴们支持~</text>
+    <text hidden="{{!videoAdState}}" catchtap="onCreateVideoAd" class="touch-s" style="color:#FF9C37;font-size: 24rpx;margin-top:24rpx;display:block;">点我浏览15s AD，获取20提示卡~</text>
   </view>
 </message>

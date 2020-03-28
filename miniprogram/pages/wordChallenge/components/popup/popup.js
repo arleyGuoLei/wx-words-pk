@@ -1,4 +1,5 @@
 import router from '../../../../utils/router'
+import $ from './../../../../utils/Tool'
 
 Component({
   options: {
@@ -13,7 +14,8 @@ Component({
   },
   data: {
     show: false,
-    type: 'share'
+    type: 'share',
+    adState: $.store.get('adState')
   },
   methods: {
     hide() { this.setData({ show: false, type: '' }) },
@@ -21,6 +23,9 @@ Component({
       this.setData({ show: true, type })
     },
     onHome() { router.toHome() },
-    onAgain() { this.triggerEvent('onAgain') }
+    onAgain() { this.triggerEvent('onAgain') },
+    onShowVideoAd() {
+      this.triggerEvent('onShowVideoAd')
+    }
   }
 })

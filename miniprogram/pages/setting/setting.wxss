@@ -87,3 +87,10 @@ page {
   height: 32rpx;
   margin-left: 24rpx;
 }
+
+.ad-wrap {
+  width: 700rpx;
+  min-width: 340px;
+  margin: 24rpx auto;
+  max-width: 100%;
+}

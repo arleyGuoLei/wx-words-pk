@@ -29,6 +29,9 @@ Component({
     isHouseOwner: {
       type: Boolean
     },
+    videoAdState: {
+      type: Boolean
+    },
     left: {
       type: Object
     },
@@ -54,7 +57,8 @@ Component({
   },
   data: {
     top: 0,
-    resultData: null
+    resultData: null,
+    adState: $.store.get('adState')
   },
   lifetimes: {
     attached() {
@@ -65,7 +69,15 @@ Component({
     onWaitRoom: throttle(function() {
       this.selectComponent('#errorMessage').show('请等待对方创房')
     }, 1000),
-    onCreateRoom: throttle(async function() {
+    onCreateRoom: throttle(function() {
+      const { properties: { videoAdState, isHouseOwner } } = this
+      if (videoAdState && isHouseOwner) {
+        this.triggerEvent('onShowVideoAd')
+      } else {
+        this.giveReward()
+      }
+    }, 1000),
+    async giveReward() {
       const { properties: { roomId, isHouseOwner, isNpcCombat, nextRoomId } } = this
       if (isHouseOwner) {
         $.loading('生成随机词汇中...')
@@ -83,7 +95,7 @@ Component({
           router.redirectTo('combat', { roomId: nextRoomId })
         }
       }
-    }, 1000),
+    },
     initTop() {
       const headerHeight = px2Rpx($.store.get('CustomBar'))
       this.setData({ top: headerHeight + 28 })

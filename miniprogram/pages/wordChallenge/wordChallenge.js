@@ -3,6 +3,7 @@ import { wordModel, userWordModel, userModel } from './../../model/index'
 import { SUBJECT_HAS_OPTIONS_NUMBER, getPronunciationState, getIsAddUserWords, setBgmState, getBgmState } from '../../utils/setting'
 import { formatList, throttle, playAudio, sleep, playPronunciation } from '../../utils/util'
 import router from '../../utils/router'
+import { initVideoAd, destroyVideoAd, onShowVideoAd } from '../../utils/ad'
 
 const CORRECT_AUDIO = 'audios/correct.mp3'
 const WRONG_AUDIO = 'audios/wrong.mp3'
@@ -10,12 +11,14 @@ const COUNTDOWN_DEFAULT = 30
 const BGM_URL = 'http://img02.tuke88.com/newpreview_music/09/01/72/5c8a08dc4956424741.mp3'
 
 const opportunity = {
-  1: 'share',
+  2: 'share',
+  1: 'ad',
   0: 'again'
 }
 
 Page({
   data: {
+    adState: $.store.get('adState'),
     bookDesc: '',
     countdown: COUNTDOWN_DEFAULT,
     score: 0,
@@ -25,7 +28,8 @@ Page({
     rank: '...',
     gameOpportunity: 0,
     tipNumber: 0,
-    bgmState: null
+    bgmState: null,
+    videoAdState: true
   },
   async onLoad() {
     $.loading('加载中...')
@@ -37,11 +41,14 @@ Page({
     $.hideLoading()
     this.initWord()
     this.initBgm()
+
+    initVideoAd.call(this, 'wordChallenge', this.giveReward.bind(this))
   },
   onUnload() {
     this.countdownTimer && clearInterval(this.countdownTimer)
     this.countdownTimer = null
     this.bgm && this.bgm.destroy()
+    destroyVideoAd.call(this)
   },
   initBgm() {
     this.bgm = wx.createInnerAudioContext()
@@ -195,5 +202,21 @@ Page({
       imageUrl: './../../images/share-default-bg.png'
     }
   },
-  onBack() { router.toHome() }
+  onBack() { router.toHome() },
+  onShowVideoAd() {
+    const { data: { videoAdState } } = this
+    if (videoAdState) {
+      onShowVideoAd.call(this)
+    } else {
+      this.giveReward()
+    }
+  },
+  giveReward() {
+    const { data: { listIndex } } = this
+    this.selectComponent('#popup').hide()
+    this.playBtnAnimation()
+    this.setData({ listIndex: listIndex + 1 }, () => {
+      this.initWord()
+    })
+  }
 })

@@ -138,3 +138,16 @@ page {
   font-size: 34rpx;
   font-weight: 500;
 }
+
+.ad-wrap {
+  width: 710rpx;
+  min-width: 340px;
+  margin: 20rpx auto 0 auto;
+  max-width: 100%;
+}
+
+.ad-wrap__banner {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}

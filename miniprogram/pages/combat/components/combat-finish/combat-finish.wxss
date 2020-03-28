@@ -113,3 +113,16 @@
   font-size: 28rpx;
   color:rgba(66,66,66,1);
 }
+
+.result-btn__icon {
+  width: 36rpx;
+  height: 34rpx;
+  margin-right: 28rpx;
+}
+
+.ad-wrap {
+  width: 710rpx;
+  min-width: 340px;
+  margin: 36rpx auto;
+  max-width: 100%;
+}

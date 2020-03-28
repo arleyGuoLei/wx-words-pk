@@ -5,10 +5,12 @@ import { ROOM_STATE } from '../../model/room'
 import router from '../../utils/router'
 import log from './../../utils/log'
 import { getBgmState, setBgmState } from '../../utils/setting'
+import { onShowVideoAd, initVideoAd, destroyVideoAd } from '../../utils/ad'
 const BGM_URL = 'http://img02.tuke88.com/newpreview_music/09/01/72/5c8a08dc4956424741.mp3'
 
 Page({
   data: {
+    adState: $.store.get('adState'),
     users: [],
     roomInfo: {},
     wordList: [],
@@ -17,13 +19,16 @@ Page({
     right: {},
     tipNumber: 0,
     nextRoomId: '',
-    bgmState: null
+    bgmState: null,
+    videoAdState: true
   },
 
   onLoad(options) {
     const { roomId } = options
     this.init(roomId)
     this.initBgm()
+
+    initVideoAd.call(this, 'combat', this.giveReward.bind(this))
   },
   async init(roomId) {
     $.loading('获取房间信息...')
@@ -63,6 +68,7 @@ Page({
     if (state === ROOM_STATE.IS_PK) { roomModel.leave(roomId) }
     if (!isFriend && isHouseOwner && state === ROOM_STATE.IS_OK) { await roomModel.remove(roomId) } // 随机匹配房主创建好房，还没开始对战的时候离开, 删除没有意义的房间
     this.bgm && this.bgm.destroy()
+    destroyVideoAd.call(this)
   },
   onShareAppMessage({ from }) {
     const { data: { roomInfo: { isHouseOwner, state, roomId, bookName } } } = this
@@ -122,5 +128,11 @@ Page({
   useTip() {
     const { data: { tipNumber } } = this
     this.setData({ tipNumber: tipNumber - 1 })
+  },
+  onShowVideoAd() {
+    onShowVideoAd.call(this)
+  },
+  giveReward() {
+    this.selectComponent('#combatFinish').giveReward()
   }
 })

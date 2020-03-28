@@ -26,6 +26,11 @@
     <text class="card-item__desc">{{isAddUserWords}}</text>
     <image class="card-item__icon" src="./../../images/setting-right.png" />
   </view>
+  <view hidden="{{!videoAdState}}" class="card-item" catchtap="onSelect" data-type="adState">
+    <button class="card-item__title" hover-class="none">图文/弹窗广告状态</button>
+    <text class="card-item__desc">{{adState}}</text>
+    <image class="card-item__icon" src="./../../images/setting-right.png" />
+  </view>
 </view>
 
 <view class="card shadow-lg">
@@ -54,6 +59,10 @@
   <view class="card-item" catchtap="onSelectCombatNumber">
     <button catchtap="onToMiao" class="card-item__title" hover-class="none">大学喵题库 (网课搜题助手)</button>
   </view>
+</view>
+
+<view class="ad-wrap" hidden="{{!appAdState}}">
+  <ad unit-id="adunit-1357458e993dd997" ad-type="grid" grid-opacity="0.8" grid-count="5" ad-theme="white"></ad>
 </view>
 
 <loading id="loading"/>

@@ -3,16 +3,19 @@ import { userModel, bookModel, wordModel, roomModel } from './../../model/index'
 import { getCombatSubjectNumber, SUBJECT_HAS_OPTIONS_NUMBER } from '../../utils/setting'
 import { formatList } from '../../utils/util'
 import router from './../../utils/router'
+import { destroyVideoAd, initVideoAd, onShowVideoAd } from '../../utils/ad'
 
 Page({
   data: {
+    adState: $.store.get('adState'),
     userInfo: {},
     bookList: [],
     signHide: false,
     signPosition: {
       x: 0,
       y: 0
-    }
+    },
+    videoAdState: true
   },
   /**
    * 好友对战或随机匹配没有房间的时候，创建单词PK房间
@@ -105,6 +108,7 @@ Page({
   },
   async onLoad() {
     await this.getData()
+    initVideoAd.call(this, 'home', this.giveReward.bind(this))
     setTimeout(() => {
       this.setData({
         signHide: true
@@ -144,6 +148,22 @@ Page({
         })
       }, 1000)
     }
+  },
+  onUnload() {
+    destroyVideoAd.call(this)
+  },
+  onShowVideoAd() {
+    onShowVideoAd.call(this)
+  },
+  giveReward() {
+    const { data: { userInfo: { tipNumber } } } = this
+    userModel.changeTipNumber(20).then(() => {
+      this.setData({ 'userInfo.tipNumber': tipNumber + 20 })
+      wx.showToast({
+        title: '送你了20提示卡了哦 ~',
+        icon: 'none',
+        duration: 2000
+      })
+    })
   }
-
 })

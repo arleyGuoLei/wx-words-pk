@@ -17,6 +17,9 @@
   lower-threshold="100"
 >
 <block wx:for="{{wordsList}}" wx:key="index" wx:for-index="index" wx:for-item="userWord">
+  <view class="ad-wrap" wx:if="{{index === 7}}" hidden="{{!adState}}">
+    <ad unit-id="adunit-a2142a604e06fd6f" ad-type="grid" grid-opacity="0.8" grid-count="5" ad-theme="white"></ad>
+  </view>
   <view class="item" data-index="{{index}}" catchlongpress="longpress" catchtap="onTapLine">
     <view class="item-left">
       <view class="item-left__word">
@@ -39,6 +42,10 @@
 <view hidden="{{(wordsList.length!==0 || size===0)}}" class="blank">
   <image class="blank-img" src="./../../images/message-logo.png" />
   <text class="blank-text">还没有生词需要复习哦</text>
+</view>
+
+<view wx:if="{{wordsList.length===0 && size!==0}}" class="ad-wrap__banner" hidden="{{!adState}}">
+  <ad unit-id="adunit-f7b879434344684e"></ad>
 </view>
 
 <message id="errorMessage" />

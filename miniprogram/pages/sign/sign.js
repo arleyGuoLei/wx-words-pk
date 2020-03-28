@@ -8,6 +8,7 @@ const nowYearMonth = dateFormat('YYYY-mm')
 
 Page({
   data: {
+    adState: $.store.get('adState'),
     todayDate: date,
     SIGN_WIN_NUMBER,
     SIGN_PVP_NUMBER,

@@ -1,4 +1,5 @@
 import $ from './Tool'
+import log from './log'
 
 export function throttle(fn, gapTime = 500) {
   let _lastTime = null

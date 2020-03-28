@@ -6,6 +6,7 @@ import { userWordModel } from '../../model/index'
 
 Page({
   data: {
+    adState: $.store.get('adState'),
     listHeight: $.store.get('screenHeight') - $.store.get('CustomBar'),
     wordsList: [],
     refresh: false,

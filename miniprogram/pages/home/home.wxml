@@ -7,7 +7,7 @@
 
 <userinfo grade="{{userInfo.grade}}" pvpNumber="{{userInfo.pvpNumber}}" winNumber="{{userInfo.winNumber}}" />
 
-<bar tipNumber="{{userInfo.tipNumber}}" bookList="{{bookList}}" bookDesc="{{userInfo.bookDesc}}" bind:onSelectBook="onSelectBook" bind:onTip="onTip" />
+<bar tipNumber="{{userInfo.tipNumber}}" bookList="{{bookList}}" bookDesc="{{userInfo.bookDesc}}" bind:onSelectBook="onSelectBook" bind:onTip="onTip" bind:onCreateVideoAd="onShowVideoAd" videoAdState="videoAdState" />
 
 <book-select id="book-select" bookList="{{bookList}}" bind:onChangeBook="onChangeBook" />
 
@@ -15,7 +15,7 @@
 
 <footer />
 
-<view class="ad-wrap" hidden="{{!signHide}}">
+<view class="ad-wrap" hidden="{{!signHide || !adState}}">
   <ad unit-id="adunit-d7b89a99b53393c5" ad-type="grid" grid-opacity="0.8" grid-count="5" ad-theme="white"></ad>
 </view>
 

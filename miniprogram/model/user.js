@@ -66,7 +66,7 @@ class UserModel extends Base {
    * @param {Number} number 数量，可正可负
    */
   changeTipNumber(number) {
-    const num = number < 5 ? number : 1 // 最多一次性增加5个tipNumber
+    const num = number <= 20 ? number : 1 // 最多一次性增加20个tipNumber
     return this.model.where({
       _openid: '{openid}'
     }).update({

@@ -39,4 +39,4 @@
 
 <loading id="loading"/>
 
-<popup id="popup" rank="{{rank}}" bind:onAgain="onAgain" />
+<popup id="popup" rank="{{rank}}" bind:onAgain="onAgain" bind:onShowVideoAd="onShowVideoAd" />

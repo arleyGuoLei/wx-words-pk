@@ -1,8 +1,8 @@
 page {
   position: relative;
-  height: 100vh;
   overflow-y: scroll;
   overflow-x: hidden;
+  min-height: 100vh;
 }
 
 .bg {

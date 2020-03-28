@@ -5,6 +5,7 @@ import { userModel } from '../../model/index'
 
 Page({
   data: {
+    adState: $.store.get('adState'),
     listHeight: $.store.get('screenHeight') - $.store.get('CustomBar') - 62,
     rankingList: [],
     myInfo: {},
@@ -14,6 +15,25 @@ Page({
     const obj = { currentTarget: { dataset: { index: String(index) } } }
     this.tapRanking(obj)
   },
+  initAD() {
+    if (this.data.adState) {
+      this.interstitialAd = wx.createInterstitialAd({
+        adUnitId: 'adunit-35fd41be3220f36f'
+      })
+      this.interstitialAd.onLoad(() => {})
+      this.interstitialAd.onError((err) => {})
+      this.interstitialAd.onClose(() => {})
+    }
+  },
+  showAD() {
+    if (this.data.adState && this.interstitialAd && !this.AD_SHOWED) {
+      this.interstitialAd.show().then(() => {
+        this.AD_SHOWED = true
+      }).catch((err) => {
+        console.error(err)
+      })
+    }
+  },
   tapRanking(e) {
     const { currentTarget: { dataset: { index } } } = e
     const { data: { activeIndex } } = this
@@ -21,6 +41,7 @@ Page({
       this.setData({ activeIndex: index })
       if (index === '1') {
         this.getWordChallengeRank()
+        this.showAD()
       } else if (index === '0') {
         this.getGradeRank()
       } else if (index === '2') {
@@ -47,6 +68,7 @@ Page({
       const { list, myInfo } = res
       this.setData({ rankingList: list, myInfo })
       $.hideLoading()
+      this.initAD()
     } catch (error) {
       log.error(error)
       this.selectComponent('#errorMessage').show('获取失败, 请重试...', 2000, () => { router.toHome() })
