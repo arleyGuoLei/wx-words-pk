@@ -4,7 +4,8 @@ const pages = {
   wordChallenge: '/pages/wordChallenge/wordChallenge',
   userWords: '/pages/userWords/userWords',
   ranking: '/pages/ranking/ranking',
-  setting: '/pages/setting/setting'
+  setting: '/pages/setting/setting',
+  sign: '/pages/sign/sign'
 }
 
 function to(page, data) {

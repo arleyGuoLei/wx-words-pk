@@ -72,7 +72,7 @@ class UserModel extends Base {
   }
 
   finishCombat(obj) {
-    const { grade, winNumber, answerTrue, listSum } = obj
+    const { grade, winNumber, answerTrue, listSum, signDate, todayPvpNumber, todayWinNumber, signSumNumber, lastSignDate } = obj
     return this.model
       .where({
         _openid: '{openid}'
@@ -83,7 +83,12 @@ class UserModel extends Base {
           answerTrue: this._.inc(answerTrue),
           grade: this._.inc(grade),
           pvpNumber: this._.inc(1),
-          winNumber: this._.inc(winNumber)
+          winNumber: this._.inc(winNumber),
+          signDate,
+          todayPvpNumber,
+          todayWinNumber,
+          signSumNumber,
+          lastSignDate
         }
       })
   }
@@ -151,6 +156,30 @@ class UserModel extends Base {
     const { total: number } = await this.model.where({ infinityGrade: this._.gte(data.infinityGrade) }).count()
     myInfo = { ...data, number, grade: data.infinityGrade }
     return { list: list.map(item => { return { ...item, grade: item.infinityGrade } }), myInfo }
+  }
+
+  async getSignRank() {
+    const { data: list } = await this.model.where({
+      avatarUrl: this._.neq(''),
+      signSumNumber: this._.gt(0)
+    }).orderBy('signSumNumber', 'desc').limit(20).field({
+      avatarUrl: true,
+      nickName: true,
+      signSumNumber: true
+    }).get()
+    let myInfo = {}
+    const { data: userinfo } = await this.getUserInfo($.store.get('openid'))
+
+    const data = userinfo[0]
+    let number
+    if (data.signSumNumber) {
+      const { total } = await this.model.where({ signSumNumber: this._.gte(data.signSumNumber) }).count()
+      number = total
+    } else {
+      number = '未上榜'
+    }
+    myInfo = { ...data, number, grade: data.signSumNumber || 0 }
+    return { list: list.map(item => { return { ...item, grade: item.signSumNumber || 0 } }), myInfo }
   }
 }
 

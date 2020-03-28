@@ -55,7 +55,7 @@ page {
   font-size: 28rpx;
   color:rgba(153,153,153,1);
   display: inline-block;
-  width: 300rpx;
+  width: 200rpx;
   text-align: center;
 }
 
@@ -67,8 +67,20 @@ page {
   background:rgba(238,238,238,1);
   content: ' ';
   top: 10px;
-  left: 50%;
+  left: 33.3%;
   transform: translateX(-0.5px);
+}
+
+.top-bar::after{
+  position: absolute;
+  display: block;
+  width: 1px;
+  height: 22px;
+  background:rgba(238,238,238,1);
+  content: ' ';
+  top: 10px;
+  right: 33.3%;
+  transform: translateX(0.5px);
 }
 
 .list {

@@ -1,5 +1,6 @@
 import { ROOM_STATE } from '../../model/room'
 import router from './../../utils/router'
+import { dateFormat } from '../../utils/util'
 
 /**
  * 处理初始化监听时候的房间状态
@@ -28,34 +29,32 @@ export function roomStateHandle(state) {
 
 export function centerUserInfoHandle(userInfo) {
   const { data: { users } } = this
-  const { avatarUrl, gender, nickName, grade, winNumber, pvpNumber, tipNumber = 0, bookDesc, bookId, bookName } = userInfo
+  const date = dateFormat('YYYY-mm-dd')
+  const { avatarUrl, gender, nickName, grade, winNumber, pvpNumber, tipNumber = 0, bookDesc, bookId, bookName, signDate = date, todayPvpNumber = 0, todayWinNumber = 0, signSumNumber = 0, lastSignDate = '0000-00' } = userInfo
+
+  const userObj = {
+    avatarUrl,
+    gender,
+    nickName,
+    grade,
+    winRate: pvpNumber === 0 ? 0 : ((winNumber / pvpNumber) * 100).toFixed(2),
+    tipNumber,
+    bookDesc,
+    bookId,
+    bookName,
+    signDate,
+    todayPvpNumber,
+    todayWinNumber,
+    signSumNumber,
+    lastSignDate
+  }
   if (users.length === 0) {
     const newInfo = []
-    newInfo.push({
-      avatarUrl,
-      gender,
-      nickName,
-      grade,
-      winRate: pvpNumber === 0 ? 0 : ((winNumber / pvpNumber) * 100).toFixed(2),
-      tipNumber,
-      bookDesc,
-      bookId,
-      bookName
-    })
+    newInfo.push(userObj)
     return newInfo
   } else if (users.length === 1) {
     const newInfo = [...users]
-    newInfo.push({
-      avatarUrl,
-      gender,
-      nickName,
-      grade,
-      winRate: pvpNumber === 0 ? 0 : ((winNumber / pvpNumber) * 100).toFixed(2),
-      tipNumber,
-      bookDesc,
-      bookId,
-      bookName
-    })
+    newInfo.push(userObj)
     return newInfo
   } else if (users.length === 2) {
     const newInfo = [users[0]]

@@ -8,6 +8,7 @@
 <view class="top-bar">
   <text catchtap="tapRanking" data-index="0" class="{{activeIndex==='0'?'top-bar-active':''}}">词力榜</text>
   <text catchtap="tapRanking" data-index="1" class="{{activeIndex==='1'?'top-bar-active':''}}">挑战榜</text>
+  <text catchtap="tapRanking" data-index="2" class="{{activeIndex==='2'?'top-bar-active':''}}">签到榜</text>
 </view>
 
 <scroll-view scroll-y="{{true}}" wx:if="{{rankingList.length!==0}}" style="height: {{listHeight}}px;" class="list animated fadeIn faster">
@@ -26,7 +27,7 @@
   <view style="height: 108rpx;width: 100%;"></view>
 </scroll-view>
 
-<view class="footer animated fadeIn faster" hidden="{{!myInfo.number}}">
+<view class="footer animated fadeIn faster" hidden="{{!myInfo.number || !myInfo.avatarUrl}}">
   <text class="footer-ranking">{{myInfo.number}}</text>
   <image class="footer-avartar" src="{{myInfo.avatarUrl}}" />
   <text class="footer-nickname">{{myInfo.nickName}}</text>

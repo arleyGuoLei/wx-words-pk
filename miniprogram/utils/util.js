@@ -80,3 +80,30 @@ export function rpx2Px(rpx) {
   const windowWidth = $.store.get('windowWidth')
   return Math.round((rpx / 750) * windowWidth)
 }
+
+export function dateFormat(fmt = 'YYYY-mm-dd HH:MM:SS', date = new Date()) {
+  let ret
+  const opt = {
+    'Y+': date.getFullYear().toString(), // 年
+    'm+': (date.getMonth() + 1).toString(), // 月
+    'd+': date.getDate().toString(), // 日
+    'H+': date.getHours().toString(), // 时
+    'M+': date.getMinutes().toString(), // 分
+    'S+': date.getSeconds().toString() // 秒
+  }
+  for (const k in opt) {
+    ret = new RegExp('(' + k + ')').exec(fmt)
+    if (ret) {
+      fmt = fmt.replace(ret[1], (ret[1].length === 1) ? (opt[k]) : (opt[k].padStart(ret[1].length, '0')))
+    }
+  }
+  return fmt
+}
+
+/**
+ * 获取一个月有多少天
+ */
+export function getMonthDays(year = new Date().getFullYear(), month = new Date().getMonth() + 1) {
+  const day = new Date(year, month, 0)
+  return day.getDate()
+}

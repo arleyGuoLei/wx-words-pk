@@ -61,6 +61,10 @@ page {
   transform: scale(1.1);
 }
 
+.touch-s:active {
+  transform: scale(1.01);
+}
+
 .btn-hover {
   background: rgb(131, 203, 241)!important;
 }

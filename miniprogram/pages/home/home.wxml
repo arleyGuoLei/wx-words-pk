@@ -24,3 +24,9 @@
       <text style="color:#FF9C37;">房间创建失败...</text><text>由于网络或设备原因, 请稍后重试。</text>
   </view>
 </message>
+
+<movable-area class="movable-area">
+  <movable-view x="{{signPosition.x}}" y="{{signPosition.y}}" animation="{{false}}" class="movable-view {{signHide?'hide-sign':''}}" direction="all" inertia="true" friction="8" bindchange="onSignMove" catchtap="onSignTap">
+    <image class="movable-view__img touch-s" src="./../../images/home-sign.png" />
+  </movable-view>
+</movable-area>

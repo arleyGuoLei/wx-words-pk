@@ -8,10 +8,11 @@ Page({
     listHeight: $.store.get('screenHeight') - $.store.get('CustomBar') - 62,
     rankingList: [],
     myInfo: {},
-    activeIndex: '0'
+    activeIndex: '-1'
   },
-  onLoad() {
-    this.getGradeRank()
+  onLoad({ index = 0 }) {
+    const obj = { currentTarget: { dataset: { index: String(index) } } }
+    this.tapRanking(obj)
   },
   tapRanking(e) {
     const { currentTarget: { dataset: { index } } } = e
@@ -20,9 +21,23 @@ Page({
       this.setData({ activeIndex: index })
       if (index === '1') {
         this.getWordChallengeRank()
-      } else {
+      } else if (index === '0') {
         this.getGradeRank()
+      } else if (index === '2') {
+        this.getSignRank()
       }
+    }
+  },
+  async getSignRank() {
+    try {
+      $.loading('加载中...')
+      const res = await userModel.getSignRank()
+      const { list, myInfo } = res
+      this.setData({ rankingList: list, myInfo })
+      $.hideLoading()
+    } catch (error) {
+      log.error(error)
+      this.selectComponent('#errorMessage').show('获取失败, 请重试...', 2000, () => { router.toHome() })
     }
   },
   async getGradeRank() {

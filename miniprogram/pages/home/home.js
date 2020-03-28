@@ -7,7 +7,12 @@ import router from './../../utils/router'
 Page({
   data: {
     userInfo: {},
-    bookList: []
+    bookList: [],
+    signHide: false,
+    signPosition: {
+      x: 0,
+      y: 0
+    }
   },
   /**
    * 好友对战或随机匹配没有房间的时候，创建单词PK房间
@@ -99,7 +104,12 @@ Page({
     wx.stopPullDownRefresh()
   },
   async onLoad() {
-    this.getData()
+    await this.getData()
+    setTimeout(() => {
+      this.setData({
+        signHide: true
+      })
+    }, 1500)
   },
   onShareAppMessage() {
     return {
@@ -110,5 +120,30 @@ Page({
   },
   onToSetting() {
     router.push('setting')
+  },
+  onSignMove(event) {
+    const { detail: { x, y } } = event
+    if (x !== 0 && y !== 0) {
+      this.setData({ signHide: true })
+    }
+  },
+  onSignTap() {
+    if (this.data.signHide) {
+      this.setData({
+        signHide: false,
+        signPosition: {
+          x: 0,
+          y: 0
+        }
+      })
+    } else {
+      router.push('sign')
+      setTimeout(() => {
+        this.setData({
+          signHide: true
+        })
+      }, 1000)
+    }
   }
+
 })

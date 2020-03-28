@@ -1,5 +1,8 @@
 import $ from './Tool'
 
+export const SIGN_WIN_NUMBER = 2 // 签到需要胜利的局数
+export const SIGN_PVP_NUMBER = 5 // 签到需要对战的局数
+
 const DEFAULT_PK_SUBJECT_NUMBER = 10 // 10 // 每局对战的默认词汇数量
 export const PK_SUBJECTS_NUMBER = [8, 10, 12, 15, 20] // 每局对战可选的词汇数目
 export const SUBJECT_HAS_OPTIONS_NUMBER = 4 // 每一个题目有多少个选项
