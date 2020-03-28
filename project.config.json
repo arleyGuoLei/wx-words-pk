@@ -3,16 +3,18 @@
 	"cloudfunctionRoot": "cloudfunctions/",
 	"setting": {
 		"urlCheck": true,
-		"es6": true,
+		"es6": false,
 		"enhance": true,
 		"postcss": true,
 		"preloadBackgroundData": false,
 		"minified": true,
 		"newFeature": true,
 		"coverView": true,
+		"nodeModules": true,
 		"autoAudits": false,
 		"showShadowRootInWxmlPanel": true,
 		"scopeDataCheck": false,
+		"uglifyFileName": false,
 		"checkInvalidKey": true,
 		"checkSiteMap": true,
 		"uploadWithSourceMap": true,
@@ -20,8 +22,7 @@
 			"ignore": [],
 			"disablePlugins": [],
 			"outputPath": ""
-		},
-		"nodeModules": true
+		}
 	},
 	"appid": "wx51a5362ef159dbcd",
 	"projectname": "wx-words-pk",
@@ -51,42 +52,7 @@
 		},
 		"miniprogram": {
 			"current": -1,
-			"list": [
-				{
-					"id": -1,
-					"name": "pages/sign/sign",
-					"pathName": "pages/sign/sign",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/ranking/ranking",
-					"pathName": "pages/ranking/ranking",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/setting/setting",
-					"pathName": "pages/setting/setting",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/userWords/userWords",
-					"pathName": "pages/userWords/userWords",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/ranking/ranking",
-					"pathName": "pages/ranking/ranking",
-					"scene": null
-				}
-			]
+			"list": []
 		}
 	}
 }
