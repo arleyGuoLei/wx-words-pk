@@ -27,7 +27,8 @@ Page({
     const { roomId } = options
     this.init(roomId)
     this.initBgm()
-
+  },
+  onReady() {
     initVideoAd.call(this, 'combat', this.giveReward.bind(this))
   },
   async init(roomId) {

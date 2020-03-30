@@ -10,10 +10,15 @@ const adUnitIds = {
 }
 
 export function destroyVideoAd() {
-  this.videoAd && this.videoAd.offClose()
-  this.videoAd && this.videoAd.offError()
-  this.videoAd && this.videoAd.offLoad()
-  this.videoAd && this.videoAd.destroy()
+  // 开发者工具中，页面销毁，调用下面代码会报错，真机好像没报错，先不销毁了。
+  // if (__wxConfig.platform === 'devtools') { return }
+  // try {
+  //   if (this.videoAd && !this.videoAd._destroyed) {
+  //     this.videoAd.destroy()
+  //   }
+  // } catch (error) {
+  //   console.log(error)
+  // }
 }
 
 export function onShowVideoAd() {

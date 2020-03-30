@@ -31,11 +31,15 @@ export default {
   },
   loading(loadingText = '斗斗加载中···', mask = true) {
     const loading = getLoaingObj()
-    loading.show(loadingText, mask)
+    if (loading) {
+      loading.show(loadingText, mask)
+    }
   },
   hideLoading() {
     const loading = getLoaingObj()
-    loading.hide()
+    if (loading) {
+      loading.hide()
+    }
   },
   callCloud(name, data = {}) {
     return wx.cloud.callFunction({

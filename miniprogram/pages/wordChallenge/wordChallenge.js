@@ -41,7 +41,8 @@ Page({
     $.hideLoading()
     this.initWord()
     this.initBgm()
-
+  },
+  onReady() {
     initVideoAd.call(this, 'wordChallenge', this.giveReward.bind(this))
   },
   onUnload() {

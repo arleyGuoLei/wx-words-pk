@@ -14,6 +14,9 @@ Page({
     videoAdState: true
   },
   onLoad() {
+
+  },
+  onReady() {
     initVideoAd.call(this, 'setting', this.giveReward.bind(this))
   },
   onCombatSubjectNumber(tapIndex) {

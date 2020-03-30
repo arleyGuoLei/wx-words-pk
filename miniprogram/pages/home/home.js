@@ -108,12 +108,14 @@ Page({
   },
   async onLoad() {
     await this.getData()
-    initVideoAd.call(this, 'home', this.giveReward.bind(this))
     setTimeout(() => {
       this.setData({
         signHide: true
       })
     }, 1500)
+  },
+  onReady() {
+    initVideoAd.call(this, 'home', this.giveReward.bind(this))
   },
   onShareAppMessage() {
     return {

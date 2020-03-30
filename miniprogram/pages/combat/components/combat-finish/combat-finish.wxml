@@ -39,7 +39,7 @@
     <text class="result-tip__text">分享可获得提示卡 * 5</text>
   </view>
   <view class="result-tip">
-    <text class="result-tip__text">房主浏览AD可快速再来一局</text>
+    <text class="result-tip__text">[ 浏览15s内ad可快速再来一局 ]</text>
   </view>
   <view class="ad-wrap" hidden="{{!adState}}">
     <ad unit-id="adunit-0bd99b605fea039d" ad-type="grid" grid-opacity="0.8" grid-count="5" ad-theme="white"></ad>
