@@ -94,3 +94,7 @@ page {
   margin: 24rpx auto;
   max-width: 100%;
 }
+
+.shadow-box {
+  box-shadow: 0rpx 4rpx 6rpx 0rpx rgba(28, 42, 56, 0.2);
+}

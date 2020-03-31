@@ -78,6 +78,7 @@ async function handleRoomStateChange(updatedFields, doc) {
         this.setData({ 'roomInfo.state': ROOM_STATE.IS_FINISH }, () => {
           this.bgm && this.bgm.pause()
           this.selectComponent('#combatFinish').calcResultData()
+          this.showAD()
         })
       })
       break
@@ -114,6 +115,7 @@ async function handleOptionSelection(updatedFields, doc) {
         this.setData({ 'roomInfo.state': ROOM_STATE.IS_FINISH }, () => {
           this.bgm && this.bgm.pause()
           this.selectComponent('#combatFinish').calcResultData()
+          this.showAD()
         })
       }
     }

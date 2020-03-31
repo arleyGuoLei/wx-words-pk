@@ -29,9 +29,6 @@ Component({
     isHouseOwner: {
       type: Boolean
     },
-    videoAdState: {
-      type: Boolean
-    },
     left: {
       type: Object
     },
@@ -70,14 +67,9 @@ Component({
       this.selectComponent('#errorMessage').show('请等待对方创房')
     }, 1000),
     onCreateRoom: throttle(function() {
-      const { properties: { videoAdState, isHouseOwner } } = this
-      if (videoAdState && isHouseOwner) {
-        this.triggerEvent('onShowVideoAd')
-      } else {
-        this.giveReward()
-      }
+      this.quickStart()
     }, 1000),
-    async giveReward() {
+    async quickStart() {
       const { properties: { roomId, isHouseOwner, isNpcCombat, nextRoomId } } = this
       if (isHouseOwner) {
         $.loading('生成随机词汇中...')

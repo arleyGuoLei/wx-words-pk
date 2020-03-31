@@ -5,7 +5,7 @@
   </view>
 </header>
 
-<view class="card shadow-lg">
+<view class="card shadow-box">
   <view class="card-item" catchtap="onSelect" data-type="combatSubjectNumber">
     <button class="card-item__title" hover-class="none">单局对战单词数目</button>
     <text class="card-item__desc">{{combatSubjectNumber}}</text>
@@ -33,13 +33,17 @@
   </view>
 </view>
 
-<view class="card shadow-lg">
+<view class="ad-wrap" hidden="{{!appAdState}}">
+  <ad unit-id="adunit-1357458e993dd997" ad-type="grid" grid-opacity="0.8" grid-count="5" ad-theme="white"></ad>
+</view>
+
+<view class="card shadow-box">
   <view class="card-item" catchtap="onClearUserWords">
     <button class="card-item__title" hover-class="none">清空生词本数据</button>
   </view>
 </view>
 
-<view class="card shadow-lg">
+<view class="card shadow-box">
   <view class="card-item" catchtap="onSelectCombatNumber">
     <button open-type='feedback' class="card-item__title" hover-class="none">建议反馈/提交BUG</button>
   </view>
@@ -48,7 +52,7 @@
   </view>
 </view>
 
-<view class="card shadow-lg">
+<view class="card shadow-box">
   <text class="card-title">作者的其他作品, 欢迎体验 ~</text>
   <view class="card-item" catchtap="onSelectCombatNumber">
     <button catchtap="onTo1password" class="card-item__title" hover-class="none">有本密码 (记密码必备)</button>
@@ -62,7 +66,7 @@
 </view>
 
 <view class="ad-wrap" hidden="{{!appAdState}}">
-  <ad unit-id="adunit-1357458e993dd997" ad-type="grid" grid-opacity="0.8" grid-count="5" ad-theme="white"></ad>
+  <ad unit-id="adunit-b358c5f747cb516f"></ad>
 </view>
 
 <loading id="loading"/>

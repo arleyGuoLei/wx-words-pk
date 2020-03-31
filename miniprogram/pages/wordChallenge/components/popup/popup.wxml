@@ -23,5 +23,5 @@
 </view>
 
 <view class="ad-wrap" hidden="{{!adState || !show}}">
-  <ad unit-id="adunit-89a276c079902572" ad-type="grid" grid-opacity="0.8" grid-count="5" ad-theme="white"></ad>
+  <ad unit-id="adunit-92f221fb58eb0957"></ad>
 </view>
