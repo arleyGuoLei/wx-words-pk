@@ -1,23 +1,16 @@
-import { getCombatSubjectNumber, getBgmState, getPronunciationState, getIsAddUserWords, PK_SUBJECTS_NUMBER, setCombatSubjectNumber, setBgmState, setPronunciationState, setIsAddUserWords, getADstate, setADstate } from '../../utils/setting'
+import { getCombatSubjectNumber, getBgmState, getPronunciationState, getIsAddUserWords, PK_SUBJECTS_NUMBER, setCombatSubjectNumber, setBgmState, setPronunciationState, setIsAddUserWords } from '../../utils/setting'
 import $ from './../../utils/Tool'
 import { userWordModel } from '../../model/index'
 import router from '../../utils/router'
-import { initVideoAd, destroyVideoAd, onShowVideoAd } from '../../utils/ad'
 Page({
   data: {
-    appAdState: $.store.get('adState'),
     combatSubjectNumber: getCombatSubjectNumber(),
     bgmState: getBgmState() ? '开启' : '关闭',
     pronunciationState: getPronunciationState() ? '开启' : '关闭',
-    isAddUserWords: getIsAddUserWords() ? '开启' : '关闭',
-    adState: getADstate() ? '开启' : '关闭',
-    videoAdState: true
+    isAddUserWords: getIsAddUserWords() ? '开启' : '关闭'
   },
   onLoad() {
 
-  },
-  onReady() {
-    initVideoAd.call(this, 'setting', this.giveReward.bind(this))
   },
   onCombatSubjectNumber(tapIndex) {
     const value = PK_SUBJECTS_NUMBER[tapIndex]
@@ -39,33 +32,6 @@ Page({
     setIsAddUserWords(check)
     this.setData({ isAddUserWords: check ? '开启' : '关闭' })
   },
-  onAdState(tapIndex) {
-    const check = tapIndex === 0
-    const { data: { adState } } = this
-    const that = this
-    if (!check && adState === '开启') {
-      wx.showModal({
-        title: '提示',
-        content: '观看一个小视频广告即可关闭图文广告，是否关闭?',
-        confirmText: '关闭',
-        success(res) {
-          if (res.confirm) {
-            that.onShowVideoAd()
-          } else if (res.cancel) {
-            wx.showToast({
-              title: '取消关闭',
-              icon: 'none',
-              duration: 2000
-            })
-          }
-        }
-      })
-    }
-    if (check) {
-      setADstate(true)
-      this.setData({ adState: '开启' })
-    }
-  },
   onSelect(e) {
     const { currentTarget: { dataset: { type } } } = e
     const map = new Map()
@@ -73,7 +39,6 @@ Page({
     map.set('bgmState', this.onBgmState)
     map.set('pronunciationState', this.onPronunciationState)
     map.set('isAddUserWords', this.onIsAddUserWords)
-    map.set('adState', this.onAdState)
     let itemList = ['开启', '关闭']
     switch (type) {
       case 'combatSubjectNumber':
@@ -145,20 +110,5 @@ Page({
   },
   onTapBack() {
     router.toHome()
-  },
-  onUnload() {
-    destroyVideoAd.call(this)
-  },
-  onShowVideoAd() {
-    onShowVideoAd.call(this)
-  },
-  giveReward() {
-    setADstate(false)
-    this.setData({ adState: '关闭' })
-    wx.showToast({
-      title: '关闭成功, 重启小程序就没有广告了哦',
-      icon: 'none',
-      duration: 2000
-    })
   }
 })

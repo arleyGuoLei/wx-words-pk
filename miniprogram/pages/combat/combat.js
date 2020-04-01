@@ -43,13 +43,15 @@ Page({
     }
   },
   showAD() {
-    if (this.data.adState && this.interstitialAd && !this.AD_SHOWED) {
-      this.interstitialAd.show().then(() => {
-        this.AD_SHOWED = true
-      }).catch((err) => {
-        console.error(err)
-      })
-    }
+    setTimeout(() => {
+      if (this.data.adState && this.interstitialAd && !this.AD_SHOWED) {
+        this.interstitialAd.show().then(() => {
+          this.AD_SHOWED = true
+        }).catch((err) => {
+          console.error(err)
+        })
+      }
+    }, 800)
   },
   async init(roomId) {
     $.loading('获取房间信息...')

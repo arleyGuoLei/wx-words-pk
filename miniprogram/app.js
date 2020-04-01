@@ -1,5 +1,3 @@
-import { getADstate } from './utils/setting'
-
 App({
   initUiGlobal() {
     wx.getSystemInfo({
@@ -27,11 +25,9 @@ App({
     })
     this.store.env = env
   },
-  initADState() { this.store.adState = getADstate() },
   onLaunch() {
     this.initEnv()
     this.initUiGlobal()
-    this.initADState()
   },
   store: {
     StatusBar: null,
@@ -39,6 +35,7 @@ App({
     CustomBar: null,
     screenHeight: null,
     windowWidth: null,
-    env: ''
+    env: '',
+    adState: true
   }
 })
