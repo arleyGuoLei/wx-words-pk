@@ -2,6 +2,7 @@ import { getCombatSubjectNumber, getBgmState, getPronunciationState, getIsAddUse
 import $ from './../../utils/Tool'
 import { userWordModel } from '../../model/index'
 import router from '../../utils/router'
+import { previewAdmire } from '../../utils/util'
 Page({
   data: {
     combatSubjectNumber: getCombatSubjectNumber(),
@@ -81,11 +82,7 @@ Page({
     })
   },
   onZan() {
-    wx.navigateToMiniProgram({
-      appId: 'wx18a2ac992306a5a4',
-      path: 'pages/apps/largess/detail?id=k%2BiHXlLOuLA%3D',
-      extraData: {}
-    })
+    previewAdmire()
   },
   onTo1password() {
     wx.navigateToMiniProgram({

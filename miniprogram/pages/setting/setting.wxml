@@ -29,7 +29,7 @@
 </view>
 
 <view class="ad-wrap">
-  <ad unit-id="adunit-1357458e993dd997" ad-type="grid" grid-opacity="0.8" grid-count="5" ad-theme="white"></ad>
+  <ad unit-id="adunit-b358c5f747cb516f"></ad>
 </view>
 
 <view class="card shadow-box">
@@ -61,7 +61,7 @@
 </view>
 
 <view class="ad-wrap">
-  <ad unit-id="adunit-b358c5f747cb516f"></ad>
+  <ad unit-id="adunit-1357458e993dd997" ad-type="grid" grid-opacity="0.8" grid-count="5" ad-theme="white"></ad>
 </view>
 
 <loading id="loading"/>

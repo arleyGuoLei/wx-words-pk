@@ -22,15 +22,14 @@
   "sitemapLocation": "sitemap.json",
   "style": "v2",
   "navigateToMiniProgramAppIdList": [
-    "wx18a2ac992306a5a4",
     "wx865705a73232e931",
     "wx843a6e62022f9b74",
     "wxdc2965647d28ea5c"
   ],
   "plugins": {
     "calendar": {
-        "version": "1.1.3",
-        "provider": "wx92c68dae5a8bb046"
+      "version": "1.1.3",
+      "provider": "wx92c68dae5a8bb046"
     }
   }
 }

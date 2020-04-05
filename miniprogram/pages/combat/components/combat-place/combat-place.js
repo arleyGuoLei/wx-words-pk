@@ -173,7 +173,9 @@ Component({
     },
     playWordPronunciation() {
       const { properties: { wordObj: { word } } } = this
-      getPronunciationState() && playPronunciation(word)
+      if (word && getPronunciationState()) {
+        playPronunciation(word)
+      }
     },
     getScore() {
       const score = Math.floor(((COUNTDOWN_DEFAULT * 1000 + 1000) - (Date.now() - this._startTime)) / 100)

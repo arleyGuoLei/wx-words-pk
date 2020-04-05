@@ -108,3 +108,9 @@ export function getMonthDays(year = new Date().getFullYear(), month = new Date()
   const day = new Date(year, month, 0)
   return day.getDate()
 }
+
+export function previewAdmire() {
+  wx.previewImage({
+    urls: ['https://7072-prod-words-pk-1255907426.tcb.qcloud.la/admire.jpg']
+  })
+}
