@@ -88,8 +88,9 @@ Page({
     this.messageListener && this.messageListener.close()
     const { data: { roomInfo: { state = '', roomId = '', isHouseOwner, isFriend } } } = this
     if (state === ROOM_STATE.IS_READY && !isHouseOwner && isFriend) { await roomModel.userCancelReady(roomId) } // 用户已经准备则取消准备
+    if (state === ROOM_STATE.IS_READY && isHouseOwner && isFriend) { await roomModel.remove(roomId, 'READY') } // 是房主，用户已经准备，房主离开了
     if (state === ROOM_STATE.IS_PK) { roomModel.leave(roomId) }
-    if (!isFriend && isHouseOwner && state === ROOM_STATE.IS_OK) { await roomModel.remove(roomId) } // 随机匹配房主创建好房，还没开始对战的时候离开, 删除没有意义的房间
+    if (isHouseOwner && state === ROOM_STATE.IS_OK) { await roomModel.remove(roomId) } // 房主创建好房，还没开始对战的时候离开, 删除没有意义的房间
     this.bgm && this.bgm.destroy()
   },
   onShareAppMessage({ from }) {

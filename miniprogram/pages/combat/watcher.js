@@ -3,6 +3,7 @@ import { userModel, roomModel } from './../../model/index'
 import { roomStateHandle, centerUserInfoHandle } from './utils'
 import { ROOM_STATE } from '../../model/room'
 import { sleep } from '../../utils/util'
+import router from './../../utils/router'
 
 const ROOM_STATE_SERVER = 'state'
 const LEFT_SELECT = 'left.gradeSum'
@@ -11,31 +12,36 @@ const NEXT_ROOM = 'nextRoomId'
 
 async function initRoomInfo(data) {
   $.loading('初始化房间配置...')
-  const { _id, isFriend, bookDesc, bookName, state, _openid, list, isNPC } = data
-  if (roomStateHandle.call(this, state)) {
-    const isHouseOwner = _openid === $.store.get('openid')
-    this.setData({
-      roomInfo: {
-        roomId: _id,
-        isFriend,
-        bookDesc,
-        bookName,
-        state,
-        isHouseOwner,
-        isNPC,
-        listLength: list.length
-      },
-      wordList: list
-    })
-    // 无论是不是好友对战，都先初始化房主的用户信息
-    const { data } = await userModel.getUserInfo(_openid)
-    const users = centerUserInfoHandle.call(this, data[0])
-    this.setData({ users })
-    if (!isHouseOwner && !isFriend) { // 如果是随机匹配且不是房主 => 自动准备
-      await roomModel.userReady(_id)
+  if (data) {
+    const { _id, isFriend, bookDesc, bookName, state, _openid, list, isNPC } = data
+    if (roomStateHandle.call(this, state)) {
+      const isHouseOwner = _openid === $.store.get('openid')
+      this.setData({
+        roomInfo: {
+          roomId: _id,
+          isFriend,
+          bookDesc,
+          bookName,
+          state,
+          isHouseOwner,
+          isNPC,
+          listLength: list.length
+        },
+        wordList: list
+      })
+      // 无论是不是好友对战，都先初始化房主的用户信息
+      const { data } = await userModel.getUserInfo(_openid)
+      const users = centerUserInfoHandle.call(this, data[0])
+      this.setData({ users })
+      if (!isHouseOwner && !isFriend) { // 如果是随机匹配且不是房主 => 自动准备
+        await roomModel.userReady(_id)
+      }
     }
+    $.hideLoading()
+  } else {
+    $.hideLoading()
+    this.selectComponent('#errorMessage').show('对战已被解散 ~', 2000, () => { router.reLaunch() })
   }
-  $.hideLoading()
 }
 
 function npcSelect() {
@@ -129,6 +135,12 @@ function handleNextRoom(updatedFields) {
   }
 }
 
+function removeRoom() {
+  this.selectComponent('#errorMessage').show('房主逃离, 房间即将解散...', 2000, () => {
+    router.toHome()
+  })
+}
+
 const watchMap = new Map()
 watchMap.set('initRoomInfo', initRoomInfo)
 watchMap.set(`update.${ROOM_STATE_SERVER}`, handleRoomStateChange)
@@ -140,6 +152,7 @@ export async function handleWatch(snapshot) {
   const { type, docs } = snapshot
   if (type === 'init') { watchMap.get('initRoomInfo').call(this, docs[0]) } else {
     const { queueType = '', updatedFields = {} } = snapshot.docChanges[0]
+    if (queueType === 'dequeue') { return removeRoom.call(this) }
     Object.keys(updatedFields).forEach(field => {
       const key = `${queueType}.${field}`
       watchMap.has(key) && watchMap.get(key).call(this, updatedFields, snapshot.docs[0])

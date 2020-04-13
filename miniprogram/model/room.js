@@ -130,11 +130,11 @@ class RoomModel extends Base {
     })
   }
 
-  remove(roomId) {
+  remove(roomId, state = ROOM_STATE.IS_OK) {
     return this.model.where({
       _id: roomId,
       _openid: '{openid}',
-      state: ROOM_STATE.IS_OK
+      state
     }).remove()
   }
 
