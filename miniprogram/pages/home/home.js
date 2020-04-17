@@ -112,7 +112,7 @@ Page({
       this.setData({
         signHide: true
       })
-    }, 1500)
+    }, 2200)
   },
   onReady() {
     initVideoAd.call(this, 'home', this.giveReward.bind(this))

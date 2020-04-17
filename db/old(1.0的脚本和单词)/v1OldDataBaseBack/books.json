@@ -1,0 +1,7 @@
+{"_id":"CET4","wordsSum":1162,"name":"四级核心词","cover":"cloud://prod-words-pk.7072-prod-words-pk-1255907426/cover/CET4.png","number":62.0,"desc":"CET4"}
+{"_id":"CET6","wordsSum":1228,"name":"六级核心词","cover":"cloud://prod-words-pk.7072-prod-words-pk-1255907426/cover/CET6.png","number":39.0,"desc":"CET6"}
+{"_id":"NOT","wordsSum":9430,"name":"随机单词本","cover":"cloud://prod-words-pk.7072-prod-words-pk-1255907426/cover/随机单词.png","number":"1万+","desc":"随机"}
+{"_id":"high","wordsSum":3668,"name":"高考词汇","cover":"cloud://prod-words-pk.7072-prod-words-pk-1255907426/cover/高考.png","number":75.0,"desc":"高考"}
+{"_id":"kaoYan","wordsSum":1341.0,"name":"考研必考词","cover":"cloud://prod-words-pk.7072-prod-words-pk-1255907426/cover/考研.png","number":55.0,"desc":"考研"}
+{"_id":"middle","wordsSum":1420,"name":"中考词汇","cover":"cloud://prod-words-pk.7072-prod-words-pk-1255907426/cover/中考.png","number":44.0,"desc":"中考"}
+{"_id":"primary","wordsSum":611,"name":"小学词汇","cover":"cloud://prod-words-pk.7072-prod-words-pk-1255907426/cover/小学词汇.png","number":29.0,"desc":"小学"}

@@ -97,7 +97,7 @@ async function handleOptionSelection(updatedFields, doc) {
     left,
     right
   }, async () => {
-    this.selectComponent('#combatComponent').getProcessGrade()
+    this.selectComponent('#combatComponent') && this.selectComponent('#combatComponent').getProcessGrade()
     const re = /^(left|right)\.grades\.(\d+)\.index$/ // left.grades.1.index
     let updateIndex = -1
     for (const key of Object.keys(updatedFields)) {

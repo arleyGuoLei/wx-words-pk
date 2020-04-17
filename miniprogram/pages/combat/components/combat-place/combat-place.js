@@ -75,7 +75,7 @@ Component({
         this._npcTimer && clearTimeout(this._npcTimer)
         this._npcTimer = null
         const { properties: { roomId, listIndex, wordObj: { correctIndex } } } = this
-        const index = (Math.random() > 0.85) ? (3 - correctIndex) : correctIndex // 8x%的概率正确, 其他选择错误答案(3-correctIndex)
+        const index = (Math.random() > 0.75) ? (3 - correctIndex) : correctIndex // 7x%的概率正确, 其他选择错误答案(3-correctIndex)
         const cutScore = Math.floor(Math.random() * 5) // 随机减掉0~5的分数
         const baseScore = this.getScore()
         const score = index === correctIndex ? (baseScore > 10 ? (baseScore - cutScore) : baseScore) : WRONG_CUT_SCORE

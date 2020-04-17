@@ -40,11 +40,12 @@ page {
 
 .movable-area {
   position: absolute;
-  height: 80vh;
-  width: 50%;
+  height: 75vh;
+  width: 375rpx;
   right: 0;
-  bottom: 0;
+  top: 25vh;
   pointer-events: none;
+  overflow: hidden;
 }
 
 .movable-view {
