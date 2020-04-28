@@ -113,12 +113,12 @@ const writeFile = (lines, { bookName }) => {
   })
 }
 
-// Start(kaoYan)
-// Start(CET4)
-// Start(CET6)
-// Start(chuZhong)
-// Start(gaoZhong)
-// Start(xiaoXue)
+Start(kaoYan)
+Start(CET4)
+Start(CET6)
+Start(chuZhong)
+Start(gaoZhong)
+Start(xiaoXue)
 Start(kaoYanFull)
 Start(CET4Full)
 Start(CET6Full)
