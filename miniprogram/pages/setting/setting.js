@@ -1,17 +1,27 @@
-import { getCombatSubjectNumber, getBgmState, getPronunciationState, getIsAddUserWords, PK_SUBJECTS_NUMBER, setCombatSubjectNumber, setBgmState, setPronunciationState, setIsAddUserWords } from '../../utils/setting'
+import { getCombatSubjectNumber, getBgmState, getPronunciationState,
+  getIsAddUserWords, PK_SUBJECTS_NUMBER, setCombatSubjectNumber, setBgmState,
+  setPronunciationState, setIsAddUserWords, getIsVibrate, setIsVibrate
+} from '../../utils/setting'
 import $ from './../../utils/Tool'
 import { userWordModel } from '../../model/index'
 import router from '../../utils/router'
 import { previewAdmire } from '../../utils/util'
 Page({
   data: {
-    combatSubjectNumber: getCombatSubjectNumber(),
-    bgmState: getBgmState() ? '开启' : '关闭',
-    pronunciationState: getPronunciationState() ? '开启' : '关闭',
-    isAddUserWords: getIsAddUserWords() ? '开启' : '关闭'
+    combatSubjectNumber: 0,
+    bgmState: '',
+    pronunciationState: '',
+    isAddUserWords: '',
+    isVibrate: ''
   },
   onLoad() {
-
+    this.setData({
+      combatSubjectNumber: getCombatSubjectNumber(),
+      bgmState: getBgmState() ? '开启' : '关闭',
+      pronunciationState: getPronunciationState() ? '开启' : '关闭',
+      isAddUserWords: getIsAddUserWords() ? '开启' : '关闭',
+      isVibrate: getIsVibrate() ? '开启' : '关闭'
+    })
   },
   onCombatSubjectNumber(tapIndex) {
     const value = PK_SUBJECTS_NUMBER[tapIndex]
@@ -33,6 +43,11 @@ Page({
     setIsAddUserWords(check)
     this.setData({ isAddUserWords: check ? '开启' : '关闭' })
   },
+  onIsVibrate(tapIndex) {
+    const check = tapIndex === 0
+    setIsVibrate(check)
+    this.setData({ isVibrate: check ? '开启' : '关闭' })
+  },
   onSelect(e) {
     const { currentTarget: { dataset: { type } } } = e
     const map = new Map()
@@ -40,6 +55,7 @@ Page({
     map.set('bgmState', this.onBgmState)
     map.set('pronunciationState', this.onPronunciationState)
     map.set('isAddUserWords', this.onIsAddUserWords)
+    map.set('isVibrate', this.onIsVibrate)
     let itemList = ['开启', '关闭']
     switch (type) {
       case 'combatSubjectNumber':
@@ -107,5 +123,8 @@ Page({
   },
   onTapBack() {
     router.toHome()
+  },
+  onChat() {
+    wx.setClipboardData({ data: 'Arley_GuoLei' })
   }
 })

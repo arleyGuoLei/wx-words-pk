@@ -26,6 +26,11 @@
     <text class="card-item__desc">{{isAddUserWords}}</text>
     <image class="card-item__icon" src="./../../images/setting-right.png" />
   </view>
+  <view class="card-item" catchtap="onSelect" data-type="isVibrate">
+    <button class="card-item__title" hover-class="none">开始/错词时震动</button>
+    <text class="card-item__desc">{{isVibrate}}</text>
+    <image class="card-item__icon" src="./../../images/setting-right.png" />
+  </view>
 </view>
 
 <view class="card shadow-box">
@@ -40,6 +45,9 @@
   </view>
   <view class="card-item" catchtap="onSelectCombatNumber">
     <button catchtap="onZan" class="card-item__title" hover-class="none">请作者吃 🍭🍭🍭</button>
+  </view>
+  <view class="card-item" catchtap="onSelectCombatNumber">
+    <button catchtap="onChat" class="card-item__title" hover-class="none">联系作者微信：Arley_GuoLei</button>
   </view>
 </view>
 

@@ -17,6 +17,8 @@
   border-radius: 12rpx;
   padding: 0;
   align-items: center;
+  border: 0;
+  outline: none;
 }
 
 .btn-oneline__icon {
@@ -72,6 +74,8 @@
   background: rgba(141, 216, 255, 1);
   border-radius: 12rpx;
   padding: 0;
+  border: 0;
+  outline: none;
 }
 
 .btn-two__text {

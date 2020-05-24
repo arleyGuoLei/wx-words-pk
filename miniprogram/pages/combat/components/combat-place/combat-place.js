@@ -1,7 +1,7 @@
 import { throttle, playAudio, px2Rpx, playPronunciation } from '../../../../utils/util'
 import { roomModel, userModel, userWordModel } from '../../../../model/index'
 import $ from './../../../../utils/Tool'
-import { getPronunciationState } from '../../../../utils/setting'
+import { getPronunciationState, getIsVibrate } from '../../../../utils/setting'
 const CORRECT_AUDIO = 'audios/correct.mp3'
 const WRONG_AUDIO = 'audios/wrong.mp3'
 const COUNTDOWN_DEFAULT = 10
@@ -61,7 +61,7 @@ Component({
   lifetimes: {
     attached() {
       this.init(false)
-      wx.vibrateLong()
+      getIsVibrate() && wx.vibrateLong()
       this.initCountdownTop()
       this.playWordPronunciation()
     },
@@ -201,7 +201,7 @@ Component({
           }
         } else {
           playAudio(WRONG_AUDIO)
-          wx.vibrateShort()
+          getIsVibrate() && wx.vibrateShort()
           this.setData({ [key]: 'false' })
           userWordModel.insert(wordId)
         }

@@ -11,6 +11,7 @@ const DEFAULT_BGM_STATE = true // 默认播放背景音乐
 const DEFAULT_PRONUNCIATION_STATE = true // 默认播放单词发音
 const DEFAULT_IS_ADD_USERWORDS = true // 默认添加生词到生词本
 const DEFAULT_AD_STATE = true // 默认广告状态
+const DEFAULT_VIBRATE = true // 默认震动
 
 // 存储到缓存中的key值 ↓
 const SUBJECT_NUMBER = 'setting_subject_number'
@@ -18,6 +19,7 @@ const BGM_STATE = 'setting_bgm_state'
 const PRONUNCIATION_STATE = 'setting_pronunciation_state'
 const IS_ADD_USERWORDS = 'setting_addUserWords'
 const AD_STATE = 'ad_state'
+const VIBRATE_STATE = 'vibrate_state'
 // 存储到缓存中的key值 ↑
 
 /**
@@ -87,7 +89,7 @@ export const setBgmState = function(state) {
 export const getPronunciationState = function() {
   const check = $.storage.get(PRONUNCIATION_STATE)
   if (typeof check !== 'boolean') {
-    setBgmState(DEFAULT_PRONUNCIATION_STATE)
+    setPronunciationState(DEFAULT_PRONUNCIATION_STATE)
     return DEFAULT_PRONUNCIATION_STATE
   }
   return check
@@ -109,7 +111,7 @@ export const setPronunciationState = function(state) {
 export const getIsAddUserWords = function() {
   const check = $.storage.get(IS_ADD_USERWORDS)
   if (typeof check !== 'boolean') {
-    setBgmState(DEFAULT_IS_ADD_USERWORDS)
+    setIsAddUserWords(DEFAULT_IS_ADD_USERWORDS)
     return DEFAULT_IS_ADD_USERWORDS
   }
   return check
@@ -122,5 +124,27 @@ export const getIsAddUserWords = function() {
 export const setIsAddUserWords = function(state) {
   if (typeof state === 'boolean') {
     $.storage.set(IS_ADD_USERWORDS, state)
+  }
+}
+
+/**
+ * 获取是否震动
+ */
+export const getIsVibrate = function() {
+  const check = $.storage.get(VIBRATE_STATE)
+  if (typeof check !== 'boolean') {
+    setIsVibrate(DEFAULT_VIBRATE)
+    return DEFAULT_VIBRATE
+  }
+  return check
+}
+
+/**
+ * 设置是否震动
+ * @param {Boolean} state 状态
+ */
+export const setIsVibrate = function(state) {
+  if (typeof state === 'boolean') {
+    $.storage.set(VIBRATE_STATE, state)
   }
 }

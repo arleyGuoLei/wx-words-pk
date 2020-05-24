@@ -11,6 +11,8 @@
   display: flex;
   align-items: center;
   width: 172rpx!important;
+  border: 0;
+  outline: none;
 }
 
 .footer-icon {
