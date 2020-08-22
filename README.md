@@ -8,6 +8,16 @@
 
 上线说明: 源码开源，但上线需要经过作者许可哦 ~ 开发不易、创作不易。需要支付RMB `66+`方可上线，保障作者著作权益 ~ 如果你觉得项目对你有所帮助 ~ 期待得到你的打赏哦
 
+## 收费服务
+
+> 微信/QQ：34805850
+
+- 自己修改代码上线任意平台，需支付66+ (开发不易，相信你上线后，通过广告也可以回本)
+- 部署问题：按照文档是可以完整的部署上线小程序的，但是如果您部署遇到解决不了的问题，￥100+帮忙解决
+- 新需求：想在小程序源码基础上开发新功能的，根据需求难度定制开发；亦或者自己研究代码直接新增即可
+- 合作：如果您是某某英语培训机构，想拥有自己品牌的背单词程序，欢迎联系，帮部署及合作定制开发，￥4000+
+- 其他合作：欢迎骚扰 ~
+
 ## 在线体验
 
 ![二维码](https://i.loli.net/2020/08/01/kVxqNZCMw5TvLz3.jpg)
@@ -338,76 +348,6 @@ export {
 ##### 1. 抓包分析和代码实现
 
 本课题中使用 MacOS 系统、Charles 抓包软件、安卓手机作为抓包的基本环境。首先在电脑上安装 Charles，然后开启 Proxy 抓包代理，同局域网下配置手机 WiFi 代理实现抓取手机包。
-
-![配置代理](http://img.i7xy.cn/20200529183048.png)
-
-![电脑端IP地址](http://img.i7xy.cn/20200529183107.png)
-
-本课题的单词数据来源于**有道背单词**APP，我们配置好抓包后，打开有道背单词抓包进行分析。
-
-抓包数据如下，其中**offlinedata**字段中的 zip 压缩包即为离线数据包，我们抓取所有单词书的该参数即可。要请求该接口其中需要一个**bookIds**参数，我们分析其他接口获取到该参数的值来源。
-
-![关键包1](http://img.i7xy.cn/20200529183241.png)
-
-![关键包2](http://img.i7xy.cn/20200529183314.png)
-
-抓到包之后，我们使用**apizza**或**postman**测试接口，正常的话，编写成代码。
-
-![使用apizza测试抓到的数据包](http://img.i7xy.cn/20200529183355.png)
-
-最终代码如下 ~
-
-```python
-import requests
-import json
-import zipfile
-import os
-
-path = os.getcwd()
-
-def getBooksId():
-    url = "http://reciteword.youdao.com/reciteword/v1/param?key=normalBooks&keyfrom=reciteword.1.5.12.android&vendor=xiaomi&mid=9&imei=CQlkYjRlZWEwYzZlYmRiYjkyCXVua25vd24%253D&screen=1080x1920&model=Mi_Note_3&version=1.5.12"
-    bookList = json.loads(requests.get(url).text)["data"]["normalBooks"]["bookList"]
-    BooksId = []
-    for book in bookList:
-        BooksId.append(book["id"])
-    return BooksId
-
-def getBooksDownLink(booksId):
-    url = "http://reciteword.youdao.com/reciteword/v1/getBooksInfo?keyfrom=reciteword.1.5.12.android&vendor=xiaomi&mid=9&imei=CQlkYjRlZWEwYzZlYmRiYjkyCXVua25vd24%253D&screen=1080x1920&model=Mi_Note_3&version=1.5.12"
-    payload = {'bookIds': json.dumps(booksId), 'reciteType': 'normal'}
-    booksInfo = json.loads(requests.post(url, data = payload).text)["data"]["normalBooksInfo"]
-    downlink = []
-    for book in booksInfo:
-        downlink.append({"title": book["title"], "link": book["offlinedata"]})
-    return downlink
-
-def downBook(fileName, link):
-    r = requests.get(link, stream=True)
-    linkname = link[link.find(".com/") + 5:]
-    with open(linkname, 'wb') as fd:
-            fd.write(r.content)
-    try:
-        zipfileName = path + "/" + linkname
-        print(zipfileName)
-        file = zipfile.ZipFile(zipfileName)
-        file.extractall(fileName)
-        file.close()
-    except Exception as e:
-        print(e)
-
-def main():
-    BooksId = getBooksId()
-    print(BooksId)
-    downlink = getBooksDownLink(BooksId)
-    print(downlink)
-
-    for book in downlink:
-        downBook(book["title"], book["link"])
-
-if __name__ == '__main__':
-    main()
-```
 
 ##### 2. 单词数据整理
 
