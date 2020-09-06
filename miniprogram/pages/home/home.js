@@ -108,6 +108,7 @@ Page({
   },
   async onLoad() {
     await this.getData()
+    this.selectComponent('#footer').showGithubAuto()
     setTimeout(() => {
       this.setData({
         signHide: true

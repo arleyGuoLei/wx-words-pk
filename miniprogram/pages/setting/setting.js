@@ -126,5 +126,8 @@ Page({
   },
   onChat() {
     wx.setClipboardData({ data: 'Arley_GuoLei' })
+  },
+  onGithub() {
+    wx.setClipboardData({ data: 'https://github.com/arleyGuoLei/wx-words-pk' })
   }
 })

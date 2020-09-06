@@ -44,10 +44,13 @@
     <button open-type='feedback' class="card-item__title" hover-class="none">建议反馈/提交BUG</button>
   </view>
   <view class="card-item" catchtap="onSelectCombatNumber">
-    <button catchtap="onZan" class="card-item__title" hover-class="none">请作者吃 🍭🍭🍭</button>
+    <button catchtap="onZan" class="card-item__title" hover-class="none">请作者吃 🍭🍭🍭(一分也是情!!!)</button>
   </view>
   <view class="card-item" catchtap="onSelectCombatNumber">
-    <button catchtap="onChat" class="card-item__title" hover-class="none">联系作者微信：Arley_GuoLei</button>
+    <button catchtap="onChat" style="color: #FF9C37;" class="card-item__title" hover-class="none">合作/部署微信：Arley_GuoLei</button>
+  </view>
+    <view class="card-item" catchtap="onSelectCombatNumber">
+    <button catchtap="onGithub" class="card-item__title" hover-class="none">项目开源 (免费学习/赞助部署)</button>
   </view>
 </view>
 

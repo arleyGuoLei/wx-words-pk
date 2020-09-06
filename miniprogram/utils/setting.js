@@ -20,6 +20,7 @@ const PRONUNCIATION_STATE = 'setting_pronunciation_state'
 const IS_ADD_USERWORDS = 'setting_addUserWords'
 const AD_STATE = 'ad_state'
 const VIBRATE_STATE = 'vibrate_state'
+const TOAST_GITHUB = 'toast_github'
 // 存储到缓存中的key值 ↑
 
 /**
@@ -147,4 +148,18 @@ export const setIsVibrate = function(state) {
   if (typeof state === 'boolean') {
     $.storage.set(VIBRATE_STATE, state)
   }
+}
+
+/**
+ * 是否弹窗github开源提示，只显示一次
+ * return false => 不弹出
+ *        true => 弹出
+ */
+export const getToastGithub = function() {
+  const check = $.storage.get(TOAST_GITHUB)
+  if (typeof check !== 'boolean' || check) {
+    $.storage.set(TOAST_GITHUB, false)
+    return true
+  }
+  return check
 }

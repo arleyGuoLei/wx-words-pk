@@ -22,7 +22,8 @@
 			"ignore": [],
 			"disablePlugins": [],
 			"outputPath": ""
-		}
+		},
+		"bundle": false
 	},
 	"appid": "wx51a5362ef159dbcd",
 	"projectname": "wx-words-pk",
