@@ -1,0 +1,14 @@
+<view class="wrap">
+  <view class="left">
+    <view class="left-avatar">
+      <image src="{{usersInfo[0].avatarUrl}}" class="left-avatar__img" />
+    </view>
+    <text class="left-nickName">{{usersInfo[0].nickName}}</text>
+  </view>
+  <view class="right">
+    <view class="right-avatar">
+      <image src="{{usersInfo[1].avatarUrl}}" class="right-avatar__img" />
+    </view>
+    <text class="right-nickName">{{usersInfo[1].nickName}}</text>
+  </view>
+</view>

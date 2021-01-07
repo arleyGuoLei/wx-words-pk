@@ -1,0 +1,153 @@
+page {
+  background-color: #f8f8f8;
+}
+
+.header {
+  background-color: #a6dffc;
+  overflow: hidden;
+  height: 100%;
+  position: relative;
+  width: 750rpx;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+
+.back {
+  width: 48rpx;
+  height: 48rpx;
+  position: absolute;
+  top: 0;
+  left: 40rpx;
+  bottom: 0;
+  margin: auto;
+}
+
+.title {
+  color: #ffffff;
+  display: block;
+  text-align: center;
+  width: 100%;
+  font-size: 32rpx;
+  font-weight: 600;
+}
+
+.list {
+  width: 100%;
+  overflow: hidden;
+}
+
+.item {
+  width: 710rpx;
+  height: 133rpx;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 8rpx;
+  margin: 20rpx auto 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.item-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  box-sizing: border-box;
+  padding: 10rpx 0 10rpx 25rpx;
+}
+
+.item-right__audio,
+.item-right__delete {
+  width: 100rpx;
+  height: 100%;
+  background: rgba(193, 234, 251, 0.5);
+  border-radius: 0 8rpx 8rpx 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.item-right__delete > image {
+  width: 30rpx;
+  height: 40rpx;
+}
+
+.item-right__audio > image {
+  width: 33rpx;
+  height: 28rpx;
+}
+
+.item-right__delete {
+  background: rgba(233, 95, 86, 0.2);
+}
+.item-right__delete:active {
+  background: rgba(233, 95, 86, 0.4);
+}
+
+.item-right__audio:active {
+  background: rgba(193, 234, 251, 1);
+}
+
+.word-text {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: rgba(126, 205, 247, 1);
+}
+
+.word-usphone {
+  margin-left: 28rpx;
+  font-size: 28rpx;
+  font-weight: 500;
+  color: rgba(153, 153, 153, 1);
+}
+
+.item-left__trans {
+  font-size: 28rpx;
+  color: rgba(0, 0, 0, 0.8);
+  width: 580rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.onBottom {
+  font-size: 28rpx;
+  color: rgba(153, 153, 153, 1);
+  display: block;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.blank {
+  display: flex;
+  flex-direction: column;
+  height: 70vh;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.blank-img {
+  width: 267rpx;
+  height: 200rpx;
+}
+
+.blank-text {
+  margin-top: 48rpx;
+  color: rgba(153, 153, 153, 1);
+  font-size: 34rpx;
+  font-weight: 500;
+}
+
+.ad-wrap {
+  width: 710rpx;
+  min-width: 340px;
+  margin: 20rpx auto 0 auto;
+  max-width: 100%;
+}
+
+.ad-wrap__banner {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}

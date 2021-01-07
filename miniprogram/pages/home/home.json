@@ -1,0 +1,13 @@
+{
+  "usingComponents": {
+    "userinfo": "components/userInfo/userInfo",
+    "bar": "components/bar/bar",
+    "buttons": "components/buttons/buttons",
+    "footer": "components/footer/footer",
+    "home-add-tips": "components/home-add-tips/index",
+    "book-select": "components/book-select/book-select",
+    "activity-swiper": "components/activity-swiper/activity-swiper"
+  },
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark"
+}

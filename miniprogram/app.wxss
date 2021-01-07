@@ -1,0 +1,76 @@
+@import './miniprogram_npm/wxapp-animate/animate.wxss';
+
+page {
+  --theme-color: #7ECEF7;
+}
+
+.bg-theme {
+  background-color: var(--theme-color);
+  color: #ffffff;
+}
+
+@keyframes rotate {
+  from {
+    transform-origin: center;
+    transform: rotate(0);
+  }
+
+  to {
+    transform-origin: center;
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate-reverse {
+  from {
+    transform-origin: center;
+    transform: rotate(0);
+  }
+
+  to {
+    transform-origin: center;
+    transform: rotate(-360deg);
+  }
+}
+
+.rotate-reverse {
+  animation-name: rotate-reverse;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.rotate {
+  animation-name: rotate;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.time-36s {
+  animation-duration: 36s;
+}
+
+.time-2s {
+  animation-duration: 2s;
+}
+
+.shadow-lg {
+  box-shadow: 0rpx 4rpx 6rpx 0rpx rgba(0, 102, 204, 0.2);
+}
+
+.touch:active {
+  transform: scale(1.1);
+}
+
+.touch-s:active {
+  transform: scale(1.01);
+}
+
+.btn-hover {
+  background: rgb(131, 203, 241)!important;
+}
+
+.one-line-text {
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}

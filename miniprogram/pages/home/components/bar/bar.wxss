@@ -1,0 +1,58 @@
+.bar {
+  display: flex;
+  width: 750rpx;
+  height: 140rpx;
+  padding: 0 72rpx;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  margin-top: 1vh;
+}
+
+.bar::before {
+  display: block;
+  height: 140rpx;
+  background: rgba(109, 170, 240, 1);
+  width: 2rpx;
+  content: ' ';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-1rpx);
+}
+
+.bar-tip,
+.bar-book {
+  height: 78rpx;
+  display: flex;
+}
+
+.bar-tip__icon,
+.bar-book__icon {
+  height: 78rpx;
+  width: 78rpx;
+}
+
+.bar-tip__text,
+.bar-book__text {
+  display: flex;
+  flex-direction: column;
+  margin-left: 50rpx;
+  align-items: center;
+}
+
+.tip-text__title,
+.book-text__title {
+  font-size: 32rpx;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.6);
+  margin: 1rpx 0 5rpx 0;
+}
+
+.tip-text__desc,
+.book-text__desc {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.6);
+}

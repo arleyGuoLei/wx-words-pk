@@ -1,0 +1,43 @@
+<view class="finish-wrap" style="top:{{top}}rpx;" hidden="{{!resultData}}">
+  <image wx:if="{{!resultData.selfWin}}" class="result-img" style="height: 136rpx;"
+    src="./../../../../images/combat-finish-fail.png" />
+  <image wx:else class="result-img" style="height: 157rpx;" src="./../../../../images/combat-finish-win.png" />
+  <view class="result-bar">
+    <view class="result-left">
+      <text class="result-left__grade">{{resultData.left.gradeSum}}</text>
+      <text class="result-left__pvp">词力值+{{resultData.left.grade}}</text>
+    </view>
+    <view class="result-right">
+      <text class="result-right__grade">{{resultData.right.gradeSum}}</text>
+      <text class="result-right__pvp">词力值+{{resultData.right.grade}}</text>
+    </view>
+  </view>
+
+  <scroll-view class="result-words" scroll-y="{{true}}">
+    <image class="result-words__bg" src="./../../../../images/combat-pk.png" />
+    <block wx:for="{{resultData.wordList}}" wx:for-index="index" wx:key="index" wx:for-item="line">
+      <view class="result-words__line">
+        <image wx:if="{{line.leftCheck}}" class="line-icon" src="./../../../../images/combat-g.png" />
+        <image wx:else class="line-icon" src="./../../../../images/combat-x.png" />
+        <text class="line-text">{{line.text}}</text>
+        <image wx:if="{{line.rightCheck}}" class="line-icon" src="./../../../../images/combat-g.png" />
+        <image wx:else class="line-icon" src="./../../../../images/combat-x.png" />
+      </view>
+    </block>
+  </scroll-view>
+
+  <button wx:if="{{isHouseOwner || nextRoomId!==''}}" hover-class="btn-hover" class="btn bg-theme shadow-lg result-btn"
+    catchtap="onCreateRoom">再来一局</button>
+  <button wx:else class="btn bg-theme shadow-lg result-btn" style="background: #d7dae1;"
+    catchtap="onWaitRoom">等待对方创房</button>
+  <button hover-class="btn-hover" class="btn bg-theme shadow-lg result-btn" open-type="share">分享到群聊</button>
+  <view class="result-tip">
+    <image class="result-tip__icon" src="./../../../../images/combat-tip.png" />
+    <text class="result-tip__text">分享可获得提示卡 * 5</text>
+  </view>
+  <view class="ad-wrap" hidden="{{!adState}}">
+    <ad unit-id="adunit-97e0959580cc3e62"></ad>
+  </view>
+</view>
+
+<message id="errorMessage" />

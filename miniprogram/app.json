@@ -1,0 +1,36 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/combat/combat",
+    "pages/wordChallenge/wordChallenge",
+    "pages/ranking/ranking",
+    "pages/userWords/userWords",
+    "pages/setting/setting",
+    "pages/sign/sign",
+    "pages/activity/activity"
+  ],
+  "window": {
+    "backgroundColor": "#FFFFFF",
+    "backgroundTextStyle": "light",
+    "navigationBarTitleText": "单词天天斗",
+    "navigationStyle": "custom"
+  },
+  "usingComponents": {
+    "header": "/components/header/header",
+    "message": "/components/message/message",
+    "loading": "/components/loading/loading"
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2",
+  "navigateToMiniProgramAppIdList": [
+    "wx865705a73232e931",
+    "wx843a6e62022f9b74",
+    "wxdc2965647d28ea5c"
+  ],
+  "plugins": {
+    "calendar": {
+      "version": "1.1.3",
+      "provider": "wx92c68dae5a8bb046"
+    }
+  }
+}

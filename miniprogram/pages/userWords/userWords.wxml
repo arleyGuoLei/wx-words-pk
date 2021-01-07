@@ -1,0 +1,52 @@
+<header>
+  <view slot="content" class="header">
+    <image src="./../../images/combat-back.png" class="back" catchtap="onTapBack"/>
+    <text class="title">生词本</text>
+  </view>
+</header>
+
+<scroll-view wx-if="{{wordsList.length!==0}}" scroll-y="{{true}}" style="height: {{listHeight}}px;" 
+  class="list" enable-flex="{{true}}" 
+  refresher-enabled="{{true}}"
+  refresher-threshold="30"
+  refresher-background="#A6DFFC"
+  refresher-default-style="white"
+  refresher-triggered="{{refresh}}"
+  bindrefresherrefresh="onPullDownRefresh"
+  bindscrolltolower="onReachBottom"
+  lower-threshold="100"
+>
+<block wx:for="{{wordsList}}" wx:key="index" wx:for-index="index" wx:for-item="userWord">
+  <view class="ad-wrap" wx:if="{{index === 7}}" hidden="{{!adState}}">
+    <ad unit-id="adunit-a2142a604e06fd6f" ad-type="grid" grid-opacity="0.8" grid-count="5" ad-theme="white"></ad>
+  </view>
+  <view class="item" data-index="{{index}}" catchlongpress="longpress" catchtap="onTapLine">
+    <view class="item-left">
+      <view class="item-left__word">
+        <text class="word-text">{{userWord.word}}</text>
+        <text class="word-usphone">{{userWord.usphone?'/'+userWord.usphone+'/':''}}</text>
+      </view>
+      <text class="item-left__trans">
+        <block wx:for="{{userWord.trans}}" wx:key="j" wx:for-index="j" wx:for-item="trans">{{trans.pos?trans.pos+'.':''}}{{trans.tranCn}} </block>
+      </text>
+    </view>
+    <view class="item-right">
+      <view data-word="{{userWord.word}}" catchtap="onTapPlay" class="item-right__audio animated fadeIn fast" wx:if="{{!userWord.del}}"><image src="./../../images/word-play.png" /></view>
+      <view data-index="{{index}}" data-word-id="{{userWord._id}}" catchtap="onTapDel" class="item-right__delete animated fast slideInRight" wx:else><image src="./../../images/word-delete.png" /></view>
+    </view>
+  </view>
+</block>
+<text class="onBottom" wx:if="{{onBottom}}">👻 没有更多数据 👻</text>
+</scroll-view>
+
+<view hidden="{{(wordsList.length!==0 || size===0)}}" class="blank">
+  <image class="blank-img" src="./../../images/message-logo.png" />
+  <text class="blank-text">还没有生词需要复习哦</text>
+</view>
+
+<view wx:if="{{wordsList.length===0 && size!==0}}" class="ad-wrap__banner" hidden="{{!adState}}">
+  <ad unit-id="adunit-f7b879434344684e"></ad>
+</view>
+
+<message id="errorMessage" />
+<loading id="loading"/>

@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "center-userInfo": "./components/center-userInfo/center-userInfo",
+    "friend-pk-buttons": "./components/friend-pk-buttons/friend-pk-buttons",
+    "combat-setting": "./components/combat-setting/combat-setting",
+    "header-userInfo": "./components/header-userinfo/header-userInfo",
+    "combat-place": "./components/combat-place/combat-place",
+    "combat-finish": "./components/combat-finish/combat-finish",
+    "random-matching": "./components/random-matching/random-matching"
+  }
+}

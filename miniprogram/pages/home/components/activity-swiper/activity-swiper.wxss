@@ -1,0 +1,19 @@
+.swiper {
+  margin: 20rpx auto;
+  height: 100rpx;
+  width: 600rpx;
+  border-radius: 12rpx;
+  display: block;
+  overflow: hidden;
+}
+
+.activity-item {
+  width: 100%;
+  height: 100%;
+}
+
+.activity-item {
+  width: 100%;
+  height: 100%;
+  border-radius: 12rpx;
+}

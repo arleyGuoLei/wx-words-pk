@@ -1,0 +1,166 @@
+page {
+  background: rgba(248, 248, 248, 1);
+  position: relative;
+  height: 100vh;
+}
+
+.header {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  background: rgba(166, 223, 252, 1);
+}
+
+.go-back {
+  width: 37rpx;
+  height: 38rpx;
+  margin-left: 48rpx;
+}
+
+.header-title {
+  font-size: 34rpx;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+  /* color: rgba(51, 51, 51, 1); */
+  margin-left: 24rpx;
+}
+
+.num-bar {
+  display: flex;
+  padding: 0 48rpx;
+  box-sizing: border-box;
+  justify-content: space-between;
+  height: 64rpx;
+  align-items: center;
+  margin-top: 64rpx;
+}
+
+.num-bar__score {
+  font-size: 48rpx;
+  font-weight: 500;
+  color: rgba(233, 95, 86, 1);
+}
+
+.num-bar__countdown {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.num-bar__countdown > image {
+  height: 48rpx;
+  width: 48rpx;
+}
+
+.num-bar__countdown > text {
+  font-size: 48rpx;
+  font-weight: 500;
+  color: rgba(233, 95, 86, 1);
+  margin-left: 24rpx;
+  width: 100rpx;
+  display: inline-block;
+  text-align: left;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  align-items: center;
+  position: absolute;
+  bottom: 240rpx;
+  left: 0;
+  right: 0;
+}
+
+.main-word {
+  font-size: 52rpx;
+  font-weight: 500;
+  color: rgba(51, 51, 51, 1);
+  max-width: 650rpx;
+  text-align: center;
+}
+
+.main-usphone {
+  font-size: 32rpx;
+  font-weight: 500;
+  color: rgba(153, 153, 153, 1);
+  max-width: 650rpx;
+  margin-top: 12rpx;
+}
+
+.options {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+  align-items: center;
+  margin-top: 64rpx;
+}
+
+.option {
+  width: 650rpx;
+  height: 120rpx;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 10rpx;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0 16rpx 0 32rpx;
+  justify-content: space-between;
+  margin-top: 32rpx;
+}
+
+.option-text {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: rgba(51, 51, 51, 1);
+  width: 600rpx;
+}
+
+.option-icon {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.option:active {
+  transform: scale(1.01);
+}
+
+.option-wrong {
+  background: rgba(233, 95, 86, 0.5) !important;
+}
+
+.option-correct {
+  background:rgba(50,168,238,0.5) !important;
+}
+
+.footer {
+  position: absolute;
+  display: flex;
+  height: 64rpx;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0 114rpx;
+  justify-content: space-between;
+  bottom: 64rpx;
+  left: 0;
+  right: 0;
+}
+
+.footer-left {
+  width: 48rpx;
+  height: 48rpx;
+}
+
+.footer-middle {
+  width: 64rpx;
+  height: 64rpx;
+}
+
+.footer-right {
+  height: 48rpx;
+  width: 58rpx;
+}

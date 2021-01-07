@@ -1,0 +1,7 @@
+<swiper class="swiper" indicator-dots="{{false}}" indicator-color="#BDEAFB" indicator-active-color="#7ECEF7" autoplay="{{true}}" circular="{{true}}">
+  <block wx:for="{{activityList}}" wx:key="index" wx:for-index="index" wx:for-item="item">
+    <swiper-item class="activity-item">
+      <image class="activity-item" src="{{item.bannerImg}}" data-id="{{item._id}}" catchtap="onToActivity"></image>
+    </swiper-item>
+  </block>
+</swiper>

@@ -1,0 +1,196 @@
+page {
+  background-color: #ffffff;
+}
+
+.header {
+  overflow: hidden;
+  height: 100%;
+  position: relative;
+  width: 750rpx;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+
+.back {
+  width: 48rpx;
+  height: 48rpx;
+  position: absolute;
+  top: 0;
+  left: 40rpx;
+  bottom: 0;
+  margin: auto;
+}
+
+.title {
+  color: #ffffff;
+  display: block;
+  width: 100%;
+  font-size: 16px;
+  font-weight: 600;
+  margin-left: 120rpx;
+  height: 48rpx;
+  line-height: 48rpx;
+}
+
+.bg {
+  position: absolute;
+  width: 750rpx;
+  height: 1341rpx;
+  left: 0;
+  top: 0;
+  z-index: -1;
+}
+
+.sign-day {
+  font-size: 120rpx;
+  font-weight: 500;
+  color: rgba(84, 173, 244, 1);
+  display: block;
+  text-align: center;
+  margin-top: 32rpx;
+  height: 168rpx;
+}
+
+.sign-day-desc {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+  display: block;
+  text-align: center;
+  margin-top: 12rpx;
+}
+
+.sign-bar {
+  width: 530rpx;
+  height: 84rpx;
+  background: rgba(141, 216, 255, 1);
+  border-radius: 42rpx;
+  margin: 72rpx auto;
+  display: flex;
+  box-sizing: border-box;
+  padding: 0 48rpx;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.sign-text {
+  display: inline-block;
+  width: 200rpx;
+  text-align: center;
+  color: #eeeeee;
+  font-size: 34rpx;
+}
+
+.sign-bar::after {
+  position: absolute;
+  display: block;
+  content: "";
+  height: 48rpx;
+  width: 1rpx;
+  background: rgba(238, 238, 238, 1);
+  left: 264.5rpx;
+}
+
+.sign-text__active {
+  color: #ffffff;
+}
+
+.today-sign {
+  display: flex;
+  flex-direction: column;
+}
+
+.pvp-number {
+  display: flex;
+  width: 530rpx;
+  height: 156rpx;
+  background: rgba(141, 216, 255, 0.5);
+  border-radius: 12rpx;
+  box-sizing: border-box;
+  padding: 38rpx 0;
+  margin: 48rpx auto 0 auto;
+}
+
+.pvp-number:first-child {
+  margin-top: 0;
+}
+
+.pvp-number__icon {
+  width: 80rpx;
+  height: 80rpx;
+  margin-left: 52rpx;
+}
+
+.pvp-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 80rpx;
+  margin-left: 34rpx;
+  width: 315rpx;
+}
+
+.pvp-content__text {
+  display: flex;
+  width: 315rpx;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pvp-text__title {
+  font-size: 36rpx;
+  color: #ffffff;
+}
+
+.pvp-text__desc {
+  font-size: 32rpx;
+  color: #ffffff;
+}
+
+.sign-state {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+  display: block;
+  text-align: center;
+  margin-top: 48rpx;
+}
+
+.rank {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 72rpx;
+  top: 1080rpx;
+  left: 0;
+  right: 0;
+}
+
+.rank-icon {
+  width: 64rpx;
+  height: 64rpx;
+}
+
+.rank-text {
+  margin-top: 24rpx;
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.sign-calendar {
+  width: 530rpx;
+  background: rgba(141, 216, 255, 0.5);
+  margin: 0 auto;
+  /* height: 448rpx; */
+  border-radius: 12rpx;
+  padding: 12rpx 0;
+  /* box-sizing: border-box; */
+}
+
+.calendar {
+  color: #ffffff;
+}

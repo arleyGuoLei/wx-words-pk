@@ -1,0 +1,15 @@
+<view wx:if="{{show}}" class="wrap animated faster fadeIn" catchtap="hide">
+  <view class="wrap-window animated faster slideInUp">
+    <scroll-view class="wrap-window__scroll" scroll-y="{{true}}">
+      <view class="book" wx:for="{{bookList}}" wx:key="index" wx:for-index="index" wx:for-item="book"
+      data-desc="{{book.desc}}" data-name="{{book.name}}" data-book-id="{{book._id}}" catchtap="onChangeBook">
+        <image class="book-img" src="{{book.image}}" />
+        <view class="book-info">
+          <text class="book-info__title">{{book.title}}</text>
+          <text class="book-info__words">词汇数量： {{book.wordsNumber}}</text>
+          <text class="book-info__people">选择人数： {{book.peopleNumber}}</text>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</view>

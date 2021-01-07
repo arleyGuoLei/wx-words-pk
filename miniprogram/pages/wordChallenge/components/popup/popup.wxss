@@ -1,0 +1,92 @@
+.wrap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.65);
+  z-index: 999;
+}
+
+.message {
+  width: 600rpx;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 24rpx;
+  margin: 35vh auto 0 auto;
+  overflow: hidden;
+}
+
+.message-icon {
+  width: 85rpx;
+  height: 64rpx;
+  margin: 28rpx auto 0 auto;
+  display: block;
+}
+
+.message-text {
+  width: 480rpx;
+  margin: 44rpx auto;
+  font-size: 33rpx;
+  font-weight: 500;
+}
+
+.show-message-text {
+  display: block;
+  text-align: center;
+}
+
+.message-close {
+  width: 48rpx;
+  height: 48rpx;
+  display: block;
+  margin: 24rpx auto 0 auto;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 264rpx !important;
+  height: 64rpx;
+  background: rgba(255, 156, 55, 1);
+  border-radius: 11rpx;
+  margin-top: 36rpx;
+}
+
+.btn:active {
+  transform: scale(1.01);
+}
+
+.btn-icon {
+  width: 33rpx;
+  height: 33rpx;
+}
+
+.btn-text {
+  margin-left: 16rpx;
+  font-size: 33rpx;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 1);
+}
+
+.show-message-desc {
+  font-size: 24rpx;
+  font-weight: 500;
+  color: rgba(153, 153, 153, 1);
+  display: block;
+  text-align: center;
+  margin-top: 24rpx;
+}
+
+.ad-wrap {
+  z-index: 99999;
+  position: absolute;
+  width: 650rpx;
+  min-width: 340px;
+  max-width: 100%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}

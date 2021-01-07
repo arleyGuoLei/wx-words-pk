@@ -1,0 +1,29 @@
+.mask {
+  position: absolute;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  align-items: center;
+  width: 100%;
+  top: 45vh;
+}
+
+.loading-icon {
+  width: 44rpx;
+  height: 44rpx;
+}
+
+.loading-text {
+  margin-top: 28rpx;
+  font-size: 28rpx;
+  color: #333333;
+}

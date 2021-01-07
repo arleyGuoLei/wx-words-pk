@@ -1,0 +1,44 @@
+<header>
+  <view slot="content" class="header">
+    <image class="go-back touch" catchtap="onBack" src="./../../images/combat-back.png" />
+    <text wx:if="{{(roomInfo.state==='OK'||roomInfo.state==='READY')}}" class="header-title">{{roomInfo.bookName}} ({{roomInfo.listLength}}词/局)</text>
+    <text wx:elif="{{roomInfo.state==='PK'}}" class="header-title">{{roomInfo.bookDesc}} 『 <text class="list-index">{{listIndex+1}}</text> / {{roomInfo.listLength}} 』</text>
+    <text wx:else class="header-title">单词天天斗</text>
+    <image bindtap="onBgmChange" hidden="{{!(roomInfo.state==='PK')}}" data-action="pause" wx:if="{{bgmState}}" class="header-bgm-setting" src="./../../images/combat-bgm-open.png" />
+    <image bindtap="onBgmChange" hidden="{{!(roomInfo.state==='PK')}}" data-action="start" wx:else class="header-bgm-setting" src="./../../images/combat-bgm-close.png" />
+  </view>
+</header>
+
+<block wx:if="{{roomInfo.isFriend&&(roomInfo.state==='OK'||roomInfo.state==='READY')}}">
+  <center-userInfo users="{{users}}" />
+  <friend-pk-buttons roomState="{{roomInfo.state}}" isHouseOwner="{{roomInfo.isHouseOwner}}" roomId="{{roomInfo.roomId}}" />
+</block>
+
+<random-matching wx:if="{{!roomInfo.isFriend&&(roomInfo.state==='OK'||roomInfo.state==='READY')}}"
+  roomState="{{roomInfo.state}}" roomId="{{roomInfo.roomId}}"/>
+
+<header-userInfo wx:if="{{roomInfo.state==='PK' || roomInfo.state==='FINISH' || roomInfo.state==='LEAVE'}}" users="{{users}}" />
+
+<combat-place wx:if="{{roomInfo.state==='PK'}}" 
+  id="combatComponent"
+  listIndex="{{listIndex}}" wordObj="{{wordList[listIndex]}}"
+  roomId="{{roomInfo.roomId}}" isHouseOwner="{{roomInfo.isHouseOwner}}"
+  left="{{left}}" right="{{right}}" isNpcCombat="{{roomInfo.isNPC}}"
+  listLength="{{roomInfo.listLength}}" tipNumber="{{tipNumber}}"
+  bind:useTip="useTip"
+/>
+
+<combat-finish wx:if="{{roomInfo.state==='FINISH'}}" id="combatFinish"
+  roomId="{{roomInfo.roomId}}"  wordList="{{wordList}}" isHouseOwner="{{roomInfo.isHouseOwner}}"
+  left="{{left}}" right="{{right}}" nextRoomId="{{nextRoomId}}" isNpcCombat="{{roomInfo.isNPC}}"
+  houseOwnerInfo="{{users[0]}}" rightUserInfo="{{users[1]}}" activityIds="{{activityIds}}"
+/>
+
+<image wx:if="{{roomInfo.isFriend&&roomInfo.state!=='FINISH'}}"  class="combat-pk-bg" src="./../../images/combat-pk.png" />
+<image wx:if="{{!roomInfo.isFriend&&roomInfo.state==='PK'}}"  class="combat-pk-bg" src="./../../images/combat-pk.png" />
+
+<combat-setting wx:if="{{(roomInfo.state==='OK'||roomInfo.state==='READY')}}"></combat-setting>
+
+<loading id="loading"/>
+<message id="errorMessage" />
+

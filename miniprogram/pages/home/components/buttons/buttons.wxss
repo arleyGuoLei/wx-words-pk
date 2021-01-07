@@ -1,0 +1,107 @@
+.btns {
+  width: 750rpx;
+  height: 560rpx;
+  display: flex;
+  flex-direction: column;
+  padding-top: 0rpx;
+  box-sizing: border-box;
+  justify-content: space-around;
+}
+
+.btn-oneline {
+  position: relative;
+  display: flex;
+  width: 600rpx !important;
+  height: 140rpx;
+  background: rgba(141, 216, 255, 1);
+  border-radius: 12rpx;
+  padding: 0;
+  align-items: center;
+  border: 0;
+  outline: none;
+}
+
+.btn-oneline__icon {
+  width: 64rpx;
+  height: 64rpx;
+  margin-left: 50rpx;
+}
+
+.btn-oneline__tag {
+  position: absolute;
+  width: 64rpx;
+  height: 33rpx;
+  top: 0;
+  left: 488rpx;
+}
+
+.btn-oneline__text {
+  display: flex;
+  flex-direction: column;
+  margin-left: 60rpx;
+}
+
+.oneline-text__title {
+  font-size: 36rpx;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+  text-align: left;
+}
+
+.oneline-text__desc {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: rgba(238, 238, 238, 1);
+  text-align: left;
+}
+
+.btn-pk > .btn-oneline__tag {
+  height: 36rpx;
+  width: 44rpx;
+  left: 506rpx;
+}
+
+.btn-two-wrap {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 74rpx;
+}
+
+.btn-two {
+  position: relative;
+  width: 288rpx!important;
+  height: 180rpx;
+  background: rgba(141, 216, 255, 1);
+  border-radius: 12rpx;
+  padding: 0;
+  border: 0;
+  outline: none;
+}
+
+.btn-two__text {
+  margin-top: 24rpx;
+  margin-left: 48rpx;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.btn-two__title {
+  font-size: 32rpx;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+}
+
+.btn-two__desc {
+  font-size: 27rpx;
+  font-weight: 500;
+  color: rgba(238, 238, 238, 1);
+}
+
+.btn-two__icon {
+  width: 69rpx;
+  height: 64rpx;
+  position: absolute;
+  top: 108rpx;
+  left: 189rpx;
+}

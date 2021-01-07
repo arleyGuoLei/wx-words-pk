@@ -1,0 +1,62 @@
+.user {
+  width: 100%;
+  height: 220rpx;
+  display: flex;
+  align-items: center;
+  margin-top: 1vh;
+}
+
+.user-avatar {
+  width: 148rpx;
+  height: 148rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-left: 32rpx;
+}
+
+.user-info {
+  margin-left: 36rpx;
+  display: flex;
+  flex-direction: column;
+  height: 136rpx;
+  justify-content: space-between;
+}
+
+.user-info__nickname {
+  font-size: 33rpx;
+  font-weight: 500;
+  color: rgba(51, 51, 51, 1);
+  height: 36rpx;
+  line-height: 36rpx;
+}
+
+.user-info__grade,
+.fight-info__pvp,
+.fight-info__win {
+  display: flex;
+  align-items: center;
+}
+
+.fight-info__win {
+  margin-left: 20rpx;
+}
+
+.user-info__fight-info {
+  display: flex;
+}
+
+.grade-icon,
+.pvp-icon,
+.win-icon {
+  width: 32rpx;
+  height: 32rpx;
+}
+
+.grade-text,
+.pvp-text,
+.win-text {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.8);
+  margin-left: 12rpx;
+}

@@ -1,0 +1,46 @@
+<header>
+  <view slot="content" class="header">
+    <image src="./../../images/combat-back.png" class="back" catchtap="onTapBack"/>
+    <text class="title">排行榜</text>
+  </view>
+</header>
+
+<view class="top-bar">
+  <text catchtap="tapRanking" data-index="0" class="{{activeIndex==='0'?'top-bar-active':''}}">词力榜</text>
+  <text catchtap="tapRanking" data-index="1" class="{{activeIndex==='1'?'top-bar-active':''}}">挑战榜</text>
+  <text catchtap="tapRanking" data-index="2" class="{{activeIndex==='2'?'top-bar-active':''}}">签到榜</text>
+</view>
+
+<scroll-view scroll-y="{{true}}" wx:if="{{rankingList.length!==0}}" style="height: {{listHeight}}px;" class="list animated fadeIn faster">
+  <block wx:for="{{rankingList}}" wx:key="index" wx:for-index="index" wx:for-item="user">
+    <view class="item animated fadeIn faster">
+      <view class="ranking-num">
+        <image wx:if="{{index<=2}}" class="ranking-num-img" src="./../../images/ranking-N{{index+1}}.png" />
+        <text wx:else class="ranking-num-text">{{index+1}}</text>
+      </view>
+      <image class="avartar" src="{{user.avatarUrl}}" />
+      <text class="nickname">{{user.nickName}}</text>
+      <view class="grade">
+        <image class="grade-img" src="./../../images/ranking-grade.png" />
+        <text class="grade-text">{{user.grade}}</text>
+      </view>
+    </view>
+  </block>
+  <view class="ad-wrap" hidden="{{!adState}}">
+    <ad unit-id="adunit-db20dbbb5cd5db0c"></ad>
+  </view>
+  <view style="height: 108rpx;width: 100%;"></view>
+</scroll-view>
+
+<view class="footer animated fadeIn faster" hidden="{{!myInfo.number || !myInfo.avatarUrl}}">
+  <text class="footer-ranking">{{myInfo.number}}</text>
+  <image class="footer-avartar" src="{{myInfo.avatarUrl}}" />
+  <text class="footer-nickname">{{myInfo.nickName}}</text>
+  <view class="grade">
+    <image class="grade-img" src="./../../images/ranking-grade.png" />
+    <text class="grade-text">{{myInfo.grade}}</text>
+  </view>
+</view>
+
+<message id="errorMessage" />
+<loading id="loading"/>

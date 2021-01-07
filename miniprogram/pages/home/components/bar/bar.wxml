@@ -1,0 +1,23 @@
+<view class="bar">
+  <view class="bar-tip" catchtap="onTip">
+    <image class="bar-tip__icon" src="./../../../../images/home-tip.png" />
+    <view class="bar-tip__text">
+      <text class="tip-text__title">提示卡</text>
+      <text class="tip-text__desc">{{tipNumber}}</text>
+    </view>
+  </view>
+  <view class="bar-book" catchtap="onSelectBook">
+    <image class="bar-book__icon" src="./../../../../images/home-book.png" />
+    <view class="bar-book__text">
+      <text class="book-text__title">单词书</text>
+      <text class="book-text__desc">{{bookDesc}}</text>
+    </view>
+  </view>
+</view>
+
+<message id="message">
+  <view slot="content">
+    <text style="color:#FF9C37;">提示卡</text><text>可在对战时给你提示单词释义哦！ 对战结束分享对战结果至群， 可以获得更多提示卡~ 感谢伙伴们支持~</text>
+    <text hidden="{{!videoAdState}}" catchtap="onCreateVideoAd" class="touch-s" style="color:#FF9C37;font-size: 25rpx;margin-top:24rpx;display:block;">浏览15s内广告，奖励20提示卡</text>
+  </view>
+</message>

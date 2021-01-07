@@ -1,0 +1,29 @@
+{
+  "name": "wx-words-pk",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arleyGuoLei/wx-words-pk.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arleyGuoLei/wx-words-pk/issues"
+  },
+  "homepage": "https://github.com/arleyGuoLei/wx-words-pk#readme",
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-wxapp": "^1.0.0"
+  },
+  "dependencies": {
+    "wxapp-animate": "0.0.2"
+  }
+}

@@ -1,0 +1,42 @@
+<header>
+  <view slot="content" class="header">
+    <image class="go-back touch" catchtap="onBack" src="./../../images/combat-back.png" />
+    <text class="header-title">{{bookDesc?'词汇挑战 - ' + bookDesc:'单词天天斗'}}</text>
+  </view>
+</header>
+
+<view class="num-bar">
+  <text class="num-bar__score">SCORE: {{score}}</text>
+  <view class="num-bar__countdown">
+    <image class="animated infinite slow pulse" src="./../../images/word-countdown.png" />
+    <text>{{countdown}}</text>
+  </view>
+</view>
+
+<view class="main">
+  <text class="main-word one-line-text">{{wordList[listIndex].word}}</text>
+  <text  hidden="{{!wordList[listIndex].usphone}}" class="main-usphone one-line-text">/{{wordList[listIndex].usphone}}/</text>
+
+  <view class="options">
+    <block wx:for="{{wordList[listIndex].options}}" wx:key="index" wx:for-index="index" wx:for-item="option">
+      <view catchtap="onSelectOption" data-index="{{index}}" animation="{{btnAnimation}}"
+      class="option {{(wordList[listIndex].check==='correct' && wordList[listIndex].selectIndex===index)?'option-correct':''}} {{(wordList[listIndex].check==='wrong' && wordList[listIndex].selectIndex===index)?'option-wrong':''}} {{(wordList[listIndex].check && wordList[listIndex].correctIndex===index)?'option-correct':''}}" >
+        <text class="one-line-text option-text">{{option}}</text>
+        <image wx:if="{{wordList[listIndex].check==='correct' && wordList[listIndex].selectIndex===index}}" class="option-icon" src="./../../images/combat-g.png" />
+        <image wx:elif="{{wordList[listIndex].check==='wrong' && wordList[listIndex].selectIndex===index}}" class="option-icon" src="./../../images/combat-x.png" />
+      </view>
+    </block>
+  </view>
+
+</view>
+
+<view class="footer">
+  <image wx:if="{{bgmState}}" data-action="pause" catchtap="onBgmChange" class="footer-left touch" src="./../../images/combat-bgm-open.png" />
+  <image wx:else class="footer-left touch" data-action="start" catchtap="onBgmChange" src="./../../images/combat-bgm-close.png" />
+  <image catchtap="onTip" class="footer-middle touch" src="./../../images/word-tip.png" />
+  <image catchtap="onPlayPronunciation" class="footer-right touch" src="./../../images/word-play.png" />
+</view>
+
+<loading id="loading"/>
+
+<popup id="popup" rank="{{rank}}" bind:onAgain="onAgain" bind:onShowVideoAd="onShowVideoAd" />

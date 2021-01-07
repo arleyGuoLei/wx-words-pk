@@ -1,0 +1,11 @@
+{
+  "permissions": {
+  },
+  "triggers": [
+    {
+      "name": "model_auto_sign_trigger",
+      "type": "timer",
+      "config": "0 45 7 * * * *"
+    }
+  ]
+}

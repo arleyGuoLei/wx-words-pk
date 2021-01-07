@@ -1,0 +1,27 @@
+<view class="wrap" wx:if="{{show}}">
+  <view class="message">
+    <image class="message-icon" src="./../../../../images/message-logo.png" />
+    <view class="message-text">
+      <text class="show-message-text">当前得分排名：{{rank}}</text>
+      <button class="btn shadow-lg animated pulse infinite slower" wx:if="{{type==='share'}}" open-type="share">
+        <image class="btn-icon" src="./../../../../images/word-share.png" />
+        <text class="btn-text">继续</text>
+      </button>
+      <button class="btn shadow-lg animated pulse infinite slower" wx:if="{{type==='ad'}}" catchtap="onShowVideoAd">
+        <image class="btn-icon" src="./../../../../images/word-video-ad.png" />
+        <text class="btn-text">继续</text>
+      </button>
+      <button class="btn shadow-lg animated pulse infinite slower" wx:if="{{type==='again'}}" catchtap="onAgain">
+        <text class="btn-text">再来一局</text>
+      </button>
+      <text class="show-message-desc" wx:if="{{type==='share'}}">还有一次机会，分享到群可继续分数</text>
+      <text class="show-message-desc" wx:if="{{type==='ad'}}">最后一次机会，浏览15s广告可继续</text>
+      <text class="show-message-desc" wx:if="{{type==='again'}}">继续学习，挑战自我和运气 ~</text>
+    </view>
+  </view>
+  <image class="message-close touch" src="./../../../../images/message-close.png" catchtap="onHome"/>
+</view>
+
+<view class="ad-wrap" hidden="{{!adState || !show}}">
+  <ad unit-id="adunit-92f221fb58eb0957"></ad>
+</view>

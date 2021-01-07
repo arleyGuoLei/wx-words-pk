@@ -1,0 +1,12 @@
+<view class="wrap" wx:if="{{show}}">
+  <view>
+    <view class="message" style="width:{{mWidth}}rpx;">
+      <image class="message-icon" src="./../../images/message-logo.png" />
+      <view class="message-text" style="width:{{contentWidth}}rpx;">
+        <slot name="content"></slot>
+        <text class="show-message-text">{{messageText}}</text>
+      </view>
+    </view>
+    <image wx:if="{{showClose}}" class="message-close" src="./../../images/message-close.png" catchtap="hide" />
+  </view>
+</view>

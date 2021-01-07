@@ -1,0 +1,128 @@
+.finish-wrap {
+  width: 100%;
+  position: absolute;
+}
+
+.result-bar {
+  height: 130rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 42rpx;
+  margin-bottom: 20rpx;
+}
+
+.result-left, .result-right {
+  display: flex;
+  flex-direction: column;
+  width: 300rpx;
+  align-items: center;
+}
+
+.result-img {
+  width: 157rpx;
+  display: block;
+  margin: 0 auto;
+}
+
+.result-left__grade, .result-right__grade {
+  font-size: 40rpx;
+  font-weight: 600;
+}
+
+.result-left__pvp, .result-right__pvp {
+  font-size: 24rpx;
+  color: rgba(0,0,0,0.8);
+}
+.result-left__grade {
+  color:rgba(97,208,251,1);
+}
+
+.result-right__grade {
+  color: rgba(255,217,236,1);
+}
+
+.result-words {
+  position: relative;
+  width: 710rpx;
+  height: 40vh;
+  background:rgba(255,255,255,0.6);
+  border-radius: 15rpx;
+  margin: 0rpx auto;
+}
+
+.result-words__bg {
+  position: fixed;
+  width: 677rpx;
+  height: 311rpx;
+  margin: 8vh auto;
+  left: 0;
+  right: 0;
+  z-index: -1;
+}
+
+.result-words__line {
+  display: flex;
+  align-items: center;
+  height: 78rpx;
+  justify-content: space-around;
+}
+
+.line-icon {
+  height: 42rpx;
+  width: 42rpx;
+}
+
+.line-text {
+  width: 540rpx;
+  height: 78rpx;
+  line-height: 78rpx;
+  text-align: center;
+  font-size: 28rpx;
+  font-weight: 600;
+  color: rgba(0,0,0,1);
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+
+.result-btn {
+  margin-top: 28rpx;
+  width: 600rpx!important;
+  height: 84rpx;
+  border-radius: 64rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.result-tip {
+  display: flex;
+  align-items: center;
+  margin: 24rpx auto 0 auto;
+  justify-content: center;
+}
+
+.result-tip__icon {
+  width: 35rpx;
+  height: 36rpx;
+  margin-right: 8rpx;
+}
+
+.result-tip__text {
+  font-size: 28rpx;
+  color:rgba(66,66,66,1);
+}
+
+.result-btn__icon {
+  width: 36rpx;
+  height: 34rpx;
+  margin-right: 28rpx;
+}
+
+.ad-wrap {
+  width: 710rpx;
+  min-width: 340px;
+  margin: 36rpx auto;
+  max-width: 100%;
+}

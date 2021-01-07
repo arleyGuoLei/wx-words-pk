@@ -1,0 +1,49 @@
+<view class="main">
+  <progress class="progress-left" duration="50" border-radius="18rpx" stroke-width="36rpx" percent="{{gradeShow.leftGradeProcess}}" activeColor="#7ECDF7" backgroundColor="#F5F5F5" active="true" active-mode="forwards" />
+  <text class="main-word">{{wordObj.word}}</text>
+  <view class="main-options">
+    <block wx:for="{{wordObj.options}}" wx:key="index" wx:for-index="index" wx:for-item="option">
+      <view animation="{{btnAnimation}}" class="btn shadow-lg" data-index="{{index}}" catchtap="onSelectOption">
+        <view class="btn-left" hidden="{{!((isHouseOwner && selectIndex===index) || (!isHouseOwner && anotherSelectIndex===index))}}">
+          <image
+          hidden="{{!(leftResult==='false')}}" 
+          class="btn-left__icon" src="./../../../../images/combat-x.png" />
+          <image 
+          hidden="{{!(leftResult==='true')}}" 
+          class="btn-left__icon" src="./../../../../images/combat-g.png" />
+        </view>
+        <text class="btn-text one-line-text {{(showAnswer && (index===wordObj.correctIndex))?'btn-text__sign':''}}">{{option}}</text>
+        <view class="btn-right" hidden="{{!((!isHouseOwner && selectIndex===index) || (isHouseOwner && anotherSelectIndex===index))}}">
+          <image 
+          hidden="{{!(rightResult==='false')}}"
+          class="btn-right__icon" src="./../../../../images/combat-x.png" />
+          <image 
+          hidden="{{!(rightResult==='true')}}" 
+          class="btn-right__icon" src="./../../../../images/combat-g.png" />
+        </view>
+      </view>
+    </block>
+  </view>
+  <progress class="progress-right" duration="50" border-radius="18rpx" stroke-width="36rpx" percent="{{gradeShow.rightGradeProcess}}" activeColor="#7ECDF7" backgroundColor="#F5F5F5" active="true" active-mode="forwards" />
+  <view class="grade">
+    <view class="grade-add-left" wx-if="{{left.grades[listIndex].score}}">
+      <image class="grade-add__img" src="./../../../../images/combat-pk-getGrade.png" />
+      <text class="grade-info__tag" style="margin-left:16rpx;">{{left.grades[listIndex].score}}</text>
+    </view>
+    <view class="grade-add-right" wx-if="{{right.grades[listIndex].score}}">
+      <text class="grade-info__tag" style="margin-right:16rpx;">{{right.grades[listIndex].score}}</text>
+      <image class="grade-add__img" src="./../../../../images/combat-pk-getGrade.png" />
+    </view>
+    <view class="grade-text">
+      <text class="grade-text__left">{{gradeShow.leftGrade}}</text>
+      <text class="grade-text__right">{{gradeShow.rightGrade}}</text>
+    </view>
+  </view>
+
+  <view class="pk-tip touch" catchtap="onGetTip">
+    <image class="pk-tip__img" mode="widthFix" src="./../../../../images/combat-tip.png" />
+    <text class="pk-tip__title">提示 x {{tipNumber}}</text>
+  </view>
+</view>
+
+<text animation="{{countdownAnimation}}" style="top:{{countdownTop}}rpx;" class="count-down">{{countdown}}</text>

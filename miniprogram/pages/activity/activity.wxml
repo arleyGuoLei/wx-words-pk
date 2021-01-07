@@ -1,0 +1,75 @@
+<header>
+  <view slot="content" class="header">
+    <image src="./../../images/combat-back.png" class="back" catchtap="onTapBack"/>
+    <text class="title">{{title}}</text>
+  </view>
+</header>
+
+<image class="bg" src="../../images/home-bg.jpg" />
+
+<view class="ac-page">
+  <view class="head animated fadeIn faster" wx:if="{{id!==''}}">
+    <image src="{{headImg}}" class="head-img" />
+    <button class="head-btn head-btn__share touch-s" open-type="share" hover-class="none">分享活动</button>
+    <button class="head-btn head-btn__rule touch-s" catchtap="onRule" hover-class="none">活动规则</button>
+    <text class="head-text">{{headText}}</text>
+  </view>
+
+  <scroll-view scroll-y="{{true}}" style="height: {{listHeight}}px;" bindscrolltolower="onReachBottom"
+  lower-threshold="100" class="list animated fadeIn faster">
+    <text wx:if="{{status!==''}}" class="activity-status">{{inProgress ? status + '，今日剩余' + todaySurplus + '次机会': status}}</text>
+    <block wx:for="{{rankingList}}" wx:key="index" wx:for-index="index" wx:for-item="user">
+      <view class="item animated fadeIn faster">
+        <view class="ranking-num">
+          <image wx:if="{{index<=2}}" class="ranking-num-img" src="./../../images/ranking-N{{index+1}}.png" />
+          <text wx:else class="ranking-num-text">{{index+1}}</text>
+        </view>
+        <image class="avartar" src="{{user.avatarUrl}}" />
+        <text class="nickname">{{user.nickName}}</text>
+        <view class="grade">
+          <image class="grade-img" src="./../../images/ranking-grade.png" />
+          <text class="grade-text">{{user.grade}}</text>
+        </view>
+      </view>
+    </block>
+    <view wx:if="{{rankingList.length===0&&id!==''}}" class="blank">
+      <image class="blank-img" src="./../../images/message-logo.png" />
+      <text class="blank-text">还没有用户参赛哦 ~</text>
+    </view>
+    <view style="height: 108rpx;width: 100%;"></view>
+  </scroll-view>
+</view>
+
+<view class="footer animated fadeIn faster" hidden="{{!myInfo.number || !myInfo.avatarUrl}}">
+  <text class="footer-ranking">{{myInfo.number}}</text>
+  <open-data class="footer-avartar" type="userAvatarUrl"></open-data>
+  <open-data class="footer-nickname" type="userNickName"></open-data>
+  <view class="grade">
+    <image class="grade-img" src="./../../images/ranking-grade.png" />
+    <text class="grade-text">{{myInfo.grade}}</text>
+  </view>
+</view>
+
+<view wx:if="{{id!==''}}" catchtap="onChat" class="chat animated swing touch-s">
+  <image src="./../../images/activity-chat.png" class="chat-img" />
+  <text class="chat-text">活动客服</text>
+</view>
+
+<loading id="loading"/>
+
+<message id="message">
+  <view slot="content">
+    <rich-text nodes="{{ruleHtmlSnip}}"></rich-text>
+  </view>
+</message>
+
+<message id="chatMessage">
+  <view slot="content">
+    <view class="chat-toast">
+      <image class="chat-toast__img" src="{{chatCodeImg}}" />
+      <text class="chat-toast__text">{{chatDesc}}</text>
+    </view>
+  </view>
+</message>
+
+<message id="errorMessage" />

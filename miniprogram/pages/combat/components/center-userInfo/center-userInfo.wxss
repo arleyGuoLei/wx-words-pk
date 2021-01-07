@@ -1,0 +1,39 @@
+.wrap {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 32rpx 0 36rpx 0;
+  display: flex;
+  margin-top: 148rpx;
+  height: 456rpx;
+}
+
+.userinfo {
+  display: flex;
+  width: 50%;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 165rpx;
+  height: 165rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  font-size: 18px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 1);
+  margin-top: 38rpx;
+}
+
+.userinfo-grade, .userinfo-winRate {
+  font-size: 15px;
+  font-weight: 500;
+  color: rgba(153, 153, 153, 1);
+  margin-top: 28rpx;
+}
+
+.userinfo-winRate {
+  margin-top: 24rpx;
+}

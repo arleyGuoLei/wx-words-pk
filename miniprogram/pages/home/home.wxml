@@ -1,0 +1,39 @@
+<header><text slot="content" class="header-title">单词天天斗</text></header>
+
+<image class="bg" src="../../images/home-bg.jpg" />
+
+<image class="home-sun rotate time-36s" catchtap="onToSetting" src="./../../images/home-sun.png" />
+<image class="home-setting touch" catchtap="onToSetting" src="./../../images/home-setting.png" />
+
+<userinfo grade="{{userInfo.grade}}" pvpNumber="{{userInfo.pvpNumber}}" winNumber="{{userInfo.winNumber}}" />
+
+<bar tipNumber="{{userInfo.tipNumber}}" bookList="{{bookList}}" bookDesc="{{userInfo.bookDesc}}" bind:onSelectBook="onSelectBook" bind:onTip="onTip" bind:onCreateVideoAd="onShowVideoAd" videoAdState="videoAdState" />
+
+<book-select id="book-select" bookList="{{bookList}}" bind:onChangeBook="onChangeBook" />
+
+<activity-swiper wx:if="{{activityList.length!==0}}" activityList="{{activityList}}" bind:onToActivity="onToActivity" />
+<view wx:else style="width:100%; height: 60rpx;"></view>
+
+<buttons bind:onChallengeFriend="onChallengeFriend" bind:onRandomMatch="onRandomMatch" />
+
+<footer id="footer" />
+
+<view class="ad-wrap" hidden="{{!signHide || !adState}}">
+  <ad unit-id="adunit-d7b89a99b53393c5" ad-type="grid" grid-opacity="0.8" grid-count="5" ad-theme="white"></ad>
+</view>
+
+<home-add-tips />
+
+<loading id="loading"/>
+
+<message id="createRoomFail">
+  <view slot="content">
+      <text style="color:#FF9C37;">房间创建失败...</text><text>由于网络或设备原因, 请稍后重试。</text>
+  </view>
+</message>
+
+<movable-area class="movable-area">
+  <movable-view x="{{signPosition.x}}" y="{{signPosition.y}}" animation="{{false}}" class="movable-view {{signHide?'hide-sign':''}}" direction="all" inertia="true" friction="8" bindchange="onSignMove" catchtap="onSignTap">
+    <image class="movable-view__img touch-s" src="./../../images/home-sign.png" />
+  </movable-view>
+</movable-area>

@@ -1,0 +1,55 @@
+<header>
+  <view slot="content" class="header">
+    <image src="./../../images/combat-back.png" class="back" catchtap="onTapBack"/>
+    <text class="title">学习打卡 - 单词天天斗</text>
+  </view>
+</header>
+
+<image class="bg" src="../../images/home-bg.jpg" />
+
+<text class="sign-day">{{signSumNumber}}</text>
+<text class="sign-day-desc">累计打卡</text>
+
+<view class="sign-bar">
+  <text class="sign-text {{tabIndex===0?'sign-text__active':''}}" data-index="0" catchtap="onChangeTab">今日打卡</text>
+  <text class="sign-text {{tabIndex===1?'sign-text__active':''}}" data-index="1" catchtap="onChangeTab">打卡日历</text>
+</view>
+
+<view class="today-sign" hidden="{{tabIndex!==0}}">
+  <view class="pvp-number">
+    <image class="pvp-number__icon" src="./../../images/home-btn-pk.png" />
+    <view class="pvp-content">
+      <view class="pvp-content__text">
+        <text class="pvp-text__title">对战{{SIGN_PVP_NUMBER}}局</text>
+        <text class="pvp-text__desc">{{todayPvpNumber}} / {{SIGN_PVP_NUMBER}} 局</text>
+      </view>
+      <progress percent="{{todayPvpNumberPercent}}" border-radius="18rpx" stroke-width="24rpx" activeColor="#7ECDF7" backgroundColor="#F5F5F5" class="pvp-progress"></progress>
+    </view>
+  </view>
+  <view class="pvp-number">
+    <image class="pvp-number__icon" src="./../../images/home-btn-random.png" />
+    <view class="pvp-content">
+      <view class="pvp-content__text">
+        <text class="pvp-text__title">胜利{{SIGN_WIN_NUMBER}}局</text>
+        <text class="pvp-text__desc">{{todayWinNumber}} / {{SIGN_WIN_NUMBER}} 局</text>
+      </view>
+      <progress percent="{{todayWinNumberPercent}}" border-radius="18rpx" stroke-width="24rpx" activeColor="#7ECDF7" backgroundColor="#F5F5F5" class="pvp-progress"></progress>
+    </view>
+  </view>
+  <text wx:if="{{todayDate !== lastSignDate}}" class="sign-state">完成任务，自动打卡。</text>
+  <text wx:else class="sign-state">今日打卡已完成，继续加油哦。</text>
+</view>
+
+<view hidden="{{tabIndex!==1}}" class="sign-calendar animated fadeIn fast">
+  <calendar bindnextMonth="onNextMonth" bindprevMonth="onPrevMonth" binddateChange="onDateChange"
+  active-type="square" cell-size="{{cellSize}}" days-color="{{daysColor}}" 
+  weeks-type="en" end-date="{{endDate}}" calendar-style="calendar" />
+</view>
+
+<view class="rank touch-s" catchtap="onToRank">
+  <image class="rank-icon" src="./../../images/home-rank.png" />
+  <text class="rank-text">签到排行榜</text>
+</view>
+
+<loading id="loading"/>
+<message id="errorMessage" />

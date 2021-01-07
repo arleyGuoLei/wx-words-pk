@@ -1,0 +1,79 @@
+.wrap {
+  margin-top: 10vh;
+}
+
+.userinfo {
+  margin: 0 auto;
+  position: relative;
+  width: 480rpx;
+  height: 480rpx;
+}
+
+.circle-in {
+  position: absolute;
+  width: 287rpx;
+  height: 287rpx;
+  left: 96.5rpx;
+  top: 96.5rpx;
+}
+
+.circle-out {
+  position: absolute;
+  width: 480rpx;
+  height: 480rpx;
+  left: 0;
+  top: 0;
+}
+
+.circle-avatar {
+  position: absolute;
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  left: 180rpx;
+  top: 180rpx;
+}
+
+.matching {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.matching-title {
+  font-size: 34rpx;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+  margin-top: 32rpx;
+}
+
+.matching-desc {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+  margin-top: 16rpx;
+}
+
+.btn {
+  width: 480rpx !important;
+  height: 80rpx;
+  background: rgba(126, 206, 247, 1);
+  border-radius: 64rpx;
+  color: #ffffff;
+  font-size: 34rpx;
+  font-weight: 500;
+  margin-top: 52rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.matched {
+  display: block;
+  text-align: center;
+  font-size: 64rpx;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+  margin-top: 32rpx;
+}

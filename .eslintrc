@@ -1,0 +1,6 @@
+{
+  "extends": "eslint-config-wxapp",
+  "rules": {
+    "no-return-await": 0
+  }
+}

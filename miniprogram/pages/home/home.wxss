@@ -1,0 +1,90 @@
+page {
+  position: relative;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+.bg {
+  position: absolute;
+  width: 750rpx;
+  height: 1341rpx;
+  left: 0;
+  top: 0;
+  z-index: -1;
+}
+
+.header-title {
+  font-size: 34rpx;
+  font-weight: 700;
+  color: rgba(51, 51, 51, 1);
+  letter-spacing: 8rpx;
+  margin-left: 32rpx;
+}
+
+.home-sun {
+  position: absolute;
+  width: 124rpx;
+  height: 124rpx;
+  left: 594rpx;
+  top: 190rpx;
+}
+
+.home-setting {
+  position: absolute;
+  width: 37rpx;
+  height: 36rpx;
+  left: 638rpx;
+  top: 234rpx;
+}
+
+.movable-area {
+  position: absolute;
+  height: 75vh;
+  width: 375rpx;
+  right: 0;
+  top: 25vh;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.movable-view {
+  width: 140rpx;
+  height: 180rpx;
+  overflow: hidden;
+  position: absolute;
+  left: auto;
+  top: auto;
+  bottom: 64rpx;
+  right: 48rpx;
+  pointer-events: auto;
+}
+
+.movable-view__img {
+  width: 140rpx;
+  height: 180rpx;
+}
+
+.hide-sign {
+  animation-name: hideRight;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  animation-duration: 1s;
+  animation-delay: 300ms;
+}
+
+@keyframes hideRight {
+  0% {
+  }
+  100% {
+    transform: rotateZ(-90deg);
+    right: -90rpx;
+  }
+}
+
+.ad-wrap {
+  width: 600rpx;
+  min-width: 340px;
+  margin: 24rpx auto 0 auto;
+  max-width: 100%;
+}

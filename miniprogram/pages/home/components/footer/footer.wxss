@@ -1,0 +1,32 @@
+.footer {
+  display: flex;
+  justify-content: center;
+  padding: 0 64rpx;
+  margin-top: 64rpx;
+}
+
+.footer-item {
+  padding: 0;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  width: 172rpx!important;
+  border: 0;
+  outline: none;
+}
+
+.footer-icon {
+  width: 36rpx;
+  height: 36rpx;
+}
+
+.footer-text {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: rgba(51, 51, 51, 1);
+  margin-left: 24rpx;
+}
+
+.btn-hover {
+  transform: scale(1.02);
+}

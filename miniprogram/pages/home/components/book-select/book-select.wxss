@@ -1,0 +1,61 @@
+.wrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  z-index: 999;
+  background: rgba(0, 0, 0, 0.65);
+  overflow: hidden;
+}
+
+.wrap-window {
+  position: absolute;
+  width: 100%;
+  border-radius: 24rpx 24rpx 0 0;
+  background-color: #ffffff;
+  bottom: 0;
+  z-index: 1000;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.wrap-window__scroll {
+  height: 65vh;
+  box-sizing: border-box;
+  padding: 16rpx 0;
+}
+
+.book {
+  width: 100%;
+  display: flex;
+  height: 202rpx;
+  margin: 32rpx 50rpx;
+}
+
+.book-img {
+  height: 202rpx;
+  width: 150rpx;
+}
+
+.book-info {
+  margin-left: 48rpx;
+  width: 400rpx;
+  display: flex;
+  flex-direction: column;
+  padding: 12rpx 0 0 16rpx;
+  justify-content: space-between;
+}
+
+.book-info__title {
+  font-size: 34rpx;
+  font-weight: 500;
+  color: rgba(51, 51, 51, 1);
+}
+
+.book-info__words,
+.book-info__people {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: rgba(153, 153, 153, 1);
+}
