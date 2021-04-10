@@ -13,8 +13,9 @@ Component({
     onGithub() {
       this.selectComponent('#message').show()
     },
-    onCopyGithub() {
-      wx.setClipboardData({ data: 'https://github.com/arleyGuoLei/wx-words-pk' })
+    onCopyWechat() {
+      wx.setClipboardData({ data: 'arley_GuoLei' })
+      // wx.setClipboardData({ data: 'https://github.com/arleyGuoLei/wx-words-pk' })
     },
     showGithubAuto() {
       getToastGithub() && this.onGithub()

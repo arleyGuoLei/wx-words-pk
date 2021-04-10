@@ -1,6 +1,17 @@
 import $ from './Tool'
 import { dateFormat } from './util'
 
+// 匿名用户默认信息
+export const DEFAULT_USER_INFO = {
+  avatarUrl: 'https://7072-prod-words-pk-1255907426.tcb.qcloud.la/word-pk-logo.jpeg',
+  city: 'Yuxi',
+  country: 'China',
+  gender: 1,
+  language: 'zh_CN',
+  nickName: '单词天天斗(匿名)',
+  province: 'Yunnan'
+}
+
 export const SIGN_WIN_NUMBER = 2 // 签到需要胜利的局数
 export const SIGN_PVP_NUMBER = 5 // 签到需要对战的局数
 

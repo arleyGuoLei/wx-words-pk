@@ -43,29 +43,32 @@
 </view>
 
 <view class="card shadow-box">
-  <view class="card-item" catchtap="onSelectCombatNumber">
+  <view class="card-item">
     <button open-type='feedback' class="card-item__title" hover-class="none">建议反馈/提交BUG</button>
   </view>
-  <view class="card-item" catchtap="onSelectCombatNumber">
+  <view class="card-item">
     <button catchtap="onZan" class="card-item__title" hover-class="none">请作者吃 🍭🍭🍭(一分也是情!!!)</button>
   </view>
-  <view class="card-item" catchtap="onSelectCombatNumber">
+  <view class="card-item">
     <button catchtap="onChat" style="color: #FF9C37;" class="card-item__title" hover-class="none">合作/部署微信：Arley_GuoLei</button>
   </view>
-    <view class="card-item" catchtap="onSelectCombatNumber">
+    <view class="card-item">
     <button catchtap="onGithub" class="card-item__title" hover-class="none">项目开源 (免费学习/赞助部署)</button>
   </view>
 </view>
 
 <view class="card shadow-box">
   <text class="card-title">作者的其他作品, 欢迎体验 ~</text>
-  <view class="card-item" catchtap="onSelectCombatNumber">
+  <view class="card-item">
+    <button catchtap="onToTimeTrack" class="card-item__title" hover-class="none">时间打点 (日常习惯打卡记录)</button>
+  </view>
+  <view class="card-item">
     <button catchtap="onTo1password" class="card-item__title" hover-class="none">有本密码 (记密码必备)</button>
   </view>
-  <view class="card-item" catchtap="onSelectCombatNumber">
+  <view class="card-item">
     <button catchtap="onToxiaJueDing" class="card-item__title" hover-class="none">下决定 (转盘作弊模式, 了解一下)</button>
   </view>
-  <view class="card-item" catchtap="onSelectCombatNumber">
+  <view class="card-item">
     <button catchtap="onToMiao" class="card-item__title" hover-class="none">大学喵题库 (网课搜题助手)</button>
   </view>
 </view>

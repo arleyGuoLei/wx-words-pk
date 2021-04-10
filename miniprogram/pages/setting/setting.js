@@ -134,6 +134,13 @@ Page({
       extraData: {}
     })
   },
+  onToTimeTrack() {
+    wx.navigateToMiniProgram({
+      appId: 'wxbd226209f94595d6',
+      path: 'pages/home/home',
+      extraData: {}
+    })
+  },
   onTapBack() {
     router.toHome()
   },

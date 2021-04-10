@@ -2,7 +2,14 @@
   <button wx:if="{{roomState==='OK' && isHouseOwner}}" hover-class="btn-hover" class="btn shadow-lg" open-type="share">邀请好友</button>
   <button wx:if="{{roomState==='READY' && isHouseOwner}}" hover-class="btn-hover" class="btn shadow-lg" catchtap="onStartPk">开始斗词</button>
 
-  <button wx:if="{{roomState==='OK' && !isHouseOwner}}" hover-class="btn-hover" class="btn shadow-lg" open-type="getUserInfo" bindgetuserinfo="onUserReady">加入房间</button>
+  <button 
+    wx:if="{{roomState==='OK' && !isHouseOwner && canIUseGetUserProfile}}"
+    class="btn shadow-lg"
+    hover-class="btn-hover"
+    data-callback="onUserReady"
+    bindtap="getUserProfile"
+  >加入房间</button>
+  <button wx:if="{{roomState==='OK' && !isHouseOwner && !canIUseGetUserProfile}}" hover-class="btn-hover" class="btn shadow-lg" open-type="getUserInfo" bindgetuserinfo="onUserReady">加入房间</button>
   <button wx:if="{{roomState==='READY' && !isHouseOwner}}" class="btn-disabled">已准备, 等待开始</button>
 </view>
 

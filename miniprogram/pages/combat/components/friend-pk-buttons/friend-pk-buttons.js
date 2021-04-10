@@ -1,5 +1,6 @@
 import { roomModel, userModel } from '../../../../model/index'
-import { throttle } from '../../../../utils/util'
+import { DEFAULT_USER_INFO } from '../../../../utils/setting'
+import { sleep, throttle } from '../../../../utils/util'
 import $ from './../../../../utils/Tool'
 
 Component({
@@ -18,9 +19,43 @@ Component({
     }
   },
   data: {
-
+    canIUseGetUserProfile: false
+  },
+  lifetimes: {
+    attached() {
+      if (wx.getUserProfile) {
+        this.setData({ canIUseGetUserProfile: true })
+      }
+    }
   },
   methods: {
+    getUserProfile: throttle(async function(event) {
+      const { callback } = event.currentTarget.dataset
+      if (!callback || !this[callback]) {
+        return
+      }
+      const desc = '将用于对战信息显示'
+      let userInfo = DEFAULT_USER_INFO // 默认信息
+      try {
+        const { userInfo: info } = await new Promise((resolve, reject) => {
+          wx.getUserProfile({
+            desc,
+            success: resolve,
+            fail: reject
+          })
+        })
+        userInfo = info
+      } catch (error) {
+        const duration = 1200
+        wx.showToast({
+          title: '获取用户信息失败, 将使用匿名信息',
+          icon: 'none',
+          duration
+        })
+        await sleep(duration)
+      }
+      this[callback]({ detail: { userInfo } })
+    }, 1000),
     onStartPk: throttle(async function() {
       $.loading('开始对战...')
       const { properties: { roomId } } = this

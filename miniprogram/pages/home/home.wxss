@@ -27,7 +27,7 @@ page {
   width: 124rpx;
   height: 124rpx;
   left: 594rpx;
-  top: 190rpx;
+  top: 180rpx;
 }
 
 .home-setting {
@@ -35,7 +35,7 @@ page {
   width: 37rpx;
   height: 36rpx;
   left: 638rpx;
-  top: 234rpx;
+  top: 224rpx;
 }
 
 .movable-area {

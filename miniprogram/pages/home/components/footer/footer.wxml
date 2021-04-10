@@ -17,13 +17,13 @@
 
   <button class="footer-item" hover-class="btn-hover" catchtap="onGithub">
     <image class="footer-icon" src="./../../../../images/home-github.png" />
-    <text class="footer-text">开源合作</text>
+    <text class="footer-text">项目合作</text>
   </button>
 
   <message id="message">
     <view slot="content">
-      <text>项目已经</text><text style="color:#FF9C37;">开源</text><text>，部署/项目文档完善，商务合作、源码可联系微信arley_GuoLei</text>
-      <text catchtap="onCopyGithub" class="touch-s" style="color:#FF9C37;font-size: 25rpx;margin-top:24rpx;display:block;text-align: center;">点我复制github开源地址</text>
+      <text>该项目独立开发运营且</text><text style="color:#FF9C37;">开源</text><text>，商务合作、一起学习可联系微信arley_GuoLei</text>
+      <text catchtap="onCopyWechat" class="touch-s" style="color:#FF9C37;font-size: 25rpx;margin-top:24rpx;display:block;text-align: center;">点我复制微信号</text>
     </view>
   </message>
 
